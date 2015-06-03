@@ -1,4 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="Test1.xcdatamodel" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <elements/>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14D136" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Atividade" representedClassName="PRODUCT_MODULE_NAME.Atividade" syncable="YES">
+        <attribute name="dataEntrega" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="nome" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="nota" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="newRelationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Disciplina" inverseName="atividade" inverseEntity="Disciplina" syncable="YES"/>
+    </entity>
+    <entity name="Disciplina" representedClassName="PRODUCT_MODULE_NAME.Disciplina" syncable="YES">
+        <attribute name="media" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="nome" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="atividade" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Atividade" inverseName="newRelationship" inverseEntity="Atividade" syncable="YES"/>
+        <relationship name="prova" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Prova" inverseName="newRelationship" inverseEntity="Prova" syncable="YES"/>
+    </entity>
+    <entity name="Prova" representedClassName="PRODUCT_MODULE_NAME.Prova" syncable="YES">
+        <attribute name="data" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="nome" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="nota" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="newRelationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Disciplina" inverseName="prova" inverseEntity="Disciplina" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Disciplina" positionX="-63" positionY="-18" width="126" height="103"/>
+        <element name="Atividade" positionX="-153" positionY="288" width="128" height="103"/>
+        <element name="Prova" positionX="117" positionY="218" width="128" height="103"/>
+    </elements>
 </model>

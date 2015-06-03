@@ -14,6 +14,12 @@
 		B3581EC91B1E194C004BC32E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3581EC81B1E194C004BC32E /* Images.xcassets */; };
 		B3581ECC1B1E194C004BC32E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3581ECA1B1E194C004BC32E /* LaunchScreen.xib */; };
 		B3581ED81B1E194C004BC32E /* OrganizadorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3581ED71B1E194C004BC32E /* OrganizadorTests.swift */; };
+		B3581EE81B1F4160004BC32E /* Disciplina.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3581EE71B1F4160004BC32E /* Disciplina.swift */; };
+		B3581EEA1B1F4161004BC32E /* Atividade.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3581EE91B1F4161004BC32E /* Atividade.swift */; };
+		B3581EEC1B1F4161004BC32E /* Prova.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3581EEB1B1F4161004BC32E /* Prova.swift */; };
+		B3581EF01B1F4246004BC32E /* DisciplinaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3581EEF1B1F4246004BC32E /* DisciplinaManager.swift */; };
+		B3581EF21B1F4256004BC32E /* ProvaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3581EF11B1F4256004BC32E /* ProvaManager.swift */; };
+		B3581EF41B1F4262004BC32E /* AtividadeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3581EF31B1F4261004BC32E /* AtividadeManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +44,12 @@
 		B3581ED11B1E194C004BC32E /* OrganizadorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OrganizadorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3581ED61B1E194C004BC32E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B3581ED71B1E194C004BC32E /* OrganizadorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizadorTests.swift; sourceTree = "<group>"; };
+		B3581EE71B1F4160004BC32E /* Disciplina.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Disciplina.swift; sourceTree = "<group>"; };
+		B3581EE91B1F4161004BC32E /* Atividade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Atividade.swift; sourceTree = "<group>"; };
+		B3581EEB1B1F4161004BC32E /* Prova.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Prova.swift; sourceTree = "<group>"; };
+		B3581EEF1B1F4246004BC32E /* DisciplinaManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisciplinaManager.swift; sourceTree = "<group>"; };
+		B3581EF11B1F4256004BC32E /* ProvaManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProvaManager.swift; sourceTree = "<group>"; };
+		B3581EF31B1F4261004BC32E /* AtividadeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtividadeManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +91,8 @@
 		B3581EBB1B1E194B004BC32E /* Organizador */ = {
 			isa = PBXGroup;
 			children = (
+				B3581EEE1B1F4220004BC32E /* Managers */,
+				B3581EED1B1F420C004BC32E /* Modelo */,
 				B3581EBE1B1E194B004BC32E /* AppDelegate.swift */,
 				B3581EC31B1E194C004BC32E /* ViewController.swift */,
 				B3581EC51B1E194C004BC32E /* Main.storyboard */,
@@ -113,6 +127,26 @@
 				B3581ED61B1E194C004BC32E /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B3581EED1B1F420C004BC32E /* Modelo */ = {
+			isa = PBXGroup;
+			children = (
+				B3581EEB1B1F4161004BC32E /* Prova.swift */,
+				B3581EE91B1F4161004BC32E /* Atividade.swift */,
+				B3581EE71B1F4160004BC32E /* Disciplina.swift */,
+			);
+			name = Modelo;
+			sourceTree = "<group>";
+		};
+		B3581EEE1B1F4220004BC32E /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				B3581EEF1B1F4246004BC32E /* DisciplinaManager.swift */,
+				B3581EF11B1F4256004BC32E /* ProvaManager.swift */,
+				B3581EF31B1F4261004BC32E /* AtividadeManager.swift */,
+			);
+			name = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -215,9 +249,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3581EF21B1F4256004BC32E /* ProvaManager.swift in Sources */,
 				B3581EC41B1E194C004BC32E /* ViewController.swift in Sources */,
 				B3581EC21B1E194C004BC32E /* Organizador.xcdatamodeld in Sources */,
+				B3581EEC1B1F4161004BC32E /* Prova.swift in Sources */,
 				B3581EBF1B1E194B004BC32E /* AppDelegate.swift in Sources */,
+				B3581EF41B1F4262004BC32E /* AtividadeManager.swift in Sources */,
+				B3581EEA1B1F4161004BC32E /* Atividade.swift in Sources */,
+				B3581EF01B1F4246004BC32E /* DisciplinaManager.swift in Sources */,
+				B3581EE81B1F4160004BC32E /* Disciplina.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
