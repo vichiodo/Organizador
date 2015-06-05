@@ -68,14 +68,13 @@ class ProvaManager {
         salvarProva()
     }
     
-//    func salvarNovaProva(nome: String, foto: UIImage){
-//        let prova = novaProva()
-//        
-//        prova.setValue(nome, forKey: "nomePlayer")
-//        player.setValue(imagem, forKey: "fotoPlayer")
-//        player.setValue("1", forKey: "nivelPlayer")
-//        player.setValue("0", forKey: "scorePlayer")
-//        salvarProva()
-//    }
+    func salvarNovaProva(nome: String, data: NSDate){
+        let prova = novaProva()
+        
+        prova.setValue(nome, forKey: "nome")
+        prova.setValue(data, forKey: "data")
+        prova.setValue(0, forKey: "nota")
+        salvarProva()
+    }
     
 }

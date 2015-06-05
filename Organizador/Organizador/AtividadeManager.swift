@@ -68,14 +68,13 @@ class AtividadeManager {
         salvarAtividade()
     }
     
-    //    func salvarNovaAtividade(nome: String){
-    //        let disciplina = novaDisciplina()
-    //
-    //        player.setValue(nome, forKey: "nomePlayer")
-    //        player.setValue(imagem, forKey: "fotoPlayer")
-    //        player.setValue("1", forKey: "nivelPlayer")
-    //        player.setValue("0", forKey: "scorePlayer")
-    //        salvarDisciplina()
-    //    }
+        func salvarNovaAtividade(nome: String, data: NSDate){
+            let atividade = novaAtividade()
+    
+            atividade.setValue(nome, forKey: "nome")
+            atividade.setValue(data, forKey: "data")
+            atividade.setValue(0, forKey: "nota")
+            salvarAtividade()
+        }
     
 }
