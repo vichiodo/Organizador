@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		B3581EBF1B1E194B004BC32E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3581EBE1B1E194B004BC32E /* AppDelegate.swift */; };
 		B3581EC21B1E194C004BC32E /* Organizador.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B3581EC01B1E194B004BC32E /* Organizador.xcdatamodeld */; };
-		B3581EC41B1E194C004BC32E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3581EC31B1E194C004BC32E /* ViewController.swift */; };
 		B3581EC71B1E194C004BC32E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3581EC51B1E194C004BC32E /* Main.storyboard */; };
 		B3581EC91B1E194C004BC32E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3581EC81B1E194C004BC32E /* Images.xcassets */; };
 		B3581ECC1B1E194C004BC32E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3581ECA1B1E194C004BC32E /* LaunchScreen.xib */; };
@@ -20,6 +19,10 @@
 		B3581EF01B1F4246004BC32E /* DisciplinaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3581EEF1B1F4246004BC32E /* DisciplinaManager.swift */; };
 		B3581EF21B1F4256004BC32E /* ProvaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3581EF11B1F4256004BC32E /* ProvaManager.swift */; };
 		B3581EF41B1F4262004BC32E /* AtividadeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3581EF31B1F4261004BC32E /* AtividadeManager.swift */; };
+		B3581EF61B23AA31004BC32E /* CalendarioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3581EF51B23AA31004BC32E /* CalendarioViewController.swift */; };
+		B3581EF81B23ADB4004BC32E /* AtividadesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3581EF71B23ADB4004BC32E /* AtividadesViewController.swift */; };
+		B3581EFA1B23AEF0004BC32E /* ProvasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3581EF91B23AEF0004BC32E /* ProvasViewController.swift */; };
+		B3581EFC1B23B240004BC32E /* AddAtividadeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3581EFB1B23B240004BC32E /* AddAtividadeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +40,6 @@
 		B3581EBD1B1E194B004BC32E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B3581EBE1B1E194B004BC32E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3581EC11B1E194B004BC32E /* Organizador.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Organizador.xcdatamodel; sourceTree = "<group>"; };
-		B3581EC31B1E194C004BC32E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B3581EC61B1E194C004BC32E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B3581EC81B1E194C004BC32E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B3581ECB1B1E194C004BC32E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -50,6 +52,10 @@
 		B3581EEF1B1F4246004BC32E /* DisciplinaManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisciplinaManager.swift; sourceTree = "<group>"; };
 		B3581EF11B1F4256004BC32E /* ProvaManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProvaManager.swift; sourceTree = "<group>"; };
 		B3581EF31B1F4261004BC32E /* AtividadeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtividadeManager.swift; sourceTree = "<group>"; };
+		B3581EF51B23AA31004BC32E /* CalendarioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarioViewController.swift; sourceTree = "<group>"; };
+		B3581EF71B23ADB4004BC32E /* AtividadesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtividadesViewController.swift; sourceTree = "<group>"; };
+		B3581EF91B23AEF0004BC32E /* ProvasViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProvasViewController.swift; sourceTree = "<group>"; };
+		B3581EFB1B23B240004BC32E /* AddAtividadeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAtividadeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,7 +100,10 @@
 				B3581EEE1B1F4220004BC32E /* Managers */,
 				B3581EED1B1F420C004BC32E /* Modelo */,
 				B3581EBE1B1E194B004BC32E /* AppDelegate.swift */,
-				B3581EC31B1E194C004BC32E /* ViewController.swift */,
+				B3581EF51B23AA31004BC32E /* CalendarioViewController.swift */,
+				B3581EF91B23AEF0004BC32E /* ProvasViewController.swift */,
+				B3581EF71B23ADB4004BC32E /* AtividadesViewController.swift */,
+				B3581EFB1B23B240004BC32E /* AddAtividadeViewController.swift */,
 				B3581EC51B1E194C004BC32E /* Main.storyboard */,
 				B3581EC81B1E194C004BC32E /* Images.xcassets */,
 				B3581ECA1B1E194C004BC32E /* LaunchScreen.xib */,
@@ -198,6 +207,7 @@
 				TargetAttributes = {
 					B3581EB81B1E194B004BC32E = {
 						CreatedOnToolsVersion = 6.3.2;
+						DevelopmentTeam = YUL27X4ZWF;
 					};
 					B3581ED01B1E194C004BC32E = {
 						CreatedOnToolsVersion = 6.3.2;
@@ -249,8 +259,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3581EFC1B23B240004BC32E /* AddAtividadeViewController.swift in Sources */,
+				B3581EF61B23AA31004BC32E /* CalendarioViewController.swift in Sources */,
 				B3581EF21B1F4256004BC32E /* ProvaManager.swift in Sources */,
-				B3581EC41B1E194C004BC32E /* ViewController.swift in Sources */,
+				B3581EF81B23ADB4004BC32E /* AtividadesViewController.swift in Sources */,
+				B3581EFA1B23AEF0004BC32E /* ProvasViewController.swift in Sources */,
 				B3581EC21B1E194C004BC32E /* Organizador.xcdatamodeld in Sources */,
 				B3581EEC1B1F4161004BC32E /* Prova.swift in Sources */,
 				B3581EBF1B1E194B004BC32E /* AppDelegate.swift in Sources */,
