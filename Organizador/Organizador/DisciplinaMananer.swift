@@ -1,8 +1,8 @@
 //
-//  DisciplinaManager.swift
+//  DisciplinaMananer.swift
 //  Organizador
 //
-//  Created by Vivian Chiodo Dias on 03/06/15.
+//  Created by Vivian Chiodo Dias on 06/06/15.
 //  Copyright (c) 2015 Vivian Chiodo Dias. All rights reserved.
 //
 
@@ -68,14 +68,12 @@ class DisciplinaManager {
         salvarDisciplina()
     }
     
-//    func salvarNovaDisciplina(nome: String){
-//        let disciplina = novaDisciplina()
-//        
-//        player.setValue(nome, forKey: "nomePlayer")
-//        player.setValue(imagem, forKey: "fotoPlayer")
-//        player.setValue("1", forKey: "nivelPlayer")
-//        player.setValue("0", forKey: "scorePlayer")
-//        salvarDisciplina()
-//    }
+        func salvarNovaDisciplina(nome: String){
+            let disciplina = novaDisciplina()
+    
+            disciplina.setValue(nome, forKey: "nome")
+            disciplina.setValue(0, forKey: "media")
+            salvarDisciplina()
+        }
     
 }

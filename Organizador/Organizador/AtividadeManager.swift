@@ -68,7 +68,7 @@ class AtividadeManager {
         salvarAtividade()
     }
     
-        func salvarNovaAtividade(nome: String, data: NSDate){
+    func salvarNovaAtividade(nome: String, data: NSDate, materia: Disciplina){
             let atividade = novaAtividade()
     
             atividade.setValue(nome, forKey: "nome")

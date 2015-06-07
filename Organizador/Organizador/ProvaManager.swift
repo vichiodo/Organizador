@@ -68,12 +68,13 @@ class ProvaManager {
         salvarProva()
     }
     
-    func salvarNovaProva(nome: String, data: NSDate){
+    func salvarNovaProva(nome: String, data: NSDate, materia: Disciplina){
         let prova = novaProva()
         
         prova.setValue(nome, forKey: "nome")
         prova.setValue(data, forKey: "data")
         prova.setValue(0, forKey: "nota")
+        prova.setValue(materia, forKey: "disciplina")
         salvarProva()
     }
     

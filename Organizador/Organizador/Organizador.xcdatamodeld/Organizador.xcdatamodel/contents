@@ -4,23 +4,21 @@
         <attribute name="dataEntrega" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="nome" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="nota" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <relationship name="disciplina" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Disciplina" inverseName="atividade" inverseEntity="Disciplina" syncable="YES"/>
     </entity>
     <entity name="Disciplina" representedClassName="Organizador.Disciplina" syncable="YES">
         <attribute name="media" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="nome" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="atividade" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Atividade" inverseName="disciplina" inverseEntity="Atividade" syncable="YES"/>
-        <relationship name="prova" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Prova" inverseName="disciplina" inverseEntity="Prova" syncable="YES"/>
+        <relationship name="atividade" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Atividade" syncable="YES"/>
+        <relationship name="prova" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Prova" syncable="YES"/>
     </entity>
     <entity name="Prova" representedClassName="Organizador.Prova" syncable="YES">
         <attribute name="data" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="nome" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="nota" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <relationship name="disciplina" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Disciplina" inverseName="prova" inverseEntity="Disciplina" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Disciplina" positionX="-63" positionY="-18" width="126" height="103"/>
-        <element name="Atividade" positionX="-153" positionY="288" width="128" height="103"/>
-        <element name="Prova" positionX="117" positionY="218" width="128" height="103"/>
+        <element name="Atividade" positionX="-153" positionY="288" width="128" height="88"/>
+        <element name="Prova" positionX="99" positionY="108" width="128" height="88"/>
+        <element name="Disciplina" positionX="61" positionY="330" width="128" height="103"/>
     </elements>
 </model>
