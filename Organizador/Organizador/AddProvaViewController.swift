@@ -1,18 +1,18 @@
 //
-//  AddAtividadeViewController.swift
+//  AddProvaViewController.swift
 //  Organizador
 //
-//  Created by Vivian Chiodo Dias on 06/06/15.
+//  Created by Vivian Chiodo Dias on 08/06/15.
 //  Copyright (c) 2015 Vivian Chiodo Dias. All rights reserved.
 //
 
 import UIKit
 
-class AddAtividadeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class AddProvaViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var materiasAti: UIPickerView!
-    @IBOutlet weak var atividadeTxt: UITextField!
+    @IBOutlet weak var materias: UIPickerView!
+    @IBOutlet weak var provaTxt: UITextField!
     @IBOutlet weak var datePicker: UIDatePicker!
     
     
@@ -27,7 +27,7 @@ class AddAtividadeViewController: UIViewController, UITableViewDelegate, UITable
         // Dispose of any resources that can be recreated.
     }
     
-    
+
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1;
     }
@@ -35,8 +35,6 @@ class AddAtividadeViewController: UIViewController, UITableViewDelegate, UITable
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         <#code#>
     }
-
-
     /*
     // MARK: - Navigation
 
