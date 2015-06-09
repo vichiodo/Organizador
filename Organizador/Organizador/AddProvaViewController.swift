@@ -13,8 +13,7 @@ class AddProvaViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var materias: UIPickerView!
     @IBOutlet weak var provaTxt: UITextField!
-    @IBOutlet weak var datePicker: UIDatePicker!
-    
+    @IBOutlet weak var date: UIDatePicker!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,8 +31,12 @@ class AddProvaViewController: UIViewController, UITableViewDelegate, UITableView
         return 1;
     }
     
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        <#code#>
+        return UITableViewCell()
     }
     /*
     // MARK: - Navigation
