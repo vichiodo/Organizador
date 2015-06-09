@@ -8,9 +8,8 @@
 
 import UIKit
 
-class AddProvaViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class AddProvaViewController: UITableViewController{
 
-    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var materias: UIPickerView!
     @IBOutlet weak var provaTxt: UITextField!
     @IBOutlet weak var date: UIDatePicker!
@@ -27,15 +26,15 @@ class AddProvaViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
 
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1;
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 0
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         return UITableViewCell()
     }
     /*
