@@ -9,6 +9,8 @@
 import UIKit
 
 class ProvasViewController: UIViewController {
+    
+    @IBOutlet weak var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +22,18 @@ class ProvasViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1;
+    }
     
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
 
     /*
     // MARK: - Navigation
