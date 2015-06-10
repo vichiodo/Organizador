@@ -421,6 +421,7 @@
 				INFOPLIST_FILE = Organizador/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -432,6 +433,7 @@
 				INFOPLIST_FILE = Organizador/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -488,6 +490,7 @@
 				B3581EDD1B1E194C004BC32E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B3581EDE1B1E194C004BC32E /* Build configuration list for PBXNativeTarget "OrganizadorTests" */ = {
 			isa = XCConfigurationList;
@@ -496,6 +499,7 @@
 				B3581EE01B1E194C004BC32E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

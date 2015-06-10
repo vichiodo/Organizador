@@ -9,23 +9,33 @@
 import UIKit
 
 class AddProvaViewController: UITableViewController{
-
+    
     @IBOutlet weak var materias: UIPickerView!
     @IBOutlet weak var provaTxt: UITextField!
     @IBOutlet weak var date: UIDatePicker!
     
+    var materiasArray: NSArray = NSArray()
+    var materiaSelecionada = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        // impede de colocar uma data menor que a atual
+        date.minimumDate = NSDate()
+        
+        //////////////////// PEGAR AS DISCIPLINAS DO COREDATA ////////////////////
+        materiasArray = ["calculo", "fisica", "etica", "engenharia", "ciencia da computacao"]
+        
     }
-
+//    override func viewDidAppear(animated: Bool) {
+//        materias.selectRow(materiasArray.count / 2, inComponent: 0, animated: true)
+//    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 2
     }
@@ -37,15 +47,32 @@ class AddProvaViewController: UITableViewController{
         default: return 0
         }
     }
-    
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    //MARK: - Delegates e data sources
+    //MARK: Data Sources
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+        return 1
     }
-    */
-
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return materiasArray.count
+    }
+    
+    //MARK: Delegates
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
+        return materiasArray[row] as! String
+    }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        materiaSelecionada = row
+    }
+    
+    @IBAction func salvarProva(sender: AnyObject) {
+        if provaTxt.text == "" {
+            provaTxt.text = "Prova"
+        }
+        
+        //////////////////// SALVAR NO COREDATA ////////////////////
+        println("salvo, materia: \(materiasArray[materiaSelecionada]), nome da prova: \(provaTxt.text)")
+        
+    }
 }
