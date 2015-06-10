@@ -59,7 +59,7 @@
         <!--Provas-->
         <scene sceneID="RcI-fs-ULd">
             <objects>
-                <tableViewController id="5oi-qE-W4c" sceneMemberID="viewController">
+                <tableViewController id="5oi-qE-W4c" customClass="ProvasViewController" customModule="Organizador" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="RsD-QC-7e9">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -92,7 +92,7 @@
         <!--Atividades-->
         <scene sceneID="dDY-zJ-TAI">
             <objects>
-                <tableViewController id="vTO-VW-YLj" sceneMemberID="viewController">
+                <tableViewController id="vTO-VW-YLj" customClass="AtividadesViewController" customModule="Organizador" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="2sK-1J-wQW">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -120,7 +120,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FPj-7k-3Pj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1476" y="1282"/>
+            <point key="canvasLocation" x="1487" y="1282"/>
         </scene>
         <!--Nova Atividade-->
         <scene sceneID="6tO-7H-VP0">
@@ -280,7 +280,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AdO-g3-cvc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1476" y="-266"/>
+            <point key="canvasLocation" x="1487" y="-266"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="mTr-gj-QKp">
@@ -306,26 +306,27 @@
         <scene sceneID="WwI-mP-Mag">
             <objects>
                 <tableViewController id="eEG-5D-TaC" customClass="AddProvaViewController" customModule="Organizador" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="yIL-e2-ubh">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="yIL-e2-ubh">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
                             <tableViewSection headerTitle="Matéria" id="KMX-ot-eam">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="materia1" rowHeight="150" id="uT7-p6-pSR">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="materia1" rowHeight="175" id="uT7-p6-pSR">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uT7-p6-pSR" id="agH-Md-GpA">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JiS-NI-vn5">
-                                                    <rect key="frame" x="140" y="-6.5" width="320" height="162"/>
+                                                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NBt-Bc-Czz">
+                                                    <rect key="frame" x="0.0" y="6" width="600" height="162"/>
                                                 </pickerView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="JiS-NI-vn5" secondAttribute="bottom" constant="5" id="Fmi-g8-UMz"/>
-                                                <constraint firstItem="JiS-NI-vn5" firstAttribute="top" secondItem="agH-Md-GpA" secondAttribute="top" constant="5" id="Tne-t8-CNd"/>
-                                                <constraint firstAttribute="centerX" secondItem="JiS-NI-vn5" secondAttribute="centerX" id="Z37-xi-dPk"/>
+                                                <constraint firstItem="NBt-Bc-Czz" firstAttribute="top" secondItem="agH-Md-GpA" secondAttribute="top" constant="10" id="HlR-QI-vR8"/>
+                                                <constraint firstItem="NBt-Bc-Czz" firstAttribute="leading" secondItem="agH-Md-GpA" secondAttribute="leading" id="prK-FN-cgp"/>
+                                                <constraint firstAttribute="bottom" secondItem="NBt-Bc-Czz" secondAttribute="bottom" constant="10" id="vIX-Fh-p6O"/>
+                                                <constraint firstAttribute="trailing" secondItem="NBt-Bc-Czz" secondAttribute="trailing" id="xPD-Nl-a6j"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -393,7 +394,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="date" destination="Rmd-N9-LcI" id="hwO-Ge-v97"/>
-                        <outlet property="materias" destination="JiS-NI-vn5" id="eWK-kY-7Bc"/>
+                        <outlet property="materias" destination="NBt-Bc-Czz" id="LlG-LQ-Qos"/>
                         <outlet property="provaTxt" destination="isG-Fp-AEd" id="k7Z-wi-Kpl"/>
                     </connections>
                 </tableViewController>
