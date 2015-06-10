@@ -8,9 +8,8 @@
 
 import UIKit
 
-class AddAtividadeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class AddAtividadeViewController: UITableViewController {
 
-    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var materiasAti: UIPickerView!
     @IBOutlet weak var atividadeTxt: UITextField!
     @IBOutlet weak var datePicker: UIDatePicker!
@@ -27,15 +26,15 @@ class AddAtividadeViewController: UIViewController, UITableViewDelegate, UITable
         // Dispose of any resources that can be recreated.
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 0
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1;
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         return UITableViewCell()
     }
 
