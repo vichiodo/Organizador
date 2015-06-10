@@ -10,8 +10,6 @@ import UIKit
 
 class AtividadesViewController: UITableViewController {
 
-    @IBOutlet weak var tableView: UITableView!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
