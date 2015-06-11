@@ -7,50 +7,23 @@
 //
 
 import UIKit
+import EventKit
 
 class CalendarioViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var date: NSDate!
-    var cal: NSCalendar!
-    var monthInt: Int!
-    var weekD: Int = 0
-    var cont: Int = 0
+
+    @IBOutlet weak var atividadeTextField: UITextField!
+    @IBOutlet weak var calendario: UIDatePicker!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        date = NSDate()
+//        calendario.minimumDate = NSDate()
+
         
-        var month = NSDateFormatter()
-        month.dateFormat = "MM"
-        var monthString = month.stringFromDate(date)
-        monthInt = monthString.toInt()
         
-        println("Mês: \(monthString)")
-        println("Mês: \(monthInt)")
         
-        cal = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
         
-        println("\(cal.weekdaySymbols)")
-        
-        let componentes = cal.components(NSCalendarUnit.WeekdayCalendarUnit, fromDate: date)
-        var week = componentes.weekday
-        println("Semana: \(week)")
-        
-        var day = NSDateFormatter()
-        day.dateFormat = "dd"
-        var dayString = day.stringFromDate(date)
-        var dayInt = dayString.toInt()
-        println("\(dayInt)")
-        
-        if cont == 0 {
-            makeCalendar(week, day: dayInt!)
-        } else {
-            makeCalendar(weekD, day: 1)
-        }
-        
-        cont++
-        println("Semanaaaa: \(weekD)")
         // Do any additional setup after loading the view.
     }
     
@@ -86,91 +59,37 @@ class CalendarioViewController: UIViewController, UITableViewDataSource, UITable
     }
     */
     
-    func makeCalendar(week: Int, day: Int) {
-        var weekDay = week
-        var dayInt = day
-        var x = 58
-        var y = 140
+    
+    @IBAction func salvarEvento(sender: AnyObject) {
         
-        weekD = week
-        println("WEEKDAY: \(weekD * 45)")
-        x = (45 * weekD)
-        println("MI: \(monthInt)")
-        for (var j: Int = 1; j < 5; j++) {
-            for (var i: Int = weekDay; i <= 7; i++) {
+        calendario.datePickerMode = UIDatePickerMode.Date
+        
+        let date = NSDate()
+        
+        calendario.minimumDate = date
+
+        var eventStore: EKEventStore = EKEventStore()
+        
+        var evento: EKEvent = EKEvent(eventStore: eventStore)
+        
+        evento.title = atividadeTextField.text
+        
+        evento.startDate = calendario.date
+        
+        evento.endDate = NSDate(timeInterval: 600, sinceDate: evento.startDate)
+        
+        eventStore.requestAccessToEntityType(EKEntityTypeEvent, completion: { (granted: Bool, error NSError) -> Void in
+            if !granted {
+                return
+            }else {
+                evento.calendar = eventStore.defaultCalendarForNewEvents
                 
-                println("\(x)")
-                if j == 4 {
-                    var aux = dayInt
-                    if monthInt == 1 || monthInt == 3 || monthInt == 5 || monthInt == 7 || monthInt == 8 || monthInt == 10 || monthInt == 12 {
-                        
-                        if aux == 32 {
-                            return
-                        }
-                    }
-                    else if monthInt == 4 || monthInt == 6 || monthInt == 9 || monthInt == 11 {
-                        
-                        if aux == 31 {
-                            return
-                        }
-                    }else if (monthInt! == 2 && monthInt! % 4 == 0 && monthInt! % 100 == 0 && monthInt! % 400 == 0){
-                        
-                        if aux == 30 {
-                            return
-                        }
-                    } else if aux == 29 {
-                        return
-                    }
-                }
-                println("\(weekD)")
-                weekD++
-                
-                var btn: UIButton = UIButton()
-                btn.setTitle("\(dayInt)", forState: UIControlState.Normal)
-                btn.setTitleColor(UIColor.blueColor(), forState: UIControlState.Normal)
-                btn.frame = CGRect(x: x, y: y, width: 30, height: 30)
-                btn.backgroundRectForBounds(btn.frame)
-                btn.tag = dayInt
-                btn.addTarget(self, action: "detail:", forControlEvents: .TouchUpInside)
-                x = x + 40
-                self.view.addSubview(btn)
-                
-                dayInt = dayInt + 1
+                eventStore.saveEvent(evento, span: EKSpanThisEvent, commit: true, error: NSErrorPointer())
             }
-            if j == 0 {
-                println("W: \(week)")
-                var w = week
-                
-                if dayInt != 1 {
-                    var aux = dayInt - 1
-                    x = x - 40
-                    
-                    for (var k: Int = aux; k >= 1; k--){
-                        for (var i: Int = w; i >= 1; i--){
-                            
-                        }
-                        var btn: UIButton = UIButton()
-                        btn.setTitle("\(aux)", forState: UIControlState.Normal)
-                        btn.setTitleColor(UIColor.blueColor(), forState: UIControlState.Normal)
-                        btn.frame = CGRect(x: x, y: y, width: 30, height: 30)
-                        btn.tag = aux
-                        btn.addTarget(self, action: "detail:", forControlEvents: .TouchUpInside)
-                        x = x - 40
-                        self.view.addSubview(btn)
-                        
-                        aux = aux - 1
-                        
-                    }
-                }
-            }
-            weekD = 1
-            weekDay = 1
-            x = 58
-            y = y + 40
-            
-        }
+        })
+        
+        atividadeTextField.text = " "
         
     }
-    
     
 }
