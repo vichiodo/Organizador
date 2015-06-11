@@ -89,12 +89,14 @@ class CalendarioViewController: UIViewController, UITableViewDataSource, UITable
     func makeCalendar(week: Int, day: Int) {
         var weekDay = week
         var dayInt = day
-        var x = 62
-        var y = 112
+        var x = 58
+        var y = 140
         
         weekD = week
+        println("WEEKDAY: \(weekD * 45)")
         x = (45 * weekD)
-        for (var j: Int = 0; j < 5; j++) {
+        println("MI: \(monthInt)")
+        for (var j: Int = 1; j < 5; j++) {
             for (var i: Int = weekDay; i <= 7; i++) {
                 
                 println("\(x)")
@@ -136,12 +138,17 @@ class CalendarioViewController: UIViewController, UITableViewDataSource, UITable
                 dayInt = dayInt + 1
             }
             if j == 0 {
+                println("W: \(week)")
+                var w = week
+                
                 if dayInt != 1 {
                     var aux = dayInt - 1
                     x = x - 40
                     
                     for (var k: Int = aux; k >= 1; k--){
-                        
+                        for (var i: Int = w; i >= 1; i--){
+                            
+                        }
                         var btn: UIButton = UIButton()
                         btn.setTitle("\(aux)", forState: UIControlState.Normal)
                         btn.setTitleColor(UIColor.blueColor(), forState: UIControlState.Normal)
@@ -158,7 +165,7 @@ class CalendarioViewController: UIViewController, UITableViewDataSource, UITable
             }
             weekD = 1
             weekDay = 1
-            x = 62
+            x = 58
             y = y + 40
             
         }
