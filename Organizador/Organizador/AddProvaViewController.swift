@@ -72,7 +72,36 @@ class AddProvaViewController: UITableViewController{
         }
         
         //////////////////// SALVAR NO COREDATA ////////////////////
-        println("salvo, materia: \(materiasArray[materiaSelecionada]), nome da prova: \(provaTxt.text)")
+        println("salvo - materia: \(materiasArray[materiaSelecionada]), nome: \(provaTxt.text), dia \(date.date)")
         
+        criarNotificacao()
+    }
+    
+    func criarNotificacao() {
+        for i in 0...7 {
+            var localNotification:UILocalNotification = UILocalNotification()
+            localNotification.alertAction = "Ver a prova"
+            var diasRestantes = 7 - i
+            var strNotif = "\(provaTxt.text) de \(materiasArray[materiaSelecionada])"
+            if diasRestantes == 0 {
+                localNotification.alertBody = "Vish, a '\(strNotif)' é hoje!"
+            }
+            else if diasRestantes == 1 {
+                localNotification.alertBody = "Vish, falta \(diasRestantes) dia para a '\(strNotif)'!"
+            }
+            else {
+                localNotification.alertBody = "Vish, faltam \(diasRestantes) dias para a '\(strNotif)'!"
+            }
+            
+            let dateFix: NSTimeInterval = floor(date.date.timeIntervalSinceReferenceDate / 60.0) * 60.0
+            var horario: NSDate = NSDate(timeIntervalSinceReferenceDate: dateFix)
+            
+            let intervalo: NSTimeInterval = -NSTimeInterval(60*60*24 * (diasRestantes))
+            
+            localNotification.fireDate = NSDate(timeInterval: intervalo, sinceDate: horario)
+            UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+            
+            println("notificacao \(i) criada - \(localNotification.fireDate!) - nome \(localNotification.alertBody!)")
+        }
     }
 }

@@ -41,7 +41,7 @@ class DisciplinaManager {
         return Array<Disciplina>()
     }
     
-    func buscarDisciplina(index: Int) -> Disciplina{
+    func buscarDisciplina(index: Int) -> Disciplina {
         var disciplina: Disciplina = buscarDisciplinas()[index]
         return disciplina
     }
@@ -68,12 +68,14 @@ class DisciplinaManager {
         salvarDisciplina()
     }
     
-        func salvarNovaDisciplina(nome: String){
-            let disciplina = novaDisciplina()
-    
-            disciplina.setValue(nome, forKey: "nome")
-            disciplina.setValue(0, forKey: "media")
-            salvarDisciplina()
-        }
+    func salvarNovaDisciplina(nome: String, cor: String){
+        let disciplina = novaDisciplina()
+        
+        disciplina.setValue(nome, forKey: "nome")
+        disciplina.setValue(0, forKey: "media")
+        disciplina.setValue(cor, forKey: "cor")
+        
+        salvarDisciplina()
+    }
     
 }

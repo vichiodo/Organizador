@@ -65,7 +65,7 @@ class CalendarioViewController: UIViewController, UITableViewDataSource, UITable
         calendario.datePickerMode = UIDatePickerMode.Date
         
         let date = NSDate()
-        
+                
         calendario.minimumDate = date
 
         var eventStore: EKEventStore = EKEventStore()
