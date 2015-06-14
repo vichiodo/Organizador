@@ -225,10 +225,10 @@
             </objects>
             <point key="canvasLocation" x="2206" y="1282"/>
         </scene>
-        <!--Calendário-->
+        <!--Matérias-->
         <scene sceneID="gtR-RF-77R">
             <objects>
-                <viewController id="sBl-qD-b5f" customClass="CalendarioViewController" customModule="Organizador" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="sBl-qD-b5f" customClass="MateriasViewController" customModule="Organizador" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="meQ-cu-ryA"/>
                         <viewControllerLayoutGuide type="bottom" id="gxL-5h-XfL"/>
@@ -293,7 +293,13 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Calendário" id="uw9-wN-hAp"/>
+                    <navigationItem key="navigationItem" title="Matérias" id="uw9-wN-hAp">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="3B5-kF-8Jc">
+                            <connections>
+                                <segue destination="tW1-C6-LoR" kind="show" id="BCL-YD-zpl"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AdO-g3-cvc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -465,6 +471,62 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Xd-BV-I49" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2206" y="504"/>
+        </scene>
+        <!--Nova Matéria-->
+        <scene sceneID="S6l-1E-BHA">
+            <objects>
+                <tableViewController id="tW1-C6-LoR" customClass="AddMateriaViewController" customModule="Organizador" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="rCb-Tw-SVP">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <sections>
+                            <tableViewSection headerTitle="Matéria" id="yW5-qi-5ir">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="atividade" id="L3u-l2-Ilr">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="L3u-l2-Ilr" id="h1O-80-81h">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nome da Matéria" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y0M-C7-Qa2">
+                                                    <rect key="frame" x="8" y="11" width="584" height="21.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="centerY" secondItem="y0M-C7-Qa2" secondAttribute="centerY" id="AcL-lU-vUQ"/>
+                                                <constraint firstItem="y0M-C7-Qa2" firstAttribute="top" secondItem="h1O-80-81h" secondAttribute="topMargin" constant="3" id="Hx2-cQ-p3m"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="y0M-C7-Qa2" secondAttribute="trailing" id="Q1A-2v-QDK"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="y0M-C7-Qa2" secondAttribute="bottom" constant="3" id="gKo-5I-JzU"/>
+                                                <constraint firstItem="y0M-C7-Qa2" firstAttribute="leading" secondItem="h1O-80-81h" secondAttribute="leadingMargin" id="lL5-yo-Inn"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="tW1-C6-LoR" id="VX2-YW-eEa"/>
+                            <outlet property="delegate" destination="tW1-C6-LoR" id="rZM-29-syD"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Nova Matéria" id="1If-IF-ZSB" userLabel="Nova Matéria">
+                        <barButtonItem key="rightBarButtonItem" title="Salvar" id="wpZ-pZ-aBN">
+                            <connections>
+                                <action selector="salvar:" destination="tW1-C6-LoR" id="WRz-wr-Tfl"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="txtNome" destination="y0M-C7-Qa2" id="2e2-R3-AKZ"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XWW-ZU-qhM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2230" y="-267"/>
         </scene>
     </scenes>
 </document>

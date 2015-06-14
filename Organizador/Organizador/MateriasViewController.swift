@@ -9,7 +9,7 @@
 import UIKit
 import EventKit
 
-class CalendarioViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class MateriasViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     
     override func viewDidLoad() {

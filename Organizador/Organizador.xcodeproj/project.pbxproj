@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		44B148571B2E0A250071A5D6 /* AddMateriaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B148561B2E0A250071A5D6 /* AddMateriaViewController.swift */; };
 		8C6DFDC41B2B6D1500C09A4E /* Atividade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6DFDC31B2B6D1500C09A4E /* Atividade.swift */; };
 		8C6DFDC61B2B6D1500C09A4E /* Disciplina.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6DFDC51B2B6D1500C09A4E /* Disciplina.swift */; };
 		B3581EBF1B1E194B004BC32E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3581EBE1B1E194B004BC32E /* AppDelegate.swift */; };
@@ -16,7 +17,7 @@
 		B3581ECC1B1E194C004BC32E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3581ECA1B1E194C004BC32E /* LaunchScreen.xib */; };
 		B3581ED81B1E194C004BC32E /* OrganizadorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3581ED71B1E194C004BC32E /* OrganizadorTests.swift */; };
 		B3581EF41B1F4262004BC32E /* AtividadeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3581EF31B1F4261004BC32E /* AtividadeManager.swift */; };
-		B3581EF61B23AA31004BC32E /* CalendarioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3581EF51B23AA31004BC32E /* CalendarioViewController.swift */; };
+		B3581EF61B23AA31004BC32E /* MateriasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3581EF51B23AA31004BC32E /* MateriasViewController.swift */; };
 		B3581EF81B23ADB4004BC32E /* AtividadesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3581EF71B23ADB4004BC32E /* AtividadesViewController.swift */; };
 		B3581EFA1B23AEF0004BC32E /* ProvasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3581EF91B23AEF0004BC32E /* ProvasViewController.swift */; };
 		B3581EFC1B23B240004BC32E /* AddAtividadeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3581EFB1B23B240004BC32E /* AddAtividadeViewController.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		44B148561B2E0A250071A5D6 /* AddMateriaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMateriaViewController.swift; sourceTree = "<group>"; };
 		8C6DFDC31B2B6D1500C09A4E /* Atividade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Atividade.swift; path = ../Atividade.swift; sourceTree = "<group>"; };
 		8C6DFDC51B2B6D1500C09A4E /* Disciplina.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Disciplina.swift; path = ../Disciplina.swift; sourceTree = "<group>"; };
 		B3581EB91B1E194B004BC32E /* Organizador.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Organizador.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -48,7 +50,7 @@
 		B3581ED61B1E194C004BC32E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B3581ED71B1E194C004BC32E /* OrganizadorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizadorTests.swift; sourceTree = "<group>"; };
 		B3581EF31B1F4261004BC32E /* AtividadeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtividadeManager.swift; sourceTree = "<group>"; };
-		B3581EF51B23AA31004BC32E /* CalendarioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarioViewController.swift; sourceTree = "<group>"; };
+		B3581EF51B23AA31004BC32E /* MateriasViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MateriasViewController.swift; sourceTree = "<group>"; };
 		B3581EF71B23ADB4004BC32E /* AtividadesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtividadesViewController.swift; sourceTree = "<group>"; };
 		B3581EF91B23AEF0004BC32E /* ProvasViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProvasViewController.swift; sourceTree = "<group>"; };
 		B3581EFB1B23B240004BC32E /* AddAtividadeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAtividadeViewController.swift; sourceTree = "<group>"; };
@@ -155,7 +157,8 @@
 		B3581F091B262F69004BC32E /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B3581EF51B23AA31004BC32E /* CalendarioViewController.swift */,
+				B3581EF51B23AA31004BC32E /* MateriasViewController.swift */,
+				44B148561B2E0A250071A5D6 /* AddMateriaViewController.swift */,
 				B3581EF91B23AEF0004BC32E /* ProvasViewController.swift */,
 				B3581F071B262623004BC32E /* AddProvaViewController.swift */,
 				B3581EF71B23ADB4004BC32E /* AtividadesViewController.swift */,
@@ -273,9 +276,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3581EFC1B23B240004BC32E /* AddAtividadeViewController.swift in Sources */,
-				B3581EF61B23AA31004BC32E /* CalendarioViewController.swift in Sources */,
+				B3581EF61B23AA31004BC32E /* MateriasViewController.swift in Sources */,
 				B3581F061B23C322004BC32E /* DisciplinaMananer.swift in Sources */,
 				B3581F081B262623004BC32E /* AddProvaViewController.swift in Sources */,
+				44B148571B2E0A250071A5D6 /* AddMateriaViewController.swift in Sources */,
 				B3581EF81B23ADB4004BC32E /* AtividadesViewController.swift in Sources */,
 				B3581EFA1B23AEF0004BC32E /* ProvasViewController.swift in Sources */,
 				B3581EC21B1E194C004BC32E /* Organizador.xcdatamodeld in Sources */,
