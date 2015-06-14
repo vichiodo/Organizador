@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="GW1-yY-QIC">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -129,7 +130,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="9FZ-aV-Lv2">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
                             <tableViewSection headerTitle="Matéria" id="ZX3-xw-vZZ">
                                 <cells>
@@ -309,22 +310,22 @@
                                 <exclude reference="zZz-Qz-l8Q"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="ev0-IQ-lEp"/>
-                                <exclude reference="kk1-9a-nSG"/>
-                                <exclude reference="zCy-Lr-F3b"/>
+                                <exclude reference="GcV-HK-d46"/>
                                 <exclude reference="DOH-fw-Nzb"/>
                                 <exclude reference="Itd-5l-f2u"/>
                                 <exclude reference="MvE-jC-AGU"/>
                                 <exclude reference="Om9-vf-iqV"/>
                                 <exclude reference="Xdt-WL-Cyf"/>
-                                <exclude reference="GcV-HK-d46"/>
+                                <exclude reference="6pU-0Q-mnq"/>
+                                <exclude reference="ORJ-x6-OD5"/>
+                                <exclude reference="Pye-qZ-L1w"/>
                                 <exclude reference="Pcp-V4-Nh0"/>
                                 <exclude reference="jXC-ue-fgF"/>
                                 <exclude reference="s16-cz-N25"/>
                                 <exclude reference="u4q-cF-2yj"/>
-                                <exclude reference="6pU-0Q-mnq"/>
-                                <exclude reference="ORJ-x6-OD5"/>
-                                <exclude reference="Pye-qZ-L1w"/>
+                                <exclude reference="ev0-IQ-lEp"/>
+                                <exclude reference="kk1-9a-nSG"/>
+                                <exclude reference="zCy-Lr-F3b"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -333,9 +334,7 @@
                                 <include reference="zZz-Qz-l8Q"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="ev0-IQ-lEp"/>
-                                <include reference="kk1-9a-nSG"/>
-                                <include reference="zCy-Lr-F3b"/>
+                                <include reference="GcV-HK-d46"/>
                                 <include reference="DOH-fw-Nzb"/>
                                 <exclude reference="DWy-oz-fDY"/>
                                 <include reference="Itd-5l-f2u"/>
@@ -344,13 +343,15 @@
                                 <exclude reference="TC0-7l-Xzx"/>
                                 <exclude reference="eWI-dY-w3Y"/>
                                 <exclude reference="elZ-td-g7H"/>
-                                <include reference="GcV-HK-d46"/>
+                                <exclude reference="6pU-0Q-mnq"/>
+                                <include reference="ORJ-x6-OD5"/>
                                 <exclude reference="Pcp-V4-Nh0"/>
                                 <exclude reference="jXC-ue-fgF"/>
                                 <exclude reference="s16-cz-N25"/>
                                 <include reference="u4q-cF-2yj"/>
-                                <exclude reference="6pU-0Q-mnq"/>
-                                <include reference="ORJ-x6-OD5"/>
+                                <include reference="ev0-IQ-lEp"/>
+                                <include reference="kk1-9a-nSG"/>
+                                <include reference="zCy-Lr-F3b"/>
                             </mask>
                         </variation>
                     </view>
@@ -399,6 +400,54 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
+                            <tableViewSection headerTitle="Opções" id="Zbi-2j-ggt">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="prova" id="qnY-No-9jH">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qnY-No-9jH" id="K0o-ht-bOx">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="u74-2D-usQ">
+                                                    <rect key="frame" x="92" y="8" width="201" height="29"/>
+                                                    <segments>
+                                                        <segment title="Prova"/>
+                                                        <segment title="Tarefa"/>
+                                                    </segments>
+                                                </segmentedControl>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Tipo" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fFO-H6-yW8">
+                                                    <rect key="frame" x="28" y="12.5" width="34" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mpc-VL-1T7">
+                                                    <rect key="frame" x="503" y="6" width="51" height="31"/>
+                                                </switch>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vale nota?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kpG-di-XE6">
+                                                    <rect key="frame" x="333" y="11" width="150" height="20.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="150" id="mSt-Gh-Fj6"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="centerY" secondItem="kpG-di-XE6" secondAttribute="centerY" id="0xC-aw-MDj"/>
+                                                <constraint firstAttribute="centerY" secondItem="u74-2D-usQ" secondAttribute="centerY" id="FgS-li-cTI"/>
+                                                <constraint firstItem="u74-2D-usQ" firstAttribute="leading" secondItem="fFO-H6-yW8" secondAttribute="trailing" constant="30" id="ITQ-7Y-ehJ"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Mpc-VL-1T7" secondAttribute="trailing" constant="40" id="WEL-sA-Qf8"/>
+                                                <constraint firstAttribute="centerY" secondItem="fFO-H6-yW8" secondAttribute="centerY" id="ZJH-x8-bsq"/>
+                                                <constraint firstItem="fFO-H6-yW8" firstAttribute="leading" secondItem="K0o-ht-bOx" secondAttribute="leadingMargin" constant="20" id="j0i-DQ-CNg"/>
+                                                <constraint firstAttribute="centerY" secondItem="Mpc-VL-1T7" secondAttribute="centerY" id="kFh-Kc-dCt"/>
+                                                <constraint firstItem="kpG-di-XE6" firstAttribute="leading" secondItem="u74-2D-usQ" secondAttribute="trailing" constant="40" id="nK9-yX-Vck"/>
+                                                <constraint firstItem="Mpc-VL-1T7" firstAttribute="leading" secondItem="kpG-di-XE6" secondAttribute="trailing" constant="20" id="zZx-vW-ZgS"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                             <tableViewSection headerTitle="Matéria" id="KMX-ot-eam">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="materia1" rowHeight="175" id="uT7-p6-pSR">
@@ -424,7 +473,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Prova" id="MoE-0T-z0m">
+                            <tableViewSection headerTitle="Atividade" id="MoE-0T-z0m">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="prova" id="jgR-9Z-3ue">
                                         <autoresizingMask key="autoresizingMask"/>
