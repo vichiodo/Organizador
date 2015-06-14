@@ -408,7 +408,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="u74-2D-usQ">
-                                                    <rect key="frame" x="92" y="8" width="201" height="29"/>
+                                                    <rect key="frame" x="92" y="8" width="221" height="29"/>
                                                     <segments>
                                                         <segment title="Prova"/>
                                                         <segment title="Tarefa"/>
@@ -441,7 +441,7 @@
                                                 <constraint firstAttribute="centerY" secondItem="fFO-H6-yW8" secondAttribute="centerY" id="ZJH-x8-bsq"/>
                                                 <constraint firstItem="fFO-H6-yW8" firstAttribute="leading" secondItem="K0o-ht-bOx" secondAttribute="leadingMargin" constant="20" id="j0i-DQ-CNg"/>
                                                 <constraint firstAttribute="centerY" secondItem="Mpc-VL-1T7" secondAttribute="centerY" id="kFh-Kc-dCt"/>
-                                                <constraint firstItem="kpG-di-XE6" firstAttribute="leading" secondItem="u74-2D-usQ" secondAttribute="trailing" constant="40" id="nK9-yX-Vck"/>
+                                                <constraint firstItem="kpG-di-XE6" firstAttribute="leading" secondItem="u74-2D-usQ" secondAttribute="trailing" constant="20" id="nK9-yX-Vck"/>
                                                 <constraint firstItem="Mpc-VL-1T7" firstAttribute="leading" secondItem="kpG-di-XE6" secondAttribute="trailing" constant="20" id="zZx-vW-ZgS"/>
                                             </constraints>
                                         </tableViewCellContentView>
