@@ -52,6 +52,15 @@ class MateriasViewController: UIViewController, UITableViewDataSource, UITableVi
         return cell
     }
     
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            DisciplinaManager.sharedInstance.removerDisciplina(indexPath.row)
+            disciplinas = DisciplinaManager.sharedInstance.buscarDisciplinas()
+        }
+        self.tableView.reloadData()
+    }
+
+    
     // tranforma uma cor em hexa para um UIColor
     func stringParaCor (hex:String) -> UIColor {
         var cString:String = hex.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet() as NSCharacterSet).uppercaseString

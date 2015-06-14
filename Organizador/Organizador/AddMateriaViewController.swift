@@ -12,14 +12,14 @@ class AddMateriaViewController: UITableViewController, UICollectionViewDataSourc
     
     var arrayCores = ["CF000F", "D2527F", "663399", "22A7F0", "00B16A", "F9690E", "F7CA18", "BFBFBF"]
     var corSelecionada: String = ""
+    var indexOld: Int = 0
+    var nsindex: NSIndexPath?
     
     @IBOutlet weak var txtNome: UITextField!
     @IBOutlet weak var coresCollectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //        self.coresCollectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: "corCell")
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -61,13 +61,28 @@ class AddMateriaViewController: UITableViewController, UICollectionViewDataSourc
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.row != indexOld {
+            var path: NSIndexPath = NSIndexPath(forItem: indexOld, inSection: 0)
+
+            var datasetCell: UICollectionViewCell = coresCollectionView.cellForItemAtIndexPath(path)!
+            datasetCell.contentView.layer.borderWidth = 0.0
+            datasetCell.contentView.layer.borderColor =  UIColor.blackColor().CGColor
+            
+            var datasetCell2: UICollectionViewCell = coresCollectionView.cellForItemAtIndexPath(indexPath)!
+            datasetCell2.contentView.layer.borderWidth = 3.0
+            datasetCell2.contentView.layer.borderColor =  UIColor.blackColor().CGColor
+            
+            indexOld = indexPath.row
+        }
+        else {
+            var datasetCell2: UICollectionViewCell = coresCollectionView.cellForItemAtIndexPath(indexPath)!
+            datasetCell2.contentView.layer.borderWidth = 3.0
+            datasetCell2.contentView.layer.borderColor =  UIColor.blackColor().CGColor
+        }
+        
         corSelecionada = arrayCores[indexPath.row]
         println("\(corSelecionada)")
-        
-        var datasetCell: UICollectionViewCell = coresCollectionView.cellForItemAtIndexPath(indexPath)!
-        datasetCell.backgroundColor = UIColor.blackColor()
-        datasetCell.contentView.layer.cornerRadius = datasetCell.contentView.frame.size.width / 2
-        datasetCell.contentView.clipsToBounds = true
+
     }
     
     // MARK: UICollectionViewDelegate
