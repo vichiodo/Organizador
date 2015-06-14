@@ -11,6 +11,12 @@ import EventKit
 
 class MateriasViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    @IBOutlet weak var tableView: UITableView!
+    
+    // carrega o vetor de usuarios cadastrados no CoreData
+    lazy var disciplinas:Array<Disciplina> = {
+        return DisciplinaManager.sharedInstance.buscarDisciplinas()
+        }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +28,10 @@ class MateriasViewController: UIViewController, UITableViewDataSource, UITableVi
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(animated: Bool) {
+        disciplinas = DisciplinaManager.sharedInstance.buscarDisciplinas()
+        self.tableView.reloadData()
+    }
     
     // MARK: - Table View
     
@@ -30,25 +40,30 @@ class MateriasViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return disciplinas.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
+        let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("disciplinasCell", forIndexPath: indexPath) as! UITableViewCell
+        cell.textLabel?.text = disciplinas[indexPath.row].nome
+        cell.detailTextLabel?.text = "Média: \(disciplinas[indexPath.row].media)"
+        cell.backgroundColor = self.stringParaCor(disciplinas[indexPath.row].cor)
         
         return cell
     }
     
-    /*
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
+    // tranforma uma cor em hexa para um UIColor
+    func stringParaCor (hex:String) -> UIColor {
+        var cString:String = hex.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet() as NSCharacterSet).uppercaseString
+        var rgbValue:UInt32 = 0
+        NSScanner(string: cString).scanHexInt(&rgbValue)
+        return UIColor(
+            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+            alpha: CGFloat(1.0)
+        )
     }
-    */
-    
-    
+
     
 }

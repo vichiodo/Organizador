@@ -18,9 +18,7 @@
 		B3581ED81B1E194C004BC32E /* OrganizadorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3581ED71B1E194C004BC32E /* OrganizadorTests.swift */; };
 		B3581EF41B1F4262004BC32E /* AtividadeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3581EF31B1F4261004BC32E /* AtividadeManager.swift */; };
 		B3581EF61B23AA31004BC32E /* MateriasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3581EF51B23AA31004BC32E /* MateriasViewController.swift */; };
-		B3581EF81B23ADB4004BC32E /* AtividadesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3581EF71B23ADB4004BC32E /* AtividadesViewController.swift */; };
 		B3581EFA1B23AEF0004BC32E /* ProvasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3581EF91B23AEF0004BC32E /* ProvasViewController.swift */; };
-		B3581EFC1B23B240004BC32E /* AddAtividadeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3581EFB1B23B240004BC32E /* AddAtividadeViewController.swift */; };
 		B3581F061B23C322004BC32E /* DisciplinaMananer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3581F051B23C322004BC32E /* DisciplinaMananer.swift */; };
 		B3581F081B262623004BC32E /* AddProvaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3581F071B262623004BC32E /* AddProvaViewController.swift */; };
 /* End PBXBuildFile section */
@@ -51,9 +49,7 @@
 		B3581ED71B1E194C004BC32E /* OrganizadorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizadorTests.swift; sourceTree = "<group>"; };
 		B3581EF31B1F4261004BC32E /* AtividadeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtividadeManager.swift; sourceTree = "<group>"; };
 		B3581EF51B23AA31004BC32E /* MateriasViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MateriasViewController.swift; sourceTree = "<group>"; };
-		B3581EF71B23ADB4004BC32E /* AtividadesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtividadesViewController.swift; sourceTree = "<group>"; };
 		B3581EF91B23AEF0004BC32E /* ProvasViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProvasViewController.swift; sourceTree = "<group>"; };
-		B3581EFB1B23B240004BC32E /* AddAtividadeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAtividadeViewController.swift; sourceTree = "<group>"; };
 		B3581F051B23C322004BC32E /* DisciplinaMananer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisciplinaMananer.swift; sourceTree = "<group>"; };
 		B3581F071B262623004BC32E /* AddProvaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddProvaViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -161,8 +157,6 @@
 				44B148561B2E0A250071A5D6 /* AddMateriaViewController.swift */,
 				B3581EF91B23AEF0004BC32E /* ProvasViewController.swift */,
 				B3581F071B262623004BC32E /* AddProvaViewController.swift */,
-				B3581EF71B23ADB4004BC32E /* AtividadesViewController.swift */,
-				B3581EFB1B23B240004BC32E /* AddAtividadeViewController.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -275,12 +269,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3581EFC1B23B240004BC32E /* AddAtividadeViewController.swift in Sources */,
 				B3581EF61B23AA31004BC32E /* MateriasViewController.swift in Sources */,
 				B3581F061B23C322004BC32E /* DisciplinaMananer.swift in Sources */,
 				B3581F081B262623004BC32E /* AddProvaViewController.swift in Sources */,
 				44B148571B2E0A250071A5D6 /* AddMateriaViewController.swift in Sources */,
-				B3581EF81B23ADB4004BC32E /* AtividadesViewController.swift in Sources */,
 				B3581EFA1B23AEF0004BC32E /* ProvasViewController.swift in Sources */,
 				B3581EC21B1E194C004BC32E /* Organizador.xcdatamodeld in Sources */,
 				B3581EBF1B1E194B004BC32E /* AppDelegate.swift in Sources */,
