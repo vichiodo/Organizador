@@ -11,19 +11,9 @@ import EventKit
 
 class CalendarioViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-
-    @IBOutlet weak var atividadeTextField: UITextField!
-    @IBOutlet weak var calendario: UIDatePicker!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        calendario.minimumDate = NSDate()
-
-        
-        
-        
-        
         // Do any additional setup after loading the view.
     }
     
@@ -60,36 +50,5 @@ class CalendarioViewController: UIViewController, UITableViewDataSource, UITable
     */
     
     
-    @IBAction func salvarEvento(sender: AnyObject) {
-        
-        calendario.datePickerMode = UIDatePickerMode.Date
-        
-        let date = NSDate()
-                
-        calendario.minimumDate = date
-
-        var eventStore: EKEventStore = EKEventStore()
-        
-        var evento: EKEvent = EKEvent(eventStore: eventStore)
-        
-        evento.title = atividadeTextField.text
-        
-        evento.startDate = calendario.date
-        
-        evento.endDate = NSDate(timeInterval: 600, sinceDate: evento.startDate)
-        
-        eventStore.requestAccessToEntityType(EKEntityTypeEvent, completion: { (granted: Bool, error NSError) -> Void in
-            if !granted {
-                return
-            }else {
-                evento.calendar = eventStore.defaultCalendarForNewEvents
-                
-                eventStore.saveEvent(evento, span: EKSpanThisEvent, commit: true, error: NSErrorPointer())
-            }
-        })
-        
-        atividadeTextField.text = " "
-        
-    }
     
 }
