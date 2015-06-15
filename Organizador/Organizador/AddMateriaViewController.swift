@@ -10,7 +10,7 @@ import UIKit
 
 class AddMateriaViewController: UITableViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
-    var arrayCores = ["CF000F", "D2527F", "663399", "22A7F0", "00B16A", "F9690E", "F7CA18", "BFBFBF"]
+    var arrayCores = ["CF000F", "D2527F", "663399", "22A7F0", "00B16A", "F9690E", "F7CA18", "BFBFBF", "000000", "8B4513"]
     var corSelecionada: String = ""
     var indexOld: Int = 0
     
@@ -53,8 +53,8 @@ class AddMateriaViewController: UITableViewController, UICollectionViewDataSourc
         
         // background de acordo com a label
         cell.contentView.backgroundColor = self.stringParaCor(arrayCores[indexPath.row])
-        cell.contentView.layer.cornerRadius = cell.contentView.frame.size.width / 2
-        cell.contentView.clipsToBounds = true
+        cell.contentView.layer.cornerRadius = cell.contentView.frame.size.width * 0.2
+//        cell.contentView.clipsToBounds = true
         
         return cell
     }
@@ -65,23 +65,35 @@ class AddMateriaViewController: UITableViewController, UICollectionViewDataSourc
 
             var datasetCell: UICollectionViewCell = coresCollectionView.cellForItemAtIndexPath(path)!
             datasetCell.contentView.layer.borderWidth = 0.0
-            datasetCell.contentView.layer.borderColor =  UIColor.blackColor().CGColor
+            datasetCell.contentView.layer.borderColor = atualizaCorBorda(self.stringParaCor(arrayCores[indexPath.row])).CGColor
             
             var datasetCell2: UICollectionViewCell = coresCollectionView.cellForItemAtIndexPath(indexPath)!
             datasetCell2.contentView.layer.borderWidth = 3.0
-            datasetCell2.contentView.layer.borderColor =  UIColor.blackColor().CGColor
+            datasetCell2.contentView.layer.borderColor = atualizaCorBorda(self.stringParaCor(arrayCores[indexPath.row])).CGColor
             
             indexOld = indexPath.row
         }
         else {
             var datasetCell2: UICollectionViewCell = coresCollectionView.cellForItemAtIndexPath(indexPath)!
             datasetCell2.contentView.layer.borderWidth = 3.0
-            datasetCell2.contentView.layer.borderColor =  UIColor.blackColor().CGColor
+            datasetCell2.contentView.layer.borderColor = atualizaCorBorda(self.stringParaCor(arrayCores[indexPath.row])).CGColor
         }
         
         corSelecionada = arrayCores[indexPath.row]
         println("\(corSelecionada)")
-
+    }
+    
+    func atualizaCorBorda(cor: UIColor) -> UIColor {
+        let componentColors = CGColorGetComponents(cor.CGColor)
+        var colorBrightness: CGFloat = ((componentColors[0] * 299) + (componentColors[1] * 587) + (componentColors[2] * 114)) / 1000
+        var returnColor: UIColor
+        if colorBrightness < 0.5 {
+            returnColor = UIColor.lightGrayColor()
+        }
+        else {
+            returnColor = UIColor.blackColor()
+        }
+        return returnColor
     }
     
     // MARK: UICollectionViewDelegate

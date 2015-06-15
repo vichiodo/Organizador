@@ -53,8 +53,9 @@ class MateriasViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("disciplinasCell", forIndexPath: indexPath) as! UITableViewCell
         cell.textLabel?.text = disciplinas[indexPath.row].nome
+        cell.textLabel?.textColor = self.stringParaCor(disciplinas[indexPath.row].cor)
         cell.detailTextLabel?.text = "Média: \(disciplinas[indexPath.row].media)"
-        cell.backgroundColor = self.stringParaCor(disciplinas[indexPath.row].cor)
+//        cell.backgroundColor =
         
         return cell
     }
