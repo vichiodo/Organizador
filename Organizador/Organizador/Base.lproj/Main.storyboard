@@ -114,12 +114,43 @@
                                     <outlet property="delegate" destination="sBl-qD-b5f" id="dM4-b6-4uS"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lh9-8m-BZX">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="seta" translatesAutoresizingMaskIntoConstraints="NO" id="pgh-js-w1W">
+                                        <rect key="frame" x="482" y="77" width="110" height="82"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="82" id="CBW-nj-nKS"/>
+                                            <constraint firstAttribute="width" constant="110" id="VKm-uc-yMk"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adicione uma nova matéria para começar" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Nk-h8-bCo">
+                                        <rect key="frame" x="351" y="67" width="196" height="92"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="196" id="0Vx-YL-cad"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="0.55000000000000004" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="6Nk-h8-bCo" firstAttribute="top" secondItem="Lh9-8m-BZX" secondAttribute="top" constant="67" id="1SS-IU-OI0"/>
+                                    <constraint firstItem="pgh-js-w1W" firstAttribute="trailing" secondItem="Lh9-8m-BZX" secondAttribute="trailingMargin" id="C5n-jK-lhb"/>
+                                    <constraint firstAttribute="trailing" secondItem="6Nk-h8-bCo" secondAttribute="trailing" constant="53" id="RMo-2X-jYW"/>
+                                    <constraint firstItem="pgh-js-w1W" firstAttribute="top" secondItem="Lh9-8m-BZX" secondAttribute="top" constant="77" id="a1T-dp-pOs"/>
+                                    <constraint firstItem="6Nk-h8-bCo" firstAttribute="bottom" secondItem="pgh-js-w1W" secondAttribute="bottom" id="iiq-aB-Fwh"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Lh9-8m-BZX" firstAttribute="trailing" secondItem="8lR-Qk-569" secondAttribute="trailing" id="9yu-uP-8K4"/>
                             <constraint firstItem="8lR-Qk-569" firstAttribute="top" secondItem="meQ-cu-ryA" secondAttribute="bottom" constant="234" id="DOH-fw-Nzb"/>
                             <constraint firstItem="8lR-Qk-569" firstAttribute="bottom" secondItem="sI8-tJ-a3f" secondAttribute="bottomMargin" id="DWy-oz-fDY"/>
                             <constraint firstAttribute="trailingMargin" secondItem="8lR-Qk-569" secondAttribute="trailing" constant="-16" id="Itd-5l-f2u"/>
+                            <constraint firstItem="Lh9-8m-BZX" firstAttribute="top" secondItem="8lR-Qk-569" secondAttribute="top" id="JV4-3s-WMs"/>
                             <constraint firstItem="gxL-5h-XfL" firstAttribute="top" secondItem="8lR-Qk-569" secondAttribute="bottom" id="ORJ-x6-OD5"/>
                             <constraint firstItem="8lR-Qk-569" firstAttribute="leading" secondItem="sI8-tJ-a3f" secondAttribute="leadingMargin" constant="-16" id="Om9-vf-iqV"/>
                             <constraint firstItem="gxL-5h-XfL" firstAttribute="top" secondItem="8lR-Qk-569" secondAttribute="bottom" id="Pye-qZ-L1w"/>
@@ -128,6 +159,8 @@
                             <constraint firstItem="8lR-Qk-569" firstAttribute="top" secondItem="meQ-cu-ryA" secondAttribute="bottom" id="Xdt-WL-Cyf"/>
                             <constraint firstItem="8lR-Qk-569" firstAttribute="leading" secondItem="sI8-tJ-a3f" secondAttribute="leading" id="eWI-dY-w3Y"/>
                             <constraint firstItem="8lR-Qk-569" firstAttribute="top" secondItem="sI8-tJ-a3f" secondAttribute="topMargin" id="elZ-td-g7H"/>
+                            <constraint firstItem="Lh9-8m-BZX" firstAttribute="leading" secondItem="8lR-Qk-569" secondAttribute="leading" id="mNO-Zh-EFf"/>
+                            <constraint firstItem="Lh9-8m-BZX" firstAttribute="bottom" secondItem="gxL-5h-XfL" secondAttribute="top" id="s9U-L6-zo2"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -163,11 +196,12 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="8lR-Qk-569" id="53a-oB-B8a"/>
+                        <outlet property="viewIntro" destination="Lh9-8m-BZX" id="hqa-ql-Mea"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AdO-g3-cvc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1486.5" y="-266.25"/>
+            <point key="canvasLocation" x="1486" y="-267"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="mTr-gj-QKp">
@@ -436,4 +470,7 @@
             <point key="canvasLocation" x="2230" y="-267"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="seta" width="749" height="705"/>
+    </resources>
 </document>

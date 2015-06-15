@@ -12,6 +12,7 @@ import EventKit
 class MateriasViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var viewIntro: UIView!
     
     // carrega o vetor de usuarios cadastrados no CoreData
     lazy var disciplinas:Array<Disciplina> = {
@@ -31,6 +32,12 @@ class MateriasViewController: UIViewController, UITableViewDataSource, UITableVi
     override func viewWillAppear(animated: Bool) {
         disciplinas = DisciplinaManager.sharedInstance.buscarDisciplinas()
         self.tableView.reloadData()
+        if disciplinas.isEmpty {
+            viewIntro.hidden = false
+        }
+        else {
+            viewIntro.hidden = true
+        }
     }
     
     // MARK: - Table View
