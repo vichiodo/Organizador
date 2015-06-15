@@ -13,7 +13,6 @@ class AddMateriaViewController: UITableViewController, UICollectionViewDataSourc
     var arrayCores = ["CF000F", "D2527F", "663399", "22A7F0", "00B16A", "F9690E", "F7CA18", "BFBFBF"]
     var corSelecionada: String = ""
     var indexOld: Int = 0
-    var nsindex: NSIndexPath?
     
     @IBOutlet weak var txtNome: UITextField!
     @IBOutlet weak var coresCollectionView: UICollectionView!

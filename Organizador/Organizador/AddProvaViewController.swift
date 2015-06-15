@@ -14,8 +14,13 @@ class AddProvaViewController: UITableViewController{
     @IBOutlet weak var provaTxt: UITextField!
     @IBOutlet weak var date: UIDatePicker!
     
-    var materiasArray: NSArray = NSArray()
     var materiaSelecionada = 0
+    
+    // carrega o vetor de usuarios cadastrados no CoreData
+    lazy var disciplinas:Array<Disciplina> = {
+        return DisciplinaManager.sharedInstance.buscarDisciplinas()
+        }()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,13 +28,22 @@ class AddProvaViewController: UITableViewController{
         // impede de colocar uma data menor que a atual
         date.minimumDate = NSDate()
         
-        //////////////////// PEGAR AS DISCIPLINAS DO COREDATA ////////////////////
-        materiasArray = ["calculo", "fisica", "etica", "engenharia", "ciencia da computacao"]
-        
     }
-//    override func viewDidAppear(animated: Bool) {
-//        materias.selectRow(materiasArray.count / 2, inComponent: 0, animated: true)
-//    }
+    override func viewWillAppear(animated: Bool) {
+        disciplinas = DisciplinaManager.sharedInstance.buscarDisciplinas()
+        self.materias.reloadAllComponents()
+        
+        if disciplinas.isEmpty {
+            let alerta: UIAlertController = UIAlertController(title: "Adicione uma matéria", message: "Para então poder adicionar uma atividade nova", preferredStyle: .Alert)
+            let al1:UIAlertAction = UIAlertAction(title: "OK", style: .Default, handler: { (ACTION) -> Void in
+                let vc : AnyObject! = self.storyboard!.instantiateViewControllerWithIdentifier("addDisciplinas")
+                self.showViewController(vc as! UIViewController, sender: vc)
+
+            })
+            [alerta.addAction(al1)]
+            self.presentViewController(alerta, animated: true, completion: nil)
+        }
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -55,12 +69,12 @@ class AddProvaViewController: UITableViewController{
         return 1
     }
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return materiasArray.count
+        return disciplinas.count
     }
     
     //MARK: Delegates
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
-        return materiasArray[row] as! String
+        return disciplinas[row].nome
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -73,7 +87,7 @@ class AddProvaViewController: UITableViewController{
         }
         
         //////////////////// SALVAR NO COREDATA ////////////////////
-        println("salvo - materia: \(materiasArray[materiaSelecionada]), nome: \(provaTxt.text), dia \(date.date)")
+        println("salvo - materia: \(disciplinas[materiaSelecionada].nome), nome: \(provaTxt.text), dia \(date.date)")
         
         criarNotificacao()
     }
@@ -83,7 +97,7 @@ class AddProvaViewController: UITableViewController{
             var localNotification:UILocalNotification = UILocalNotification()
             localNotification.alertAction = "Ver a prova"
             var diasRestantes = 7 - i
-            var strNotif = "\(provaTxt.text) de \(materiasArray[materiaSelecionada])"
+            var strNotif = "\(provaTxt.text) de \(disciplinas[materiaSelecionada].nome)"
             if diasRestantes == 0 {
                 localNotification.alertBody = "Vish, a '\(strNotif)' é hoje!"
             }
