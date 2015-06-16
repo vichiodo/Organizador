@@ -141,6 +141,7 @@ class AddProvaViewController: UITableViewController{
             peso = 0
             tipo = 1
             obs = " "
+            vale = valeNota.on
         }
 
         if provaTxt.text == "" {
@@ -228,15 +229,4 @@ class AddProvaViewController: UITableViewController{
         }
         self.tableView.reloadData()
     }
-    
-    func valeNotaSwitch(valeN: UISwitch){
-        if valeN.on {
-            vale = true
-            println("\(vale)")
-        } else {
-            vale = false
-            println("\(vale)")
-        }
-    }
-
 }
