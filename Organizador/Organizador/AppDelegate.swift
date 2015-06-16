@@ -14,9 +14,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound|UIUserNotificationType.Alert|UIUserNotificationType.Badge, categories: nil))
+        
+        // Define cor dos itens da TabBar
+//        self.window?.tintColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
+        self.window?.tintColor = UIColor(red: 61/255, green: 191/255, blue: 104/255, alpha: 1)
+        
+        // Define StatusBar com texto branco
+        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
+        
         return true
     }
 

@@ -15,10 +15,15 @@ class AddProvaViewController: UITableViewController{
     @IBOutlet weak var provaTxt: UITextField!
     @IBOutlet weak var date: UIDatePicker!
     @IBOutlet weak var valeNota: UISwitch!
+    @IBOutlet weak var lblPerc: UILabel!
+    @IBOutlet weak var lblPeso: UILabel!
     @IBOutlet weak var labelValeNota: UILabel!
     @IBOutlet weak var pesoTextField: UITextField!
     @IBOutlet weak var segmentedC: UISegmentedControl!
     
+    @IBAction func valeNotaMudou(sender: UISwitch) {
+        self.tableView.reloadData()
+    }
     var materiaSelecionada = 0
     
     // carrega o vetor de usuarios cadastrados no CoreData
@@ -37,17 +42,18 @@ class AddProvaViewController: UITableViewController{
         case 0:
             println("PROVA")
             valeNota.hidden = true
+            labelValeNota.hidden = true
+            lblPeso.hidden = false
+            lblPerc.hidden = false
             pesoTextField.hidden = false
-            labelValeNota.text = "Peso"
-            
         default:
             println("TRABALHO")
             valeNota.hidden = false
+            labelValeNota.hidden = false
+            lblPeso.hidden = true
+            lblPerc.hidden = true
             pesoTextField.hidden = true
-            labelValeNota.text = "Vale nota? "
         }
-
-        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -77,14 +83,31 @@ class AddProvaViewController: UITableViewController{
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        case 0: return 1
+        case 0:
+            if segmentedC.selectedSegmentIndex == 1 && valeNota.on {
+                return 2
+            }
+            else {
+                return 1
+            }
         case 1: return 1
         case 2: return 2
         default: return 0
         }
     }
+    
+    override func tableView(tableView: UITableView, sectionForSectionIndexTitle title: String, atIndex index: Int) -> Int {
+        if index == 0{
+            return 1;
+        }
+        else
+        {
+            return 2;
+        }
+    }
 
     //MARK: - Delegates e data sources
+    
     //MARK: Data Sources
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
@@ -170,16 +193,22 @@ class AddProvaViewController: UITableViewController{
     @IBAction func segControl(sender: AnyObject) {
         switch segmentedC.selectedSegmentIndex {
         case 0:
+            valeNota.on = false
             println("PROVA")
             valeNota.hidden = true
+            labelValeNota.hidden = true
+            lblPerc.hidden = false
+            lblPeso.hidden = false
             pesoTextField.hidden = false
-            labelValeNota.text = "Peso"
         default:
             println("TRABALHO")
             valeNota.hidden = false
+            labelValeNota.hidden = false
+            lblPerc.hidden = true
+            lblPeso.hidden = true
             pesoTextField.hidden = true
-            labelValeNota.text = "Vale nota? "
         }
+        self.tableView.reloadData()
     }
     
 }
