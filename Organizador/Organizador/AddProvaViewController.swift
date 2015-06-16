@@ -16,6 +16,7 @@ class AddProvaViewController: UITableViewController{
     @IBOutlet weak var date: UIDatePicker!
     @IBOutlet weak var valeNota: UISwitch!
     @IBOutlet weak var labelValeNota: UILabel!
+    @IBOutlet weak var pesoTextField: UITextField!
     @IBOutlet weak var segmentedC: UISegmentedControl!
     
     var materiaSelecionada = 0
@@ -32,13 +33,23 @@ class AddProvaViewController: UITableViewController{
         // impede de colocar uma data menor que a atual
         date.minimumDate = NSDate()
         
-        switch segmentedC {
-        case 1:
+        switch segmentedC.selectedSegmentIndex {
+        case 0:
             println("PROVA")
+            valeNota.hidden = true
+            pesoTextField.hidden = false
+            labelValeNota.text = "Peso"
+            
         default:
             println("TRABALHO")
+            valeNota.hidden = false
+            pesoTextField.hidden = true
+            labelValeNota.text = "Vale nota? "
         }
+
+        
     }
+    
     override func viewWillAppear(animated: Bool) {
         disciplinas = DisciplinaManager.sharedInstance.buscarDisciplinas()
         self.materias.reloadAllComponents()
@@ -82,14 +93,7 @@ class AddProvaViewController: UITableViewController{
         return disciplinas.count
     }
     
-    func segmentedControl(segmentC: UISegmentedControl) -> Int {
-        switch segmentC {
-        case 1:
-            return 1
-        default:
-            return 2
-        }
-    }
+    
     
     //MARK: Delegates
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
@@ -140,6 +144,7 @@ class AddProvaViewController: UITableViewController{
         }
     }
     
+    //método que salva no calendário nativo a atividade
     func criarEventoCalendario(){
         var eventStore: EKEventStore = EKEventStore()
         
@@ -160,7 +165,21 @@ class AddProvaViewController: UITableViewController{
                 eventStore.saveEvent(evento, span: EKSpanThisEvent, commit: true, error: NSErrorPointer())
             }
         })
-
-
     }
+    
+    @IBAction func segControl(sender: AnyObject) {
+        switch segmentedC.selectedSegmentIndex {
+        case 0:
+            println("PROVA")
+            valeNota.hidden = true
+            pesoTextField.hidden = false
+            labelValeNota.text = "Peso"
+        default:
+            println("TRABALHO")
+            valeNota.hidden = false
+            pesoTextField.hidden = true
+            labelValeNota.text = "Vale nota? "
+        }
+    }
+    
 }
