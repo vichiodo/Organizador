@@ -50,10 +50,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="atividade" id="omm-ba-8hP">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="atividadesCell" textLabel="5Gh-9Q-r2F" detailTextLabel="zUI-6Z-1lM" style="IBUITableViewCellStyleValue1" id="omm-ba-8hP">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="omm-ba-8hP" id="V1q-2s-CPe">
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5Gh-9Q-r2F">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zUI-6Z-1lM">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -250,7 +264,7 @@
                                                         <rect key="frame" x="503" y="6" width="2" height="31"/>
                                                     </variation>
                                                     <connections>
-                                                        <action selector="valeNotaMudou:" destination="eEG-5D-TaC" eventType="valueChanged" id="UI3-Cm-c2p"/>
+                                                        <action selector="valeNotaMudou:" destination="eEG-5D-TaC" eventType="valueChanged" id="c6C-iU-aNc"/>
                                                     </connections>
                                                 </switch>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vale nota?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kpG-di-XE6">
@@ -489,6 +503,51 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="data1" rowHeight="44" id="wag-BX-rXC">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wag-BX-rXC" id="Da0-tT-Htg">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="7vW-Km-xJx">
+                                                    <rect key="frame" x="513" y="6" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="txtObsMudou:" destination="eEG-5D-TaC" eventType="valueChanged" id="2Ey-ZK-dag"/>
+                                                    </connections>
+                                                </switch>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Observação?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dgq-5p-yhe">
+                                                    <rect key="frame" x="38" y="11" width="102.5" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="7vW-Km-xJx" secondAttribute="trailing" constant="30" id="AFg-6c-FfX"/>
+                                                <constraint firstAttribute="centerY" secondItem="7vW-Km-xJx" secondAttribute="centerY" id="AVk-n2-He5"/>
+                                                <constraint firstItem="Dgq-5p-yhe" firstAttribute="leading" secondItem="Da0-tT-Htg" secondAttribute="leadingMargin" constant="30" id="Icb-VW-dGi"/>
+                                                <constraint firstAttribute="centerY" secondItem="Dgq-5p-yhe" secondAttribute="centerY" id="Jjc-AJ-K6a"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="data1" rowHeight="200" id="d0u-k4-tk6">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="d0u-k4-tk6" id="sBJ-N4-KhB">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Digite suas observações aqui" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xd5-iB-cGh">
+                                                    <rect key="frame" x="13" y="13" width="574" height="173.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="xd5-iB-cGh" firstAttribute="leading" secondItem="sBJ-N4-KhB" secondAttribute="leadingMargin" constant="5" id="09y-dy-GTy"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="xd5-iB-cGh" secondAttribute="trailing" constant="5" id="QWT-f8-1hs"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="xd5-iB-cGh" secondAttribute="bottom" constant="5" id="hPm-Kh-RHy"/>
+                                                <constraint firstItem="xd5-iB-cGh" firstAttribute="top" secondItem="sBJ-N4-KhB" secondAttribute="topMargin" constant="5" id="mJ6-qc-nkf"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -526,6 +585,8 @@
                         <outlet property="pesoTextField" destination="FgB-Jq-Kn6" id="Ig6-FH-w7x"/>
                         <outlet property="provaTxt" destination="isG-Fp-AEd" id="k7Z-wi-Kpl"/>
                         <outlet property="segmentedC" destination="u74-2D-usQ" id="Bxs-eX-CY2"/>
+                        <outlet property="switchObs" destination="7vW-Km-xJx" id="R8z-OA-kw2"/>
+                        <outlet property="txtObs" destination="xd5-iB-cGh" id="rR9-fb-TCE"/>
                         <outlet property="valeNota" destination="Mpc-VL-1T7" id="yJ1-pl-tzj"/>
                     </connections>
                 </tableViewController>

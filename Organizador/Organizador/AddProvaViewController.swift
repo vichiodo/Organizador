@@ -20,17 +20,16 @@ class AddProvaViewController: UITableViewController{
     @IBOutlet weak var labelValeNota: UILabel!
     @IBOutlet weak var pesoTextField: UITextField!
     @IBOutlet weak var segmentedC: UISegmentedControl!
+    @IBOutlet weak var switchObs: UISwitch!
+    @IBOutlet weak var txtObs: UITextField!
     
-    @IBAction func valeNotaMudou(sender: UISwitch) {
-        self.tableView.reloadData()
-    }
     var materiaSelecionada = 0
     var peso = 0
     var vale: Bool!
     var tipo = 0
     var obs: String!
     
-    // carrega o vetor de usuarios cadastrados no CoreData
+    // carrega o vetor de disciplinas cadastrados no CoreData
     lazy var disciplinas:Array<Disciplina> = {
         return DisciplinaManager.sharedInstance.buscarDisciplinas()
         }()
@@ -95,7 +94,13 @@ class AddProvaViewController: UITableViewController{
                 return 1
             }
         case 1: return 1
-        case 2: return 2
+        case 2:
+            if switchObs.on {
+                return 4
+            }
+            else {
+                return 3
+            }
         default: return 0
         }
     }
@@ -136,12 +141,17 @@ class AddProvaViewController: UITableViewController{
             peso = pesoTextField.text.toInt()!
             tipo = 0
             vale = true
-            obs = " "
         default:
             peso = 0
             tipo = 1
-            obs = " "
             vale = valeNota.on
+        }
+        
+        if switchObs.on {
+            obs = txtObs.text
+        }
+        else {
+            obs = ""
         }
 
         if provaTxt.text == "" {
@@ -182,7 +192,7 @@ class AddProvaViewController: UITableViewController{
             localNotification.fireDate = NSDate(timeInterval: intervalo, sinceDate: horario)
             UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
             
-            println("notificacao \(i) criada - \(localNotification.fireDate!) - nome \(localNotification.alertBody!)")
+//            println("notificacao \(i) criada - \(localNotification.fireDate!) - nome \(localNotification.alertBody!)")
         }
     }
     
@@ -227,6 +237,14 @@ class AddProvaViewController: UITableViewController{
             lblPeso.hidden = true
             pesoTextField.hidden = true
         }
+        self.tableView.reloadData()
+    }
+    
+    @IBAction func valeNotaMudou(sender: UISwitch) {
+        self.tableView.reloadData()
+    }
+    
+    @IBAction func txtObsMudou(sender: UISwitch) {
         self.tableView.reloadData()
     }
 }
