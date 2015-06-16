@@ -20,6 +20,10 @@ class AddProvaViewController: UITableViewController{
     @IBOutlet weak var segmentedC: UISegmentedControl!
     
     var materiaSelecionada = 0
+    var peso = 0
+    var vale: Bool!
+    var tipo = 0
+    var obs: String!
     
     // carrega o vetor de usuarios cadastrados no CoreData
     lazy var disciplinas:Array<Disciplina> = {
@@ -93,8 +97,6 @@ class AddProvaViewController: UITableViewController{
         return disciplinas.count
     }
     
-    
-    
     //MARK: Delegates
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
         return disciplinas[row].nome
@@ -105,11 +107,27 @@ class AddProvaViewController: UITableViewController{
     }
     
     @IBAction func salvarProva(sender: AnyObject) {
+        
+        switch segmentedC.selectedSegmentIndex {
+        case 0:
+            peso = pesoTextField.text.toInt()!
+            tipo = 0
+            vale = true
+            obs = " "
+        default:
+            peso = 0
+            tipo = 1
+            obs = " "
+        }
+
         if provaTxt.text == "" {
             provaTxt.text = "Prova"
         }
         
         //////////////////// SALVAR NO COREDATA ////////////////////
+
+        AtividadeManager.sharedInstance.salvarNovaAtividade(provaTxt.text, data: date.date, materia: disciplinas[materiaSelecionada], peso: peso, tipo: tipo, valeNota: vale, obs: obs)
+        
         println("salvo - materia: \(disciplinas[materiaSelecionada].nome), nome: \(provaTxt.text), dia \(date.date)")
         
         criarNotificacao()
@@ -154,7 +172,7 @@ class AddProvaViewController: UITableViewController{
         
         evento.startDate = date.date
         
-        evento.endDate = NSDate(timeInterval: 600, sinceDate: evento.startDate)
+        evento.endDate = NSDate(timeInterval: 3600, sinceDate: evento.startDate)
         
         eventStore.requestAccessToEntityType(EKEntityTypeEvent, completion: { (granted: Bool, error NSError) -> Void in
             if !granted {
@@ -182,4 +200,14 @@ class AddProvaViewController: UITableViewController{
         }
     }
     
+    func valeNotaSwitch(valeN: UISwitch){
+        if valeN.on {
+            vale = true
+            println("\(vale)")
+        } else {
+            vale = false
+            println("\(vale)")
+        }
+    }
+
 }

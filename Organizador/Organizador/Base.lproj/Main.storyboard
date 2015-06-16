@@ -253,21 +253,21 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
-                                                    <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
-                                                        <rect key="frame" x="28" y="11" width="34" height="20.5"/>
-                                                    </variation>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mpc-VL-1T7">
                                                     <rect key="frame" x="503" y="6" width="51" height="31"/>
-                                                    <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
-                                                        <rect key="frame" x="503" y="6" width="2" height="31"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="503" y="6" width="51" height="31"/>
                                                     </variation>
+                                                    <connections>
+                                                        <action selector="valeNotaSwitch:" destination="eEG-5D-TaC" eventType="valueChanged" id="9r4-54-HVo"/>
+                                                    </connections>
                                                 </switch>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DYj-bK-aWC">
                                                     <rect key="frame" x="479" y="6.5" width="97" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="97" id="isI-1w-AHy">
-                                                            <variation key="heightClass=regular-widthClass=compact" constant="90"/>
+                                                            <variation key="heightClass=regular-widthClass=compact" constant="80"/>
                                                         </constraint>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -286,7 +286,9 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vale nota?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kpG-di-XE6">
                                                     <rect key="frame" x="333" y="11" width="150" height="20.5"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="150" id="mSt-Gh-Fj6"/>
+                                                        <constraint firstAttribute="width" constant="150" id="mSt-Gh-Fj6">
+                                                            <variation key="heightClass=regular-widthClass=compact" constant="100"/>
+                                                        </constraint>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -299,14 +301,20 @@
                                                     <variation key="heightClass=regular-widthClass=compact" constant="20"/>
                                                 </constraint>
                                                 <constraint firstAttribute="centerY" secondItem="u74-2D-usQ" secondAttribute="centerY" id="FgS-li-cTI"/>
-                                                <constraint firstItem="u74-2D-usQ" firstAttribute="leading" secondItem="fFO-H6-yW8" secondAttribute="trailing" constant="30" id="ITQ-7Y-ehJ"/>
+                                                <constraint firstItem="u74-2D-usQ" firstAttribute="leading" secondItem="fFO-H6-yW8" secondAttribute="trailing" constant="30" id="ITQ-7Y-ehJ">
+                                                    <variation key="heightClass=regular-widthClass=compact" constant="10"/>
+                                                </constraint>
                                                 <constraint firstItem="DYj-bK-aWC" firstAttribute="top" secondItem="K0o-ht-bOx" secondAttribute="topMargin" constant="1" id="KCn-pB-B14"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="Mpc-VL-1T7" secondAttribute="trailing" constant="40" id="WEL-sA-Qf8"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Mpc-VL-1T7" secondAttribute="trailing" constant="40" id="WEL-sA-Qf8">
+                                                    <variation key="heightClass=regular-widthClass=compact" constant="20"/>
+                                                </constraint>
                                                 <constraint firstAttribute="centerY" secondItem="fFO-H6-yW8" secondAttribute="centerY" id="ZJH-x8-bsq"/>
                                                 <constraint firstItem="DYj-bK-aWC" firstAttribute="leading" secondItem="fFO-H6-yW8" secondAttribute="trailing" constant="417" id="agE-Bw-ovA"/>
                                                 <constraint firstItem="fFO-H6-yW8" firstAttribute="leading" secondItem="K0o-ht-bOx" secondAttribute="leadingMargin" constant="20" id="j0i-DQ-CNg"/>
                                                 <constraint firstAttribute="centerY" secondItem="Mpc-VL-1T7" secondAttribute="centerY" id="kFh-Kc-dCt"/>
-                                                <constraint firstItem="kpG-di-XE6" firstAttribute="leading" secondItem="u74-2D-usQ" secondAttribute="trailing" constant="20" id="nK9-yX-Vck"/>
+                                                <constraint firstItem="kpG-di-XE6" firstAttribute="leading" secondItem="u74-2D-usQ" secondAttribute="trailing" constant="20" id="nK9-yX-Vck">
+                                                    <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                                                </constraint>
                                                 <constraint firstItem="Mpc-VL-1T7" firstAttribute="leading" secondItem="kpG-di-XE6" secondAttribute="trailing" constant="20" id="zZx-vW-ZgS"/>
                                             </constraints>
                                             <variation key="default">
@@ -318,6 +326,7 @@
                                                 <mask key="constraints">
                                                     <include reference="KCn-pB-B14"/>
                                                     <exclude reference="agE-Bw-ovA"/>
+                                                    <exclude reference="zZx-vW-ZgS"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
@@ -411,7 +420,7 @@
                         <outlet property="pesoTextField" destination="DYj-bK-aWC" id="kXM-uY-bXD"/>
                         <outlet property="provaTxt" destination="isG-Fp-AEd" id="k7Z-wi-Kpl"/>
                         <outlet property="segmentedC" destination="u74-2D-usQ" id="Bxs-eX-CY2"/>
-                        <outlet property="valeNota" destination="Mpc-VL-1T7" id="rTj-74-RqV"/>
+                        <outlet property="valeNota" destination="Mpc-VL-1T7" id="yJ1-pl-tzj"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Xd-BV-I49" userLabel="First Responder" sceneMemberID="firstResponder"/>
