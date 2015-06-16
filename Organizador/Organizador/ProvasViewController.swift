@@ -69,12 +69,8 @@ class ProvasViewController: UITableViewController {
             ativi = AtividadeManager.sharedInstance.buscarAtividadesNaoConcluidas()
 //            switch section {
 //            case 0:
-                if (ativi[indexPath.row].disciplina.nome as String) == (materias[0].nome as String){
                     cell.textLabel?.text = ativi[indexPath.row].nome
                     cell.detailTextLabel?.text = ativi[indexPath.row].disciplina.nome
-
-                }
-                
           //  }
         }
         else{
