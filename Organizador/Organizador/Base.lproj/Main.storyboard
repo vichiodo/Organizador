@@ -361,8 +361,11 @@
                     </navigationItem>
                     <connections>
                         <outlet property="date" destination="Rmd-N9-LcI" id="hwO-Ge-v97"/>
+                        <outlet property="labelValeNota" destination="kpG-di-XE6" id="1y0-3t-9nC"/>
                         <outlet property="materias" destination="NBt-Bc-Czz" id="LlG-LQ-Qos"/>
                         <outlet property="provaTxt" destination="isG-Fp-AEd" id="k7Z-wi-Kpl"/>
+                        <outlet property="segmentedC" destination="u74-2D-usQ" id="Bxs-eX-CY2"/>
+                        <outlet property="valeNota" destination="Mpc-VL-1T7" id="rTj-74-RqV"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Xd-BV-I49" userLabel="First Responder" sceneMemberID="firstResponder"/>

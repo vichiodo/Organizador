@@ -7,12 +7,16 @@
 //
 
 import UIKit
+import EventKit
 
 class AddProvaViewController: UITableViewController{
     
     @IBOutlet weak var materias: UIPickerView!
     @IBOutlet weak var provaTxt: UITextField!
     @IBOutlet weak var date: UIDatePicker!
+    @IBOutlet weak var valeNota: UISwitch!
+    @IBOutlet weak var labelValeNota: UILabel!
+    @IBOutlet weak var segmentedC: UISegmentedControl!
     
     var materiaSelecionada = 0
     
@@ -28,6 +32,12 @@ class AddProvaViewController: UITableViewController{
         // impede de colocar uma data menor que a atual
         date.minimumDate = NSDate()
         
+        switch segmentedC {
+        case 1:
+            println("PROVA")
+        default:
+            println("TRABALHO")
+        }
     }
     override func viewWillAppear(animated: Bool) {
         disciplinas = DisciplinaManager.sharedInstance.buscarDisciplinas()
@@ -72,6 +82,15 @@ class AddProvaViewController: UITableViewController{
         return disciplinas.count
     }
     
+    func segmentedControl(segmentC: UISegmentedControl) -> Int {
+        switch segmentC {
+        case 1:
+            return 1
+        default:
+            return 2
+        }
+    }
+    
     //MARK: Delegates
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
         return disciplinas[row].nome
@@ -90,6 +109,7 @@ class AddProvaViewController: UITableViewController{
         println("salvo - materia: \(disciplinas[materiaSelecionada].nome), nome: \(provaTxt.text), dia \(date.date)")
         
         criarNotificacao()
+        criarEventoCalendario()
     }
     
     func criarNotificacao() {
@@ -118,5 +138,29 @@ class AddProvaViewController: UITableViewController{
             
             println("notificacao \(i) criada - \(localNotification.fireDate!) - nome \(localNotification.alertBody!)")
         }
+    }
+    
+    func criarEventoCalendario(){
+        var eventStore: EKEventStore = EKEventStore()
+        
+        var evento: EKEvent = EKEvent(eventStore: eventStore)
+        
+        evento.title = "\(provaTxt.text) de \(disciplinas[materiaSelecionada].nome)"
+        
+        evento.startDate = date.date
+        
+        evento.endDate = NSDate(timeInterval: 600, sinceDate: evento.startDate)
+        
+        eventStore.requestAccessToEntityType(EKEntityTypeEvent, completion: { (granted: Bool, error NSError) -> Void in
+            if !granted {
+                return
+            }else {
+                evento.calendar = eventStore.defaultCalendarForNewEvents
+                
+                eventStore.saveEvent(evento, span: EKSpanThisEvent, commit: true, error: NSErrorPointer())
+            }
+        })
+
+
     }
 }
