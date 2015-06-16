@@ -166,6 +166,8 @@ class AddProvaViewController: UITableViewController{
         
         criarNotificacao()
         criarEventoCalendario()
+        
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     func criarNotificacao() {

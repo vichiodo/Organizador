@@ -10,7 +10,14 @@ import UIKit
 
 class ProvasViewController: UITableViewController {
 
+    @IBOutlet weak var segmentedC: UISegmentedControl!
+    
+    
     // carrega o vetor de atividades cadastradas no CoreData
+    lazy var materias:Array<Disciplina> = {
+        return DisciplinaManager.sharedInstance.buscarDisciplinas()
+        }()
+    
     lazy var atividades:Array<Atividade> = {
         return AtividadeManager.sharedInstance.buscarAtividades()
         }()
@@ -35,13 +42,18 @@ class ProvasViewController: UITableViewController {
         self.tableView.reloadData()
 
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        self.tableView.reloadData()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        return materias.count
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -49,13 +61,38 @@ class ProvasViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
         let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("atividadesCell", forIndexPath: indexPath) as! UITableViewCell
-        cell.textLabel?.text = atividades[indexPath.row].nome
-        cell.detailTextLabel?.text = atividades[indexPath.row].disciplina.nome
+        var ativi: Array<Atividade>!
+        
+        if segmentedC.selectedSegmentIndex == 0{
+            ativi = AtividadeManager.sharedInstance.buscarAtividadesNaoConcluidas()
+//            switch section {
+//            case 0:
+                if (ativi[indexPath.row].disciplina.nome as String) == (materias[0].nome as String){
+                    cell.textLabel?.text = ativi[indexPath.row].nome
+                    cell.detailTextLabel?.text = ativi[indexPath.row].disciplina.nome
+
+                }
+                
+          //  }
+        }
+        else{
+            cell.textLabel?.text = ""
+            cell.detailTextLabel?.text = ""
+            ativi = AtividadeManager.sharedInstance.buscarAtividadesConcluidas()
+            if ativi.count != 0{
+                cell.textLabel?.text = ativi[indexPath.row].nome
+                cell.detailTextLabel?.text = ativi[indexPath.row].disciplina.nome
+            }
+        }
         
         return cell
     }
 
+    @IBAction func mudarTable(sender: AnyObject) {
+        self.tableView.reloadData()
+    }
     /*
     // MARK: - Navigation
 

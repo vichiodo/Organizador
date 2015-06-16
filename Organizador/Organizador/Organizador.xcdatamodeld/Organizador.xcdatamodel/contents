@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14D136" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Atividade" representedClassName="Organizador.Atividade" syncable="YES">
+        <attribute name="concluido" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="data" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="nome" optional="YES" attributeType="String" syncable="YES"/>
@@ -18,7 +19,7 @@
         <relationship name="atividades" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Atividade" inverseName="disciplina" inverseEntity="Atividade" syncable="YES"/>
     </entity>
     <elements>
+        <element name="Atividade" positionX="-425" positionY="468" width="128" height="195"/>
         <element name="Disciplina" positionX="-407" positionY="225" width="128" height="103"/>
-        <element name="Atividade" positionX="-425" positionY="468" width="128" height="178"/>
     </elements>
 </model>

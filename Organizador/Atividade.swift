@@ -17,6 +17,7 @@ class Atividade: NSManagedObject {
     @NSManaged var peso: NSNumber
     @NSManaged var tipo: NSNumber
     @NSManaged var valeNota: NSNumber
+    @NSManaged var concluido: NSNumber
     @NSManaged var obs: String
     @NSManaged var disciplina: Disciplina
     @NSManaged var id: NSNumber

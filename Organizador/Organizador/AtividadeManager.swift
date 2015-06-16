@@ -72,6 +72,39 @@ class AtividadeManager {
         
         return Array<Atividade>()
     }
+
+    func buscarAtividadesConcluidas() -> Array<Atividade> {
+        let buscaRequest = NSFetchRequest(entityName: AtividadeManager.entityName)
+        buscaRequest.predicate = NSPredicate(format: "concluido == %i", 1)
+        var erro: NSError?
+        let buscaResultados = managedContext.executeFetchRequest(buscaRequest, error: &erro) as? [NSManagedObject]
+        if let resultados = buscaResultados as? [Atividade] {
+            return resultados
+        } else {
+            println("Não foi possível buscar essa atividade. Erro: \(erro), \(erro!.userInfo)")
+        }
+        
+        NSFetchRequest(entityName: "FetchRequest")
+        
+        return Array<Atividade>()
+    }
+
+    
+    func buscarAtividadesNaoConcluidas() -> Array<Atividade> {
+        let buscaRequest = NSFetchRequest(entityName: AtividadeManager.entityName)
+        buscaRequest.predicate = NSPredicate(format: "concluido == %i", 0)
+        var erro: NSError?
+        let buscaResultados = managedContext.executeFetchRequest(buscaRequest, error: &erro) as? [NSManagedObject]
+        if let resultados = buscaResultados as? [Atividade] {
+            return resultados
+        } else {
+            println("Não foi possível buscar essa atividade. Erro: \(erro), \(erro!.userInfo)")
+        }
+        
+        NSFetchRequest(entityName: "FetchRequest")
+        
+        return Array<Atividade>()
+    }
     
     func buscarAtividade(id: Int) -> Atividade {
         let buscaRequest = NSFetchRequest(entityName: AtividadeManager.entityName)
@@ -128,6 +161,7 @@ class AtividadeManager {
         atividade.setValue(valeNota, forKey: "valeNota")
         atividade.setValue(obs, forKey: "obs")
         atividade.setValue(materia, forKey: "disciplina")
+        atividade.setValue(0, forKey: "concluido")
         
         var array = buscarAtividades()
         var obj = array.last! as Atividade
