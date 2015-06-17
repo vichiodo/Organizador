@@ -56,7 +56,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="atividadesCell" textLabel="5Gh-9Q-r2F" detailTextLabel="zUI-6Z-1lM" style="IBUITableViewCellStyleValue1" id="omm-ba-8hP">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="atividadesCell" textLabel="5Gh-9Q-r2F" detailTextLabel="zUI-6Z-1lM" rowHeight="65" style="IBUITableViewCellStyleValue1" id="omm-ba-8hP">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="omm-ba-8hP" id="V1q-2s-CPe">
                                     <autoresizingMask key="autoresizingMask"/>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellTarefa" rowHeight="72" id="KGk-i7-Jjw" customClass="CellTarefa" customModule="Organizador" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1rp-on-sfk">
+                        <rect key="frame" x="-75" y="0.0" width="150" height="64.5"/>
+                        <color key="backgroundColor" red="1" green="0.59999999999999998" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="150" id="TVi-zJ-sQO"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="H" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m32-kI-rpC">
+                        <rect key="frame" x="15" y="0.0" width="60" height="64.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="m32-kI-rpC" secondAttribute="height" multiplier="2:1" id="5Al-Yj-GxY"/>
+                            <constraint firstAttribute="width" secondItem="m32-kI-rpC" secondAttribute="height" multiplier="1:1" id="yqD-w9-goh"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="5Al-Yj-GxY"/>
+                                <exclude reference="yqD-w9-goh"/>
+                            </mask>
+                        </variation>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Redação sobre o comunismo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P7p-ZP-mHo">
+                        <rect key="frame" x="93" y="8" width="252" height="24.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="27/06/2015 - 20:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xzZ-VD-cQc">
+                        <rect key="frame" x="95" y="32" width="252" height="24"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ERW-4L-tiH">
+                        <rect key="frame" x="365" y="0.0" width="10" height="64.5"/>
+                        <color key="backgroundColor" red="0.23921568630000001" green="0.74901960779999999" blue="0.40784313729999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="10" id="MEq-Wf-A8M"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="1rp-on-sfk" firstAttribute="leading" secondItem="m32-kI-rpC" secondAttribute="trailing" constant="20" id="0V5-Lc-dHU"/>
+                    <constraint firstItem="m32-kI-rpC" firstAttribute="leading" secondItem="1rp-on-sfk" secondAttribute="trailing" id="19c-ei-HCR"/>
+                    <constraint firstItem="m32-kI-rpC" firstAttribute="height" secondItem="1rp-on-sfk" secondAttribute="height" id="3i7-Bw-MYU"/>
+                    <constraint firstItem="m32-kI-rpC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="7HU-Ug-DfB"/>
+                    <constraint firstItem="m32-kI-rpC" firstAttribute="leading" secondItem="xzZ-VD-cQc" secondAttribute="trailing" constant="20" id="83W-nP-Ufy"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="xzZ-VD-cQc" secondAttribute="trailing" constant="20" id="CXL-wA-JK5"/>
+                    <constraint firstItem="m32-kI-rpC" firstAttribute="width" secondItem="m32-kI-rpC" secondAttribute="height" multiplier="1:1" id="DvJ-wm-HGB"/>
+                    <constraint firstItem="m32-kI-rpC" firstAttribute="width" secondItem="1rp-on-sfk" secondAttribute="width" constant="-90" id="Eau-X2-oTt"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="xzZ-VD-cQc" secondAttribute="bottom" id="FSx-Tg-aDV"/>
+                    <constraint firstItem="xzZ-VD-cQc" firstAttribute="leading" secondItem="m32-kI-rpC" secondAttribute="trailing" constant="20" id="H1U-Yr-nhI"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="P7p-ZP-mHo" secondAttribute="trailing" constant="20" id="H9w-UP-rxT"/>
+                    <constraint firstItem="ERW-4L-tiH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="HCk-aI-DMi"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="m32-kI-rpC" secondAttribute="bottom" id="IKC-TP-VVW"/>
+                    <constraint firstItem="xzZ-VD-cQc" firstAttribute="height" secondItem="P7p-ZP-mHo" secondAttribute="height" id="JNv-zV-Qbe"/>
+                    <constraint firstAttribute="bottom" secondItem="m32-kI-rpC" secondAttribute="bottom" id="KDx-W5-fIt"/>
+                    <constraint firstItem="ERW-4L-tiH" firstAttribute="leading" secondItem="P7p-ZP-mHo" secondAttribute="trailing" constant="20" id="LLe-5z-ZUa"/>
+                    <constraint firstAttribute="trailing" secondItem="ERW-4L-tiH" secondAttribute="trailing" id="MRz-ic-NJY"/>
+                    <constraint firstAttribute="bottom" secondItem="ERW-4L-tiH" secondAttribute="bottom" id="P2U-C4-a7N"/>
+                    <constraint firstItem="m32-kI-rpC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="Vsb-ur-tei"/>
+                    <constraint firstItem="P7p-ZP-mHo" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="WeW-Kd-IP4"/>
+                    <constraint firstItem="m32-kI-rpC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="ZTc-oV-gzN"/>
+                    <constraint firstItem="m32-kI-rpC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="ZWt-ed-Ijs"/>
+                    <constraint firstItem="1rp-on-sfk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="-75" id="kRQ-co-y42"/>
+                    <constraint firstItem="xzZ-VD-cQc" firstAttribute="width" secondItem="P7p-ZP-mHo" secondAttribute="width" id="mcW-gj-7OQ"/>
+                    <constraint firstItem="1rp-on-sfk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="nDp-AY-eI5"/>
+                    <constraint firstAttribute="bottom" secondItem="1rp-on-sfk" secondAttribute="bottom" id="u52-kD-NgA"/>
+                    <constraint firstItem="xzZ-VD-cQc" firstAttribute="top" secondItem="P7p-ZP-mHo" secondAttribute="bottom" id="wz5-5A-0St"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="19c-ei-HCR"/>
+                        <exclude reference="3i7-Bw-MYU"/>
+                        <exclude reference="83W-nP-Ufy"/>
+                        <exclude reference="DvJ-wm-HGB"/>
+                        <exclude reference="IKC-TP-VVW"/>
+                        <exclude reference="Vsb-ur-tei"/>
+                        <exclude reference="ZWt-ed-Ijs"/>
+                        <exclude reference="0V5-Lc-dHU"/>
+                        <exclude reference="H9w-UP-rxT"/>
+                    </mask>
+                </variation>
+            </tableViewCellContentView>
+            <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+            <connections>
+                <outlet property="barra" destination="1rp-on-sfk" id="hbu-sK-EHD"/>
+                <outlet property="date" destination="xzZ-VD-cQc" id="Ad7-b2-puf"/>
+                <outlet property="matIcon" destination="m32-kI-rpC" id="Wce-FY-Zg4"/>
+                <outlet property="title" destination="P7p-ZP-mHo" id="k9e-Pb-ZqH"/>
+            </connections>
+            <point key="canvasLocation" x="293.5" y="254"/>
+        </tableViewCell>
+    </objects>
+</document>

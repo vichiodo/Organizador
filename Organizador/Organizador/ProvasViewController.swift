@@ -40,6 +40,12 @@ class ProvasViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        // Registra o xib da Célula
+        var nibP : UINib = UINib(nibName: "CellProva", bundle: nil);
+        tableView.registerNib(nibP, forCellReuseIdentifier: "CellProva");
+        var nibT : UINib = UINib(nibName: "CellTarefa", bundle: nil);
+        tableView.registerNib(nibT, forCellReuseIdentifier: "CellTarefa");
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -77,9 +83,12 @@ class ProvasViewController: UITableViewController {
         
     }
     
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 50
+    }
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("atividadesCell", forIndexPath: indexPath) as! UITableViewCell
         //        var ativi: Array<Atividade>!
         
         //        if segmentedC.selectedSegmentIndex == 0 {
@@ -103,24 +112,86 @@ class ProvasViewController: UITableViewController {
         //            }
         //        }
         
-        switch indexPath.section {
-        case 0:
-            cell.textLabel?.text = atividades7Dias[indexPath.row].nome
-            cell.detailTextLabel?.text = atividades7Dias[indexPath.row].disciplina.nome
-        case 1:
-            cell.textLabel?.text = atividades15Dias[indexPath.row].nome
-            cell.detailTextLabel?.text = atividades15Dias[indexPath.row].disciplina.nome
-        case 2:
-            cell.textLabel?.text = atividades30Dias[indexPath.row].nome
-            cell.detailTextLabel?.text = atividades30Dias[indexPath.row].disciplina.nome
-        case 3:
-            cell.textLabel?.text = atividades30MaisDias[indexPath.row].nome
-            cell.detailTextLabel?.text = atividades30MaisDias[indexPath.row].disciplina.nome
-        default:
-            break
-        }
         
-        return cell
+        if atividades7Dias[indexPath.row].tipo == 0 {
+            let cell: CellProva = tableView.dequeueReusableCellWithIdentifier("CellProva", forIndexPath: indexPath) as! CellProva
+            cell.barra.layer.cornerRadius = cell.matIcon.frame.size.height
+            cell.barra.clipsToBounds = true
+            
+            switch indexPath.section {
+            case 0:
+                cell.title.text = atividades7Dias[indexPath.row].nome
+                //cell.date.text = atividades7Dias[indexPath.row].data
+                var ind = String.Index.successor(atividades7Dias[indexPath.row].disciplina.nome.startIndex)
+                cell.matIcon.text = atividades7Dias[indexPath.row].disciplina.nome.substringToIndex(ind())
+//                cell.matIcon.backgroundColor = stringParaCor(atividades7Dias[indexPath.row].disciplina.cor)
+                cell.barra.backgroundColor = stringParaCor(atividades7Dias[indexPath.row].disciplina.cor)
+            case 1:
+                cell.title.text = atividades15Dias[indexPath.row].nome
+                //cell.date.text = atividades7Dias[indexPath.row].data
+                var ind = String.Index.successor(atividades15Dias[indexPath.row].disciplina.nome.startIndex)
+                cell.matIcon.text = atividades15Dias[indexPath.row].disciplina.nome.substringToIndex(ind())
+//                cell.matIcon.backgroundColor = stringParaCor(atividades15Dias[indexPath.row].disciplina.cor)
+                cell.barra.backgroundColor = stringParaCor(atividades15Dias[indexPath.row].disciplina.cor)
+            case 2:
+                cell.title.text = atividades30Dias[indexPath.row].nome
+                //cell.date.text = atividades7Dias[indexPath.row].data
+                var ind = String.Index.successor(atividades30Dias[indexPath.row].disciplina.nome.startIndex)
+                cell.matIcon.text = atividades30Dias[indexPath.row].disciplina.nome.substringToIndex(ind())
+//                cell.matIcon.backgroundColor = stringParaCor(atividades30Dias[indexPath.row].disciplina.cor)
+                cell.barra.backgroundColor = stringParaCor(atividades30Dias[indexPath.row].disciplina.cor)
+            case 3:
+                cell.title.text = atividades30MaisDias[indexPath.row].nome
+                //cell.date.text = atividades7Dias[indexPath.row].data
+                var ind = String.Index.successor(atividades30MaisDias[indexPath.row].disciplina.nome.startIndex)
+                cell.matIcon.text = atividades30MaisDias[indexPath.row].disciplina.nome.substringToIndex(ind())
+//                cell.matIcon.backgroundColor = stringParaCor(atividades30MaisDias[indexPath.row].disciplina.cor)
+                cell.barra.backgroundColor = stringParaCor(atividades30MaisDias[indexPath.row].disciplina.cor)
+            default:
+                break
+            }
+            return cell
+        }
+        else {
+            let cell: CellTarefa = tableView.dequeueReusableCellWithIdentifier("CellTarefa", forIndexPath: indexPath) as! CellTarefa
+            
+            cell.barra.layer.cornerRadius = cell.matIcon.frame.size.height
+            cell.barra.clipsToBounds = true
+            
+            switch indexPath.section {
+            case 0:
+                cell.title.text = atividades7Dias[indexPath.row].nome
+                //cell.date.text = atividades7Dias[indexPath.row].data
+                var ind = String.Index.successor(atividades7Dias[indexPath.row].disciplina.nome.startIndex)
+                cell.matIcon.text = atividades7Dias[indexPath.row].disciplina.nome.substringToIndex(ind())
+//                cell.matIcon.backgroundColor = stringParaCor(atividades7Dias[indexPath.row].disciplina.cor)
+                cell.barra.backgroundColor = stringParaCor(atividades7Dias[indexPath.row].disciplina.cor)
+            case 1:
+                cell.title.text = atividades15Dias[indexPath.row].nome
+                //cell.date.text = atividades7Dias[indexPath.row].data
+                var ind = String.Index.successor(atividades15Dias[indexPath.row].disciplina.nome.startIndex)
+                cell.matIcon.text = atividades15Dias[indexPath.row].disciplina.nome.substringToIndex(ind())
+//                cell.matIcon.backgroundColor = stringParaCor(atividades15Dias[indexPath.row].disciplina.cor)
+                cell.barra.backgroundColor = stringParaCor(atividades15Dias[indexPath.row].disciplina.cor)
+            case 2:
+                cell.title.text = atividades30Dias[indexPath.row].nome
+                //cell.date.text = atividades7Dias[indexPath.row].data
+                var ind = String.Index.successor(atividades30Dias[indexPath.row].disciplina.nome.startIndex)
+                cell.matIcon.text = atividades30Dias[indexPath.row].disciplina.nome.substringToIndex(ind())
+//                cell.matIcon.backgroundColor = stringParaCor(atividades30Dias[indexPath.row].disciplina.cor)
+                cell.barra.backgroundColor = stringParaCor(atividades30Dias[indexPath.row].disciplina.cor)
+            case 3:
+                cell.title.text = atividades30MaisDias[indexPath.row].nome
+                //cell.date.text = atividades7Dias[indexPath.row].data
+                var ind = String.Index.successor(atividades30MaisDias[indexPath.row].disciplina.nome.startIndex)
+                cell.matIcon.text = atividades30MaisDias[indexPath.row].disciplina.nome.substringToIndex(ind())
+//                cell.matIcon.backgroundColor = stringParaCor(atividades30MaisDias[indexPath.row].disciplina.cor)
+                cell.barra.backgroundColor = stringParaCor(atividades30MaisDias[indexPath.row].disciplina.cor)
+            default:
+                break
+            }
+            return cell
+        }
     }
     
     
@@ -184,6 +255,20 @@ class ProvasViewController: UITableViewController {
         self.tableView.reloadData()
         
     }
+    
+    // tranforma uma cor em hexa para um UIColor
+    func stringParaCor (hex:String) -> UIColor {
+        var cString:String = hex.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet() as NSCharacterSet).uppercaseString
+        var rgbValue:UInt32 = 0
+        NSScanner(string: cString).scanHexInt(&rgbValue)
+        return UIColor(
+            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+            alpha: CGFloat(1.0)
+        )
+    }
+
     
     /*
     // MARK: - Navigation
