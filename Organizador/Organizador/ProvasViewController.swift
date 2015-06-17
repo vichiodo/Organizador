@@ -9,7 +9,7 @@
 import UIKit
 
 class ProvasViewController: UITableViewController {
-
+    
     @IBOutlet weak var segmentedC: UISegmentedControl!
     var atividadesOrdenadas: Array<Atividade>!
     var provasOrdenadas: Array<Atividade>!
@@ -32,19 +32,19 @@ class ProvasViewController: UITableViewController {
     lazy var provas:Array<Atividade> = {
         return AtividadeManager.sharedInstance.buscarProvas()
         }()
-
+    
     lazy var tarefas:Array<Atividade> = {
         return AtividadeManager.sharedInstance.buscarTarefas()
         }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
+    
     override func viewWillAppear(animated: Bool) {
         self.atualiza_OrdenaVetores()
-
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -74,34 +74,34 @@ class ProvasViewController: UITableViewController {
         case 3: return "30+ dias"
         default: return ""
         }
-
+        
     }
-
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("atividadesCell", forIndexPath: indexPath) as! UITableViewCell
-//        var ativi: Array<Atividade>!
+        //        var ativi: Array<Atividade>!
         
-//        if segmentedC.selectedSegmentIndex == 0 {
-//            println("primeiro")
-//            ativi = AtividadeManager.sharedInstance.buscarAtividadesNaoConcluidas()
-////            switch section {
-////            case 0:
-//                    cell.textLabel?.text = ativi[indexPath.row].nome
-//                    cell.detailTextLabel?.text = ativi[indexPath.row].disciplina.nome
-//          //  }
-//        }
-//        else{
-//            println("segundo")
-//
-//            cell.textLabel?.text = ""
-//            cell.detailTextLabel?.text = ""
-//            ativi = AtividadeManager.sharedInstance.buscarAtividadesConcluidas()
-//            if ativi.count != 0{
-//                cell.textLabel?.text = ativi[indexPath.row].nome
-//                cell.detailTextLabel?.text = ativi[indexPath.row].disciplina.nome
-//            }
-//        }
+        //        if segmentedC.selectedSegmentIndex == 0 {
+        //            println("primeiro")
+        //            ativi = AtividadeManager.sharedInstance.buscarAtividadesNaoConcluidas()
+        ////            switch section {
+        ////            case 0:
+        //                    cell.textLabel?.text = ativi[indexPath.row].nome
+        //                    cell.detailTextLabel?.text = ativi[indexPath.row].disciplina.nome
+        //          //  }
+        //        }
+        //        else{
+        //            println("segundo")
+        //
+        //            cell.textLabel?.text = ""
+        //            cell.detailTextLabel?.text = ""
+        //            ativi = AtividadeManager.sharedInstance.buscarAtividadesConcluidas()
+        //            if ativi.count != 0{
+        //                cell.textLabel?.text = ativi[indexPath.row].nome
+        //                cell.detailTextLabel?.text = ativi[indexPath.row].disciplina.nome
+        //            }
+        //        }
         
         switch indexPath.section {
         case 0:
@@ -119,11 +119,11 @@ class ProvasViewController: UITableViewController {
         default:
             break
         }
-
+        
         return cell
     }
     
-
+    
     @IBAction func mudarTable(sender: AnyObject) {
         self.tableView.reloadData()
     }
@@ -135,10 +135,10 @@ class ProvasViewController: UITableViewController {
         
         atividadesOrdenadas = atividades
         atividadesOrdenadas.sort({$0.data.timeIntervalSinceNow < $1.data.timeIntervalSinceNow })
-
+        
         provasOrdenadas = provas
         provasOrdenadas.sort({$0.data.timeIntervalSinceNow < $1.data.timeIntervalSinceNow })
-
+        
         tarefasOrdenadas = tarefas
         tarefasOrdenadas.sort({$0.data.timeIntervalSinceNow < $1.data.timeIntervalSinceNow })
         
@@ -148,50 +148,51 @@ class ProvasViewController: UITableViewController {
         atividades30MaisDias = []
         
         // organiza as atividades dentro de cada periodo de tempo
-        for i in 0...atividadesOrdenadas.count - 1 {
-            let dataCompara = atividadesOrdenadas[i].data
-            
-            let calendar = NSCalendar.currentCalendar()
-            let comps30 = NSDateComponents()
-            comps30.day = 30
-            let date30 = calendar.dateByAddingComponents(comps30, toDate: NSDate(), options: NSCalendarOptions.allZeros)
-            
-            let comps15 = NSDateComponents()
-            comps15.day = 15
-            let date15 = calendar.dateByAddingComponents(comps15, toDate: NSDate(), options: NSCalendarOptions.allZeros)
-
-            let comps7 = NSDateComponents()
-            comps7.day = 7
-            let date7 = calendar.dateByAddingComponents(comps7, toDate: NSDate(), options: NSCalendarOptions.allZeros)
-
-            
-            if dataCompara.compare(date30!) == NSComparisonResult.OrderedDescending {
-                atividades30MaisDias.append(atividadesOrdenadas[i])
-            } else if dataCompara.compare(date30!) == NSComparisonResult.OrderedAscending {
-                if dataCompara.compare(date15!) == NSComparisonResult.OrderedDescending {
-                atividades30Dias.append(atividadesOrdenadas[i])
-                } else {
-                    if dataCompara.compare(date7!) == NSComparisonResult.OrderedDescending {
-                        atividades15Dias.append(atividadesOrdenadas[i])
+        if atividadesOrdenadas.count > 0 {
+            for i in 0...atividadesOrdenadas.count - 1 {
+                let dataCompara = atividadesOrdenadas[i].data
+                
+                let calendar = NSCalendar.currentCalendar()
+                let comps30 = NSDateComponents()
+                comps30.day = 30
+                let date30 = calendar.dateByAddingComponents(comps30, toDate: NSDate(), options: NSCalendarOptions.allZeros)
+                
+                let comps15 = NSDateComponents()
+                comps15.day = 15
+                let date15 = calendar.dateByAddingComponents(comps15, toDate: NSDate(), options: NSCalendarOptions.allZeros)
+                
+                let comps7 = NSDateComponents()
+                comps7.day = 7
+                let date7 = calendar.dateByAddingComponents(comps7, toDate: NSDate(), options: NSCalendarOptions.allZeros)
+                
+                
+                if dataCompara.compare(date30!) == NSComparisonResult.OrderedDescending {
+                    atividades30MaisDias.append(atividadesOrdenadas[i])
+                } else if dataCompara.compare(date30!) == NSComparisonResult.OrderedAscending {
+                    if dataCompara.compare(date15!) == NSComparisonResult.OrderedDescending {
+                        atividades30Dias.append(atividadesOrdenadas[i])
                     } else {
-                        atividades7Dias.append(atividadesOrdenadas[i])
+                        if dataCompara.compare(date7!) == NSComparisonResult.OrderedDescending {
+                            atividades15Dias.append(atividadesOrdenadas[i])
+                        } else {
+                            atividades7Dias.append(atividadesOrdenadas[i])
+                        }
                     }
                 }
             }
         }
-        
         self.tableView.reloadData()
-
+        
     }
     
     /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
     }
     */
-
+    
 }
