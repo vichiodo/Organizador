@@ -44,7 +44,6 @@ class ProvasViewController: UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         self.atualiza_OrdenaVetores()
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -123,6 +122,30 @@ class ProvasViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            let vC: AddProvaViewController = AddProvaViewController()
+            
+            switch indexPath.section {
+            case 0:
+                AtividadeManager.sharedInstance.removerAtividade(atividades7Dias[indexPath.row].id as Int)
+                vC.cancelarNotificacao(atividades7Dias[indexPath.row].nome, materia: atividades7Dias[indexPath.row].disciplina, data: atividades7Dias[indexPath.row].data)
+            case 1:
+                AtividadeManager.sharedInstance.removerAtividade(atividades15Dias[indexPath.row].id as Int)
+                vC.cancelarNotificacao(atividades15Dias[indexPath.row].nome, materia: atividades15Dias[indexPath.row].disciplina, data: atividades15Dias[indexPath.row].data)
+            case 2:
+                AtividadeManager.sharedInstance.removerAtividade(atividades30Dias[indexPath.row].id as Int)
+                vC.cancelarNotificacao(atividades30Dias[indexPath.row].nome, materia: atividades30Dias[indexPath.row].disciplina, data: atividades30Dias[indexPath.row].data)
+            case 3:
+                AtividadeManager.sharedInstance.removerAtividade(atividades30MaisDias[indexPath.row].id as Int)
+                vC.cancelarNotificacao(atividades30MaisDias[indexPath.row].nome, materia: atividades30MaisDias[indexPath.row].disciplina, data: atividades30MaisDias[indexPath.row].data)
+            default:
+                break
+            }
+
+        }
+        atualiza_OrdenaVetores()
+    }
     
     @IBAction func mudarTable(sender: AnyObject) {
         self.tableView.reloadData()
