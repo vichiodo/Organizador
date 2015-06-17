@@ -9,7 +9,7 @@
 import UIKit
 import EventKit
 
-class AddProvaViewController: UITableViewController{
+class AddProvaViewController: UITableViewController, UITextViewDelegate {
     
     @IBOutlet weak var materias: UIPickerView!
     @IBOutlet weak var provaTxt: UITextField!
@@ -20,11 +20,10 @@ class AddProvaViewController: UITableViewController{
     @IBOutlet weak var labelValeNota: UILabel!
     @IBOutlet weak var pesoTextField: UITextField!
     @IBOutlet weak var segmentedC: UISegmentedControl!
-    @IBOutlet weak var switchObs: UISwitch!
-    @IBOutlet weak var txtObs: UITextField!
+    @IBOutlet weak var txtObs: UITextView!
     
     var materiaSelecionada = 0
-    var peso = 0
+    var peso: Int?
     var vale: Bool!
     var tipo = 0
     var obs: String!
@@ -33,7 +32,7 @@ class AddProvaViewController: UITableViewController{
     lazy var disciplinas:Array<Disciplina> = {
         return DisciplinaManager.sharedInstance.buscarDisciplinas()
         }()
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,7 +67,7 @@ class AddProvaViewController: UITableViewController{
             let al1:UIAlertAction = UIAlertAction(title: "OK", style: .Default, handler: { (ACTION) -> Void in
                 let vc : AnyObject! = self.storyboard!.instantiateViewControllerWithIdentifier("addDisciplinas")
                 self.showViewController(vc as! UIViewController, sender: vc)
-
+                
             })
             [alerta.addAction(al1)]
             self.presentViewController(alerta, animated: true, completion: nil)
@@ -94,13 +93,8 @@ class AddProvaViewController: UITableViewController{
                 return 1
             }
         case 1: return 1
-        case 2:
-            if switchObs.on {
-                return 4
-            }
-            else {
-                return 3
-            }
+        case 2: return 2
+        case 3: return 1
         default: return 0
         }
     }
@@ -114,7 +108,7 @@ class AddProvaViewController: UITableViewController{
             return 2;
         }
     }
-
+    
     //MARK: - Delegates e data sources
     
     //MARK: Data Sources
@@ -138,36 +132,45 @@ class AddProvaViewController: UITableViewController{
         
         switch segmentedC.selectedSegmentIndex {
         case 0:
-            peso = pesoTextField.text.toInt()!
+            peso = pesoTextField.text.toInt()
             tipo = 0
+            if provaTxt.text == "" {
+                provaTxt.text = "Prova"
+            }
             vale = true
         default:
-            peso = 0
+            if valeNota.on {
+                peso = pesoTextField.text.toInt()
+            } else {
+                peso = 0
+            }
             tipo = 1
+            if provaTxt.text == "" {
+                provaTxt.text = "Tarefa"
+            }
             vale = valeNota.on
         }
         
-        if switchObs.on {
-            obs = txtObs.text
-        }
-        else {
-            obs = ""
-        }
-
-        if provaTxt.text == "" {
-            provaTxt.text = "Prova"
-        }
+        obs = txtObs.text
+        
         
         //////////////////// SALVAR NO COREDATA ////////////////////
-
-        AtividadeManager.sharedInstance.salvarNovaAtividade(provaTxt.text, data: date.date, materia: disciplinas[materiaSelecionada], peso: peso, tipo: tipo, valeNota: vale, obs: obs)
-        
-        println("salvo - materia: \(disciplinas[materiaSelecionada].nome), nome: \(provaTxt.text), dia \(date.date)")
-        
-        criarNotificacao()
-        criarEventoCalendario()
-        
-        self.navigationController?.popViewControllerAnimated(true)
+        if peso == nil {
+            let alerta: UIAlertController = UIAlertController(title: "Digite o peso da atividade", message: nil, preferredStyle: .Alert)
+            let al1:UIAlertAction = UIAlertAction(title: "OK", style: .Default, handler: { (ACTION) -> Void in
+                pesoTextField.becomeFirstResponder()
+            })
+            [alerta.addAction(al1)]
+            self.presentViewController(alerta, animated: true, completion: nil)
+        }
+        else {
+            AtividadeManager.sharedInstance.salvarNovaAtividade(provaTxt.text, data: date.date, materia: disciplinas[materiaSelecionada], peso: peso!, tipo: tipo, valeNota: vale, obs: obs)
+            
+            criarNotificacao()
+            criarEventoCalendario()
+            
+            self.navigationController?.popViewControllerAnimated(true)
+        }
     }
     
     func criarNotificacao() {
@@ -194,7 +197,7 @@ class AddProvaViewController: UITableViewController{
             localNotification.fireDate = NSDate(timeInterval: intervalo, sinceDate: horario)
             UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
             
-//            println("notificacao \(i) criada - \(localNotification.fireDate!) - nome \(localNotification.alertBody!)")
+            //            println("notificacao \(i) criada - \(localNotification.fireDate!) - nome \(localNotification.alertBody!)")
         }
     }
     
@@ -213,7 +216,7 @@ class AddProvaViewController: UITableViewController{
         eventStore.requestAccessToEntityType(EKEntityTypeEvent, completion: { (granted: Bool, error NSError) -> Void in
             if !granted {
                 return
-            }else {
+            } else {
                 evento.calendar = eventStore.defaultCalendarForNewEvents
                 
                 eventStore.saveEvent(evento, span: EKSpanThisEvent, commit: true, error: NSErrorPointer())
@@ -246,7 +249,19 @@ class AddProvaViewController: UITableViewController{
         self.tableView.reloadData()
     }
     
-    @IBAction func txtObsMudou(sender: UISwitch) {
-        self.tableView.reloadData()
+    
+    func textViewDidBeginEditing(textView: UITextView) {
+        if textView.textColor == UIColor.lightGrayColor() {
+            textView.text = nil
+            textView.textColor = UIColor.blackColor()
+        }
     }
+
+    func textViewDidEndEditing(textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "Digite suas observações aqui"
+            textView.textColor = UIColor.lightGrayColor()
+        }
+    }
+
 }

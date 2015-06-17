@@ -80,7 +80,6 @@ class AddMateriaViewController: UITableViewController, UICollectionViewDataSourc
         }
         
         corSelecionada = arrayCores[indexPath.row]
-        println("\(corSelecionada)")
     }
     
     func atualizaCorBorda(cor: UIColor) -> UIColor {

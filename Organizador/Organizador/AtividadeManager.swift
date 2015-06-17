@@ -29,6 +29,7 @@ class AtividadeManager {
     func buscarProvas() -> Array<Atividade> {
         let buscaRequest = NSFetchRequest(entityName: AtividadeManager.entityName)
         buscaRequest.predicate = NSPredicate(format: "tipo == %i", 0)
+//        buscaRequest.sortDescriptors = [NSSortDescriptor(key: "data", ascending: false)]
         var erro: NSError?
         let buscaResultados = managedContext.executeFetchRequest(buscaRequest, error: &erro) as? [NSManagedObject]
         if let resultados = buscaResultados as? [Atividade] {
@@ -38,7 +39,13 @@ class AtividadeManager {
         }
         
         NSFetchRequest(entityName: "FetchRequest")
+//        var results: [Atividade] = []
         
+//        var sortedResults = sorted(results, {
+//            $0.data.compare($1.data) == NSComparisonResult.OrderedDescending
+//        })
+        
+
         return Array<Atividade>()
     }
     

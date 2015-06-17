@@ -43,10 +43,6 @@ class ProvasViewController: UITableViewController {
 
     }
     
-    override func viewDidAppear(animated: Bool) {
-        self.tableView.reloadData()
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -82,6 +78,35 @@ class ProvasViewController: UITableViewController {
                 cell.detailTextLabel?.text = ativi[indexPath.row].disciplina.nome
             }
         }
+        
+        
+        
+        
+        //////////////// PARA VERIFICAR SE A DATA ESTA NOS PROXIMOS 7 DIAS ///////////////////
+        
+        
+//        let dueDate=...
+//        
+//        let calendar = NSCalendar.currentCalendar()
+//        let comps = NSDateComponents()
+//        comps.day = 7
+//        let date2 = calendar.dateByAddingComponents(comps, toDate: NSDate(), options: NSCalendarOptions.allZeros)
+//        
+//        if dueDate.compare(date2!) == NSComparisonResult.OrderedDescending
+//        {
+//            NSLog("not due within a week");
+//        } else if dueDate.compare(date2!) == NSComparisonResult.OrderedAscending
+//        {
+//            NSLog("due within a week");
+//        } else
+//        {
+//            NSLog("due in exactly a week (to the second, this will rarely happen in practice)");
+//        }
+        
+        
+        
+        
+        
         
         return cell
     }
