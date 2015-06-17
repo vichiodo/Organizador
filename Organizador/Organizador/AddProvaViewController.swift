@@ -80,7 +80,7 @@ class AddProvaViewController: UITableViewController, UITextViewDelegate {
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 3
+        return 4
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -276,6 +276,8 @@ class AddProvaViewController: UITableViewController, UITextViewDelegate {
             lblPerc.hidden = false
             lblPeso.hidden = false
             pesoTextField.hidden = false
+            txtObs.hidden = false
+            provaTxt.placeholder = "Nome da Prova"
         default:
             println("TRABALHO")
             valeNota.hidden = false
@@ -283,6 +285,8 @@ class AddProvaViewController: UITableViewController, UITextViewDelegate {
             lblPerc.hidden = true
             lblPeso.hidden = true
             pesoTextField.hidden = true
+            txtObs.hidden = false
+            provaTxt.placeholder = "Nome da Tarefa"
         }
         self.tableView.reloadData()
     }

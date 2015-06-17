@@ -79,46 +79,29 @@ class ProvasViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("atividadesCell", forIndexPath: indexPath) as! UITableViewCell
-        //        var ativi: Array<Atividade>!
+        var ativi: Array<Atividade>!
         
-        //        if segmentedC.selectedSegmentIndex == 0 {
-        //            println("primeiro")
-        //            ativi = AtividadeManager.sharedInstance.buscarAtividadesNaoConcluidas()
-        ////            switch section {
-        ////            case 0:
-        //                    cell.textLabel?.text = ativi[indexPath.row].nome
-        //                    cell.detailTextLabel?.text = ativi[indexPath.row].disciplina.nome
-        //          //  }
-        //        }
-        //        else{
-        //            println("segundo")
-        //
-        //            cell.textLabel?.text = ""
-        //            cell.detailTextLabel?.text = ""
-        //            ativi = AtividadeManager.sharedInstance.buscarAtividadesConcluidas()
-        //            if ativi.count != 0{
-        //                cell.textLabel?.text = ativi[indexPath.row].nome
-        //                cell.detailTextLabel?.text = ativi[indexPath.row].disciplina.nome
-        //            }
-        //        }
-        
-        switch indexPath.section {
-        case 0:
-            cell.textLabel?.text = atividades7Dias[indexPath.row].nome
-            cell.detailTextLabel?.text = atividades7Dias[indexPath.row].disciplina.nome
-        case 1:
-            cell.textLabel?.text = atividades15Dias[indexPath.row].nome
-            cell.detailTextLabel?.text = atividades15Dias[indexPath.row].disciplina.nome
-        case 2:
-            cell.textLabel?.text = atividades30Dias[indexPath.row].nome
-            cell.detailTextLabel?.text = atividades30Dias[indexPath.row].disciplina.nome
-        case 3:
-            cell.textLabel?.text = atividades30MaisDias[indexPath.row].nome
-            cell.detailTextLabel?.text = atividades30MaisDias[indexPath.row].disciplina.nome
-        default:
-            break
+        if segmentedC.selectedSegmentIndex == 0 {
+            switch indexPath.section {
+            case 0:
+                cell.textLabel?.text = atividades7Dias[indexPath.row].nome
+                cell.detailTextLabel?.text = atividades7Dias[indexPath.row].disciplina.nome
+            case 1:
+                cell.textLabel?.text = atividades15Dias[indexPath.row].nome
+                cell.detailTextLabel?.text = atividades15Dias[indexPath.row].disciplina.nome
+            case 2:
+                cell.textLabel?.text = atividades30Dias[indexPath.row].nome
+                cell.detailTextLabel?.text = atividades30Dias[indexPath.row].disciplina.nome
+            case 3:
+                cell.textLabel?.text = atividades30MaisDias[indexPath.row].nome
+                cell.detailTextLabel?.text = atividades30MaisDias[indexPath.row].disciplina.nome
+            default:
+                break
+            }
         }
+        else{
         
+        }
         return cell
     }
     
@@ -142,7 +125,6 @@ class ProvasViewController: UITableViewController {
             default:
                 break
             }
-
         }
         atualiza_OrdenaVetores()
     }
