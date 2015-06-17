@@ -158,7 +158,20 @@ class AtividadeManager {
     }
 
     func salvarNovaAtividade(nome: String, data: NSDate, materia: Disciplina, peso: Int, tipo: Int, valeNota: Bool, obs: String){
+        var idAtual: Int!
+        var array = buscarAtividades()
+        if array.isEmpty {
+            idAtual = 0
+        }else {
+            var obj = array.last! as Atividade
+            idAtual = Int(obj.id) + 1
+        }
+        
+        
         let atividade = novaAtividade()
+        
+        
+        atividade.setValue(idAtual, forKey: "id")
         
         atividade.setValue(nome, forKey: "nome")
         atividade.setValue(data, forKey: "data")
@@ -170,10 +183,8 @@ class AtividadeManager {
         atividade.setValue(materia, forKey: "disciplina")
         atividade.setValue(0, forKey: "concluido")
         
-        var array = buscarAtividades()
-        var obj = array.last! as Atividade
-        var idAtual = Int(obj.id) + 1        
-        atividade.setValue(idAtual, forKey: "id")
+        
+        
         
         salvarAtividade()
     }
