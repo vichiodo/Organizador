@@ -39,12 +39,6 @@ class AtividadeManager {
         }
         
         NSFetchRequest(entityName: "FetchRequest")
-//        var results: [Atividade] = []
-        
-//        var sortedResults = sorted(results, {
-//            $0.data.compare($1.data) == NSComparisonResult.OrderedDescending
-//        })
-        
 
         return Array<Atividade>()
     }
