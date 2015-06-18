@@ -112,88 +112,47 @@ class ProvasViewController: UITableViewController {
         //            }
         //        }
         
+        var ativ: Atividade!
         
-        if atividades7Dias[indexPath.row].tipo == 0 {
+        switch indexPath.section {
+        case 0:
+            ativ = atividades7Dias[indexPath.row]
+        case 1:
+            ativ = atividades15Dias[indexPath.row]
+        case 2:
+            ativ = atividades30Dias[indexPath.row]
+        case 3:
+            ativ = atividades30Dias[indexPath.row]
+        default:
+            break
+        }
+        
+        var cell: UITableViewCell!
+        
+        if ativ.tipo == 0 {
             let cell: CellProva = tableView.dequeueReusableCellWithIdentifier("CellProva", forIndexPath: indexPath) as! CellProva
-            cell.barra.layer.cornerRadius = cell.matIcon.frame.size.height
+            cell.barra.layer.cornerRadius = cell.barra.frame.size.height/2
             cell.barra.clipsToBounds = true
+            cell.date.layer.cornerRadius = cell.date.frame.size.height/2
+            cell.date.clipsToBounds = true
             
-            switch indexPath.section {
-            case 0:
-                cell.title.text = atividades7Dias[indexPath.row].nome
-                //cell.date.text = atividades7Dias[indexPath.row].data
-                var ind = String.Index.successor(atividades7Dias[indexPath.row].disciplina.nome.startIndex)
-                cell.matIcon.text = atividades7Dias[indexPath.row].disciplina.nome.substringToIndex(ind())
-//                cell.matIcon.backgroundColor = stringParaCor(atividades7Dias[indexPath.row].disciplina.cor)
-                cell.barra.backgroundColor = stringParaCor(atividades7Dias[indexPath.row].disciplina.cor)
-            case 1:
-                cell.title.text = atividades15Dias[indexPath.row].nome
-                //cell.date.text = atividades7Dias[indexPath.row].data
-                var ind = String.Index.successor(atividades15Dias[indexPath.row].disciplina.nome.startIndex)
-                cell.matIcon.text = atividades15Dias[indexPath.row].disciplina.nome.substringToIndex(ind())
-//                cell.matIcon.backgroundColor = stringParaCor(atividades15Dias[indexPath.row].disciplina.cor)
-                cell.barra.backgroundColor = stringParaCor(atividades15Dias[indexPath.row].disciplina.cor)
-            case 2:
-                cell.title.text = atividades30Dias[indexPath.row].nome
-                //cell.date.text = atividades7Dias[indexPath.row].data
-                var ind = String.Index.successor(atividades30Dias[indexPath.row].disciplina.nome.startIndex)
-                cell.matIcon.text = atividades30Dias[indexPath.row].disciplina.nome.substringToIndex(ind())
-//                cell.matIcon.backgroundColor = stringParaCor(atividades30Dias[indexPath.row].disciplina.cor)
-                cell.barra.backgroundColor = stringParaCor(atividades30Dias[indexPath.row].disciplina.cor)
-            case 3:
-                cell.title.text = atividades30MaisDias[indexPath.row].nome
-                //cell.date.text = atividades7Dias[indexPath.row].data
-                var ind = String.Index.successor(atividades30MaisDias[indexPath.row].disciplina.nome.startIndex)
-                cell.matIcon.text = atividades30MaisDias[indexPath.row].disciplina.nome.substringToIndex(ind())
-//                cell.matIcon.backgroundColor = stringParaCor(atividades30MaisDias[indexPath.row].disciplina.cor)
-                cell.barra.backgroundColor = stringParaCor(atividades30MaisDias[indexPath.row].disciplina.cor)
-            default:
-                break
-            }
+            cell.title.text = ativ.nome
+            cell.date.textColor = stringParaCor(ativ.disciplina.cor)
+            cell.matIcon.text = ativ.disciplina.nome
+            cell.barra.backgroundColor = stringParaCor(ativ.disciplina.cor)
             return cell
         }
-        else {
+        else{
             let cell: CellTarefa = tableView.dequeueReusableCellWithIdentifier("CellTarefa", forIndexPath: indexPath) as! CellTarefa
             
-            cell.barra.layer.cornerRadius = cell.matIcon.frame.size.height
-            cell.barra.clipsToBounds = true
-            
-            switch indexPath.section {
-            case 0:
-                cell.title.text = atividades7Dias[indexPath.row].nome
-                //cell.date.text = atividades7Dias[indexPath.row].data
-                var ind = String.Index.successor(atividades7Dias[indexPath.row].disciplina.nome.startIndex)
-                cell.matIcon.text = atividades7Dias[indexPath.row].disciplina.nome.substringToIndex(ind())
-//                cell.matIcon.backgroundColor = stringParaCor(atividades7Dias[indexPath.row].disciplina.cor)
-                cell.barra.backgroundColor = stringParaCor(atividades7Dias[indexPath.row].disciplina.cor)
-            case 1:
-                cell.title.text = atividades15Dias[indexPath.row].nome
-                //cell.date.text = atividades7Dias[indexPath.row].data
-                var ind = String.Index.successor(atividades15Dias[indexPath.row].disciplina.nome.startIndex)
-                cell.matIcon.text = atividades15Dias[indexPath.row].disciplina.nome.substringToIndex(ind())
-//                cell.matIcon.backgroundColor = stringParaCor(atividades15Dias[indexPath.row].disciplina.cor)
-                cell.barra.backgroundColor = stringParaCor(atividades15Dias[indexPath.row].disciplina.cor)
-            case 2:
-                cell.title.text = atividades30Dias[indexPath.row].nome
-                //cell.date.text = atividades7Dias[indexPath.row].data
-                var ind = String.Index.successor(atividades30Dias[indexPath.row].disciplina.nome.startIndex)
-                cell.matIcon.text = atividades30Dias[indexPath.row].disciplina.nome.substringToIndex(ind())
-//                cell.matIcon.backgroundColor = stringParaCor(atividades30Dias[indexPath.row].disciplina.cor)
-                cell.barra.backgroundColor = stringParaCor(atividades30Dias[indexPath.row].disciplina.cor)
-            case 3:
-                cell.title.text = atividades30MaisDias[indexPath.row].nome
-                //cell.date.text = atividades7Dias[indexPath.row].data
-                var ind = String.Index.successor(atividades30MaisDias[indexPath.row].disciplina.nome.startIndex)
-                cell.matIcon.text = atividades30MaisDias[indexPath.row].disciplina.nome.substringToIndex(ind())
-//                cell.matIcon.backgroundColor = stringParaCor(atividades30MaisDias[indexPath.row].disciplina.cor)
-                cell.barra.backgroundColor = stringParaCor(atividades30MaisDias[indexPath.row].disciplina.cor)
-            default:
-                break
-            }
+            cell.title.text = ativ.nome
+            cell.date.textColor = stringParaCor(ativ.disciplina.cor)
+            cell.matIcon.text = ativ.disciplina.nome
+            cell.barra.backgroundColor = stringParaCor(ativ.disciplina.cor)
             return cell
         }
+
     }
-    
     
     @IBAction func mudarTable(sender: AnyObject) {
         self.tableView.reloadData()
