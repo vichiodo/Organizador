@@ -26,74 +26,8 @@ class AtividadeManager {
         return NSEntityDescription.insertNewObjectForEntityForName(AtividadeManager.entityName, inManagedObjectContext: managedContext) as! Atividade
     }
     
-    func buscarProvas() -> Array<Atividade> {
-        let buscaRequest = NSFetchRequest(entityName: AtividadeManager.entityName)
-        buscaRequest.predicate = NSPredicate(format: "tipo == %i", 0)
-//        buscaRequest.sortDescriptors = [NSSortDescriptor(key: "data", ascending: false)]
-        var erro: NSError?
-        let buscaResultados = managedContext.executeFetchRequest(buscaRequest, error: &erro) as? [NSManagedObject]
-        if let resultados = buscaResultados as? [Atividade] {
-            return resultados
-        } else {
-            println("Não foi possível buscar essa atividade. Erro: \(erro), \(erro!.userInfo)")
-        }
-        
-        NSFetchRequest(entityName: "FetchRequest")
-
-        return Array<Atividade>()
-    }
-    
-    func buscarTarefas() -> Array<Atividade> {
-        let buscaRequest = NSFetchRequest(entityName: AtividadeManager.entityName)
-        buscaRequest.predicate = NSPredicate(format: "tipo == %i", 1)
-        var erro: NSError?
-        let buscaResultados = managedContext.executeFetchRequest(buscaRequest, error: &erro) as? [NSManagedObject]
-        if let resultados = buscaResultados as? [Atividade] {
-            return resultados
-        } else {
-            println("Não foi possível buscar essa atividade. Erro: \(erro), \(erro!.userInfo)")
-        }
-        
-        NSFetchRequest(entityName: "FetchRequest")
-        
-        return Array<Atividade>()
-    }
-    
     func buscarAtividades() -> Array<Atividade> {
         let buscaRequest = NSFetchRequest(entityName: AtividadeManager.entityName)
-        var erro: NSError?
-        let buscaResultados = managedContext.executeFetchRequest(buscaRequest, error: &erro) as? [NSManagedObject]
-        if let resultados = buscaResultados as? [Atividade] {
-            return resultados
-        } else {
-            println("Não foi possível buscar essa atividade. Erro: \(erro), \(erro!.userInfo)")
-        }
-        
-        NSFetchRequest(entityName: "FetchRequest")
-        
-        return Array<Atividade>()
-    }
-
-    func buscarAtividadesConcluidas() -> Array<Atividade> {
-        let buscaRequest = NSFetchRequest(entityName: AtividadeManager.entityName)
-        buscaRequest.predicate = NSPredicate(format: "concluido == %i", 1)
-        var erro: NSError?
-        let buscaResultados = managedContext.executeFetchRequest(buscaRequest, error: &erro) as? [NSManagedObject]
-        if let resultados = buscaResultados as? [Atividade] {
-            return resultados
-        } else {
-            println("Não foi possível buscar essa atividade. Erro: \(erro), \(erro!.userInfo)")
-        }
-        
-        NSFetchRequest(entityName: "FetchRequest")
-        
-        return Array<Atividade>()
-    }
-
-    
-    func buscarAtividadesNaoConcluidas() -> Array<Atividade> {
-        let buscaRequest = NSFetchRequest(entityName: AtividadeManager.entityName)
-        buscaRequest.predicate = NSPredicate(format: "concluido == %i", 0)
         var erro: NSError?
         let buscaResultados = managedContext.executeFetchRequest(buscaRequest, error: &erro) as? [NSManagedObject]
         if let resultados = buscaResultados as? [Atividade] {
@@ -144,32 +78,18 @@ class AtividadeManager {
         managedContext.deleteObject(atividade as NSManagedObject)
         salvarAtividade()
     }
-
-        func removerProva(id: Int) {
-        var arrayAti: Array<Atividade> = buscarProvas()
-        managedContext.deleteObject(arrayAti[id] as NSManagedObject)
-        salvarAtividade()
-    }
     
-    func removerTarefa(id: Int) {
-        var arrayAti: Array<Atividade> = buscarTarefas()
-        managedContext.deleteObject(arrayAti[id] as NSManagedObject)
-        salvarAtividade()
-    }
-
-    func salvarNovaAtividade(nome: String, data: NSDate, materia: Disciplina, peso: Int, tipo: Int, valeNota: Bool, obs: String){
+    func salvarNovaAtividade(nome: String, data: NSDate, materia: Disciplina, peso: Int, tipo: Int, valeNota: Bool, obs: String) {
         var idAtual: Int!
         var array = buscarAtividades()
         if array.isEmpty {
             idAtual = 0
-        }else {
+        } else {
             var obj = array.last! as Atividade
             idAtual = Int(obj.id) + 1
         }
         
-        
         let atividade = novaAtividade()
-        
         
         atividade.setValue(idAtual, forKey: "id")
         
@@ -182,9 +102,6 @@ class AtividadeManager {
         atividade.setValue(obs, forKey: "obs")
         atividade.setValue(materia, forKey: "disciplina")
         atividade.setValue(0, forKey: "concluido")
-        
-        
-        
         
         salvarAtividade()
     }

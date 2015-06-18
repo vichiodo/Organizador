@@ -136,7 +136,7 @@ JUL</string>
                 <outlet property="matIcon" destination="m32-kI-rpC" id="Wce-FY-Zg4"/>
                 <outlet property="title" destination="P7p-ZP-mHo" id="k9e-Pb-ZqH"/>
             </connections>
-            <point key="canvasLocation" x="293.5" y="253"/>
+            <point key="canvasLocation" x="278.5" y="251"/>
         </tableViewCell>
     </objects>
 </document>
