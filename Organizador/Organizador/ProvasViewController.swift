@@ -50,7 +50,6 @@ class ProvasViewController: UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         self.atualiza_OrdenaVetores()
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -126,6 +125,7 @@ class ProvasViewController: UITableViewController {
         default:
             break
         }
+        else{
         
         var cell: UITableViewCell!
         

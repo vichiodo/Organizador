@@ -139,7 +139,13 @@ class AtividadeManager {
         }
     }
     
-    func removerProva(id: Int) {
+    func removerAtividade(id: Int) {
+        var arrayAti: Array<Atividade> = buscarAtividades()
+        managedContext.deleteObject(arrayAti[id] as NSManagedObject)
+        salvarAtividade()
+    }
+
+        func removerProva(id: Int) {
         var arrayAti: Array<Atividade> = buscarProvas()
         managedContext.deleteObject(arrayAti[id] as NSManagedObject)
         salvarAtividade()

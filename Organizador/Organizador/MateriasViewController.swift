@@ -81,6 +81,5 @@ class MateriasViewController: UIViewController, UITableViewDataSource, UITableVi
             alpha: CGFloat(1.0)
         )
     }
-
     
 }

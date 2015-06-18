@@ -80,7 +80,7 @@ class AddProvaViewController: UITableViewController, UITextViewDelegate {
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 3
+        return 4
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -201,6 +201,48 @@ class AddProvaViewController: UITableViewController, UITextViewDelegate {
         }
     }
     
+    func cancelarNotificacao(nome: NSString, materia: Disciplina, data: NSDate) {
+        for i in 0...7 {
+            var localNotification:UILocalNotification = UILocalNotification()
+            localNotification.alertAction = "Ver a prova"
+            var diasRestantes = 7 - i
+            var strNotif = "\(nome) de \(materia.nome)"
+            if diasRestantes == 0 {
+                localNotification.alertBody = "Vish, a '\(strNotif)' é hoje!"
+            }
+            else if diasRestantes == 1 {
+                localNotification.alertBody = "Vish, falta \(diasRestantes) dia para a '\(strNotif)'!"
+            }
+            else {
+                localNotification.alertBody = "Vish, faltam \(diasRestantes) dias para a '\(strNotif)'!"
+            }
+            
+            let dateFix: NSTimeInterval = floor(data.timeIntervalSinceReferenceDate / 60.0) * 60.0
+            var horario: NSDate = NSDate(timeIntervalSinceReferenceDate: dateFix)
+            
+            let intervalo: NSTimeInterval = -NSTimeInterval(60*60*24 * (diasRestantes))
+            
+            localNotification.fireDate = NSDate(timeInterval: intervalo, sinceDate: horario)
+            UIApplication.sharedApplication().cancelLocalNotification(localNotification)
+        }
+    }
+
+    
+    
+//    func setBadgeNumbers() {
+//        var notifications = UIApplication.sharedApplication().scheduledLocalNotifications as! [UILocalNotification] // all scheduled notifications
+//        var todoItems: [TodoItem] = self.allItems()
+//        for notification in notifications {
+//            var overdueItems = todoItems.filter({ (todoItem) -> Bool in // array of to-do items...
+//                return (todoItem.deadline.compare(notification.fireDate!) != .OrderedDescending) // ...where item deadline is before or on notification fire date
+//            })
+//            UIApplication.sharedApplication().cancelLocalNotification(notification) // cancel old notification
+//            notification.applicationIconBadgeNumber = overdueItems.count // set new badge number
+//            UIApplication.sharedApplication().scheduleLocalNotification(notification) // reschedule notification
+//        }
+//    }
+
+    
     //método que salva no calendário nativo a atividade
     func criarEventoCalendario(){
         var eventStore: EKEventStore = EKEventStore()
@@ -234,6 +276,8 @@ class AddProvaViewController: UITableViewController, UITextViewDelegate {
             lblPerc.hidden = false
             lblPeso.hidden = false
             pesoTextField.hidden = false
+            txtObs.hidden = false
+            provaTxt.placeholder = "Nome da Prova"
         default:
             println("TRABALHO")
             valeNota.hidden = false
@@ -241,6 +285,8 @@ class AddProvaViewController: UITableViewController, UITextViewDelegate {
             lblPerc.hidden = true
             lblPeso.hidden = true
             pesoTextField.hidden = true
+            txtObs.hidden = false
+            provaTxt.placeholder = "Nome da Tarefa"
         }
         self.tableView.reloadData()
     }
