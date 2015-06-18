@@ -140,8 +140,8 @@ class AtividadeManager {
     }
     
     func removerAtividade(id: Int) {
-        var arrayAti: Array<Atividade> = buscarAtividades()
-        managedContext.deleteObject(arrayAti[id] as NSManagedObject)
+        var atividade: Atividade = buscarAtividade(id)
+        managedContext.deleteObject(atividade as NSManagedObject)
         salvarAtividade()
     }
 

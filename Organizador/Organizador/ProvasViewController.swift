@@ -124,9 +124,7 @@ class ProvasViewController: UITableViewController {
             ativ = atividades30Dias[indexPath.row]
         default:
             break
-        }
-        else{
-        
+        }        
         var cell: UITableViewCell!
         
         if ativ.tipo == 0 {
@@ -154,7 +152,31 @@ class ProvasViewController: UITableViewController {
 
     }
     
-    @IBAction func mudarTable(sender: AnyObject) {
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            let vC: AddProvaViewController = AddProvaViewController()
+            
+            switch indexPath.section {
+            case 0:
+                vC.cancelarNotificacao(atividades7Dias[indexPath.row].nome, materia: atividades7Dias[indexPath.row].disciplina, data: atividades7Dias[indexPath.row].data)
+                AtividadeManager.sharedInstance.removerAtividade(atividades7Dias[indexPath.row].id as Int)
+            case 1:
+                vC.cancelarNotificacao(atividades15Dias[indexPath.row].nome, materia: atividades15Dias[indexPath.row].disciplina, data: atividades15Dias[indexPath.row].data)
+                AtividadeManager.sharedInstance.removerAtividade(atividades15Dias[indexPath.row].id as Int)
+            case 2:
+                vC.cancelarNotificacao(atividades30Dias[indexPath.row].nome, materia: atividades30Dias[indexPath.row].disciplina, data: atividades30Dias[indexPath.row].data)
+                AtividadeManager.sharedInstance.removerAtividade(atividades30Dias[indexPath.row].id as Int)
+            case 3:
+                vC.cancelarNotificacao(atividades30MaisDias[indexPath.row].nome, materia: atividades30MaisDias[indexPath.row].disciplina, data: atividades30MaisDias[indexPath.row].data)
+                AtividadeManager.sharedInstance.removerAtividade(atividades30MaisDias[indexPath.row].id as Int)
+            default:
+                break
+            }
+        }
+        atualiza_OrdenaVetores()
+    }
+    
+    func mudarTable(sender: AnyObject) {
         self.tableView.reloadData()
     }
     
