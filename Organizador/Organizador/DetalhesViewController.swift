@@ -167,10 +167,11 @@ class DetalhesViewController: UITableViewController {
                 // Não pode deixar salvar
                 println("PESO INVÁLIDO")
             }
+            AtividadeManager.sharedInstance.salvarAtividade()
             self.excluirEventoCalendario(atividadeSelecionada.nome, materia: atividadeSelecionada.disciplina, data: atividadeSelecionada.data)
+            self.navigationController?.popToRootViewControllerAnimated(true)
 
         }
-        self.navigationController?.popToRootViewControllerAnimated(true)
         
     }
     
@@ -259,15 +260,6 @@ class DetalhesViewController: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0: return 2
-        case 1: return 2
-        case 2: return 2
-        default: return 0
-        }
     }
     
     //excluir evento do calendário
