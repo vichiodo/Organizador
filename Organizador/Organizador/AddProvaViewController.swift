@@ -270,6 +270,7 @@ class AddProvaViewController: UITableViewController, UITextFieldDelegate, UIText
         })
     }
     
+        
     @IBAction func segControl(sender: AnyObject) {
         switch segmentedC.selectedSegmentIndex {
         case 0:

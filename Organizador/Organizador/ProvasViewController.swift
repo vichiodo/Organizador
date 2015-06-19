@@ -150,6 +150,7 @@ class ProvasViewController: UITableViewController {
             }
         } else {
             ativ = atividadesConcluidas[indexPath.row]
+            ativ.concluido = 1
             let dataAtividade = ativ.data
             let calendar = NSCalendar.currentCalendar()
             let components = calendar.components(.CalendarUnitDay | .CalendarUnitMonth, fromDate:  dataAtividade)
