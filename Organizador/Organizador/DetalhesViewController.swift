@@ -11,13 +11,16 @@ import EventKit
 
 class DetalhesViewController: UITableViewController {
     
-    let vC: ProvasViewController = ProvasViewController()
+//    let vC: ProvasViewController = ProvasViewController()
     @IBOutlet weak var nomeTxt: UITextField!
     @IBOutlet weak var materiaTxt: UITextField!
     @IBOutlet weak var notaTxt: UITextField!
     @IBOutlet weak var pesoTxt: UITextField!
     @IBOutlet weak var dataTxt: UITextField!
     @IBOutlet weak var obsTxt: UITextView!
+    @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var cellData: UITableViewCell!
+    @IBOutlet weak var cellDateP: UITableViewCell!
     
     var atividadeSelecionada: Atividade!
     
@@ -31,19 +34,59 @@ class DetalhesViewController: UITableViewController {
         pesoTxt.userInteractionEnabled = false
         dataTxt.userInteractionEnabled = false
         obsTxt.userInteractionEnabled = false
+        cellDateP.hidden = true
+        datePicker.userInteractionEnabled = false
+        
         
         editarBtn = UIBarButtonItem(title: "Editar", style: .Plain, target: self, action: "editar")
         navigationItem.rightBarButtonItem = editarBtn
         
     }
     
+    
+    override func viewWillAppear(animated: Bool) {
+        nomeTxt.text = atividadeSelecionada.nome
+        materiaTxt.text = atividadeSelecionada.disciplina.nome
+        notaTxt.text = "\(atividadeSelecionada.nota)"
+        pesoTxt.text = "\(atividadeSelecionada.peso)"
+        dataTxt.text = "\(atividadeSelecionada.data)"
+        obsTxt.text = atividadeSelecionada.obs
+        datePicker.date = atividadeSelecionada.data
+        
+        
+        
+        //                atividade.nota = NSNumber(integer: self.txtField!.text.toInt()!)
+        
+        
+    }
+    
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 3
+    }
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch section {
+        case 0: return 2
+        case 1: return 2
+        case 2:
+            if atividadeSelecionada.concluido == 0{
+                return 3
+            }
+            cellDateP.hidden = true
+            return 1
+        default: return 0
+        }
+    }
+
+    
     func editar() {
         if editarBtn.title == "Editar" {
             if atividadeSelecionada.concluido == 0 {
                 nomeTxt.userInteractionEnabled = true
                 pesoTxt.userInteractionEnabled = true
-                dataTxt.userInteractionEnabled = true
                 obsTxt.userInteractionEnabled = true
+                cellDateP.hidden = false
+                datePicker.userInteractionEnabled = true
                 
                 nomeTxt.borderStyle = .RoundedRect
                 pesoTxt.borderStyle = .RoundedRect
@@ -84,12 +127,19 @@ class DetalhesViewController: UITableViewController {
             
             var mediaAntigaAtividade = (atividadeSelecionada.peso.doubleValue/100) * atividadeSelecionada.nota.doubleValue
             atividadeSelecionada.disciplina.media = atividadeSelecionada.disciplina.media.doubleValue - mediaAntigaAtividade
-            AtividadeManager.sharedInstance.salvarAtividade()
+            
+            if dataTxt != datePicker.date {
+                atividadeSelecionada.data = datePicker.date
+                cancelarNotificacao(atividadeSelecionada.nome, materia: atividadeSelecionada.disciplina, data: atividadeSelecionada.data)
+                criarNotificacao(nomeTxt.text, materia: atividadeSelecionada.disciplina, data: datePicker.date)
+                criarEventoCalendario(nomeTxt.text, materia: atividadeSelecionada.disciplina, data: datePicker.date)
+            }
 
             atividadeSelecionada.nome = nomeTxt.text
             atividadeSelecionada.nota = notaTxt.text.toInt()!
             atividadeSelecionada.peso = pesoTxt.text.toInt()!
             atividadeSelecionada.obs = obsTxt.text
+            
             
             ///////// VERIFICAR: NOTA ENTRE 0 E 10, PESO ENTRE 0 E 100%
             var mediaAtividade: Double!
@@ -102,7 +152,6 @@ class DetalhesViewController: UITableViewController {
                     atividadeSelecionada.disciplina.media = atividadeSelecionada.disciplina.media.doubleValue + mediaAtividade
                     println("media atividade \(mediaAtividade)")
                     println("media materia \(atividadeSelecionada.disciplina.media)")
-                    AtividadeManager.sharedInstance.salvarAtividade()
                     
                     println("Nome novo: \(atividadeSelecionada.nome)")
                     
@@ -121,31 +170,95 @@ class DetalhesViewController: UITableViewController {
             self.excluirEventoCalendario(atividadeSelecionada.nome, materia: atividadeSelecionada.disciplina, data: atividadeSelecionada.data)
 
         }
+        self.navigationController?.popToRootViewControllerAnimated(true)
+        
     }
     
+    func criarNotificacao(nome: NSString, materia: Disciplina, data: NSDate) {
+        for i in 0...7 {
+            var localNotification:UILocalNotification = UILocalNotification()
+            localNotification.alertAction = "Ver a prova"
+            var diasRestantes = 7 - i
+            var strNotif = "\(nome) de \(materia.nome)"
+            if diasRestantes == 0 {
+                localNotification.alertBody = "Vish, a '\(strNotif)' é hoje!"
+            }
+            else if diasRestantes == 1 {
+                localNotification.alertBody = "Vish, falta \(diasRestantes) dia para a '\(strNotif)'!"
+            }
+            else {
+                localNotification.alertBody = "Vish, faltam \(diasRestantes) dias para a '\(strNotif)'!"
+            }
+            
+            let dateFix: NSTimeInterval = floor(data.timeIntervalSinceReferenceDate / 60.0) * 60.0
+            var horario: NSDate = NSDate(timeIntervalSinceReferenceDate: dateFix)
+            
+            let intervalo: NSTimeInterval = -NSTimeInterval(60*60*24 * (diasRestantes))
+            
+            localNotification.soundName = UILocalNotificationDefaultSoundName
+            localNotification.applicationIconBadgeNumber = 1
+            
+            localNotification.fireDate = NSDate(timeInterval: intervalo, sinceDate: horario)
+            UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+        }
+    }
+    
+    func cancelarNotificacao(nome: NSString, materia: Disciplina, data: NSDate) {
+        for i in 0...7 {
+            var localNotification:UILocalNotification = UILocalNotification()
+            localNotification.alertAction = "Ver a prova"
+            var diasRestantes = 7 - i
+            var strNotif = "\(nome) de \(materia.nome)"
+            if diasRestantes == 0 {
+                localNotification.alertBody = "Vish, a '\(strNotif)' é hoje!"
+            }
+            else if diasRestantes == 1 {
+                localNotification.alertBody = "Vish, falta \(diasRestantes) dia para a '\(strNotif)'!"
+            }
+            else {
+                localNotification.alertBody = "Vish, faltam \(diasRestantes) dias para a '\(strNotif)'!"
+            }
+            
+            let dateFix: NSTimeInterval = floor(data.timeIntervalSinceReferenceDate / 60.0) * 60.0
+            var horario: NSDate = NSDate(timeIntervalSinceReferenceDate: dateFix)
+            
+            let intervalo: NSTimeInterval = -NSTimeInterval(60*60*24 * (diasRestantes))
+            
+            localNotification.soundName = UILocalNotificationDefaultSoundName
+            localNotification.applicationIconBadgeNumber = 1
+            
+            localNotification.fireDate = NSDate(timeInterval: intervalo, sinceDate: horario)
+            UIApplication.sharedApplication().cancelLocalNotification(localNotification)
+        }
+    }
+    
+    //método que salva no calendário nativo a atividade
+    func criarEventoCalendario(nome: NSString, materia: Disciplina, data: NSDate){
+        var eventStore: EKEventStore = EKEventStore()
+        
+        var evento: EKEvent = EKEvent(eventStore: eventStore)
+        
+        evento.title = "\(nome) de \(materia.nome)"
+        
+        evento.startDate = data
+        
+        evento.endDate = NSDate(timeInterval: 3600, sinceDate: evento.startDate)
+        
+        eventStore.requestAccessToEntityType(EKEntityTypeEvent, completion: { (granted: Bool, error NSError) -> Void in
+            if !granted {
+                return
+            } else {
+                evento.calendar = eventStore.defaultCalendarForNewEvents
+                
+                eventStore.saveEvent(evento, span: EKSpanThisEvent, commit: true, error: NSErrorPointer())
+            }
+        })
+    }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        nomeTxt.text = atividadeSelecionada.nome
-        materiaTxt.text = atividadeSelecionada.disciplina.nome
-        notaTxt.text = "\(atividadeSelecionada.nota)"
-        pesoTxt.text = "\(atividadeSelecionada.peso)"
-        dataTxt.text = "\(atividadeSelecionada.data)"
-        obsTxt.text = atividadeSelecionada.obs
-        
-        
-        
-        //                atividade.nota = NSNumber(integer: self.txtField!.text.toInt()!)
-        
-        
-    }
-    
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 3
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -117,7 +117,7 @@
         <scene sceneID="cky-qx-zxC">
             <objects>
                 <tableViewController id="dFg-uh-cee" customClass="DetalhesViewController" customModule="Organizador" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="G2G-DD-gDT">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="G2G-DD-gDT">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
@@ -297,12 +297,45 @@
                                             </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="97" id="Re4-eJ-WYQ">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="160" id="Re4-eJ-WYQ">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Re4-eJ-WYQ" id="ohE-OR-7Na">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Observacao" translatesAutoresizingMaskIntoConstraints="NO" id="bmE-Ey-JPf">
+                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="5" translatesAutoresizingMaskIntoConstraints="NO" id="rx3-aH-Dcy">
+                                                    <rect key="frame" x="140" y="-1.5" width="320" height="162"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="229" id="6h0-wN-4Kt"/>
+                                                    </constraints>
+                                                    <date key="date" timeIntervalSinceReferenceDate="456428841.80677599">
+                                                        <!--2015-06-19 17:47:21 +0000-->
+                                                    </date>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="6h0-wN-4Kt"/>
+                                                        </mask>
+                                                    </variation>
+                                                </datePicker>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="rx3-aH-Dcy" firstAttribute="top" secondItem="ohE-OR-7Na" secondAttribute="top" id="9kC-K3-TJa"/>
+                                                <constraint firstAttribute="bottom" secondItem="rx3-aH-Dcy" secondAttribute="bottom" id="aKu-rq-lzG"/>
+                                                <constraint firstItem="rx3-aH-Dcy" firstAttribute="leading" secondItem="ohE-OR-7Na" secondAttribute="leading" constant="191" id="dvY-Ks-n1Y"/>
+                                                <constraint firstAttribute="centerX" secondItem="rx3-aH-Dcy" secondAttribute="centerX" id="sxh-eM-Jkr"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="dvY-Ks-n1Y"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="97" id="Bmb-by-2MV">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Bmb-by-2MV" id="77S-Eq-ulx">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Observacao" translatesAutoresizingMaskIntoConstraints="NO" id="una-cb-FXO">
                                                     <rect key="frame" x="24" y="12" width="318" height="72.5"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -322,11 +355,14 @@
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="cellData" destination="l8R-yb-Mht" id="5lO-L0-wsL"/>
+                        <outlet property="cellDateP" destination="Re4-eJ-WYQ" id="pmJ-Fq-I4n"/>
                         <outlet property="dataTxt" destination="Yif-kd-Qsg" id="NpR-61-8A5"/>
+                        <outlet property="datePicker" destination="rx3-aH-Dcy" id="B9x-Ie-BGH"/>
                         <outlet property="materiaTxt" destination="4UW-jE-C79" id="735-tC-XAK"/>
                         <outlet property="nomeTxt" destination="k6p-9D-3cR" id="joP-Dv-V1a"/>
                         <outlet property="notaTxt" destination="9yW-tQ-dmm" id="eqk-nr-Sey"/>
-                        <outlet property="obsTxt" destination="bmE-Ey-JPf" id="eVp-50-OHv"/>
+                        <outlet property="obsTxt" destination="una-cb-FXO" id="7NG-3O-9ja"/>
                         <outlet property="pesoTxt" destination="ybV-wZ-VMO" id="15x-NI-yaD"/>
                     </connections>
                 </tableViewController>
