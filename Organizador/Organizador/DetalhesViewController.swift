@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import EventKit
 
 class DetalhesViewController: UITableViewController {
     
@@ -78,11 +79,7 @@ class DetalhesViewController: UITableViewController {
             
             
             ///////////// MUDAR OS DADOS DO COREDATA!!! //////////////////
-            // quais dados vao poder mudar???
-            // nome, disciplina??? , nota, peso, data??? (como escolher a data?), obs
             
-            // acho que nome e disciplina nao pode mudar...
-            // data tem que aparecer dia/mes e horario
             println("Nome antigo: \(atividadeSelecionada.nome)")
             
             var mediaAntigaAtividade = (atividadeSelecionada.peso.doubleValue/100) * atividadeSelecionada.nota.doubleValue
@@ -121,6 +118,8 @@ class DetalhesViewController: UITableViewController {
                 // Não pode deixar salvar
                 println("PESO INVÁLIDO")
             }
+            self.excluirEventoCalendario(atividadeSelecionada.nome, materia: atividadeSelecionada.disciplina, data: atividadeSelecionada.data)
+
         }
     }
     
@@ -157,6 +156,35 @@ class DetalhesViewController: UITableViewController {
         default: return 0
         }
     }
+    
+    //excluir evento do calendário
+    func excluirEventoCalendario(nome: NSString, materia: Disciplina, data: NSDate){
+        var eventStore = EKEventStore()
+        
+        var endData: NSDate = NSDate(timeInterval: 3600, sinceDate: data)
+        
+//        var predicate = eventStore.predicateForEventsWithStartDate(data, endDate: endData, calendars:[NSCalendar.currentCalendar()])
+        
+        var evento: EKEvent = EKEvent(eventStore: eventStore)
+        
+        evento.title = "\(nome) de \(materia.nome)"
+        
+        evento.startDate = data
+        
+        evento.endDate = NSDate(timeInterval: 3600, sinceDate: evento.startDate)
+        
+        eventStore.requestAccessToEntityType(EKEntityTypeEvent, completion: { (granted: Bool, error NSError) -> Void in
+            if !granted {
+                return
+            } else {
+                evento.calendar = eventStore.defaultCalendarForNewEvents
+                
+                var conseguiu = eventStore.removeEvent(evento, span: EKSpanThisEvent, commit: true, error: NSErrorPointer())
+            }
+        })
+        
+    }
+
     /*
     // MARK: - Navigation
     
