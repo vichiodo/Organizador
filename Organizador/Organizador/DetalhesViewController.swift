@@ -51,6 +51,7 @@ class DetalhesViewController: UITableViewController {
         pesoTxt.text = "\(atividadeSelecionada.peso)"
         dataTxt.text = "\(atividadeSelecionada.data)"
         obsTxt.text = atividadeSelecionada.obs
+        datePicker.date = atividadeSelecionada.data
         
         
         
@@ -173,7 +174,7 @@ class DetalhesViewController: UITableViewController {
             AtividadeManager.sharedInstance.salvarAtividade()
             
         }
-        
+        self.navigationController?.popToRootViewControllerAnimated(true)
         
     }
     
