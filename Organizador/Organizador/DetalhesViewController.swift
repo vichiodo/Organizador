@@ -261,40 +261,36 @@ class DetalhesViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0: return 2
-        case 1: return 2
-        case 2: return 2
-        default: return 0
-        }
-    }
-    
     //excluir evento do calendário
     func excluirEventoCalendario(nome: NSString, materia: Disciplina, data: NSDate){
         var eventStore = EKEventStore()
         
+        
         var endData: NSDate = NSDate(timeInterval: 3600, sinceDate: data)
         
-//        var predicate = eventStore.predicateForEventsWithStartDate(data, endDate: endData, calendars:[NSCalendar.currentCalendar()])
+        var predicate = eventStore.predicateForEventsWithStartDate(data, endDate: endData, calendars:[eventStore.defaultCalendarForNewEvents])
         
-        var evento: EKEvent = EKEvent(eventStore: eventStore)
+        var eventos = eventStore.eventsMatchingPredicate(predicate)
         
-        evento.title = "\(nome) de \(materia.nome)"
+//        var evento: EKEvent = EKEvent(eventStore: eventStore)
+//        
+//        evento.title = "\(nome) de \(materia.nome)"
+//        
+//        evento.startDate = data
+//        
+//        evento.endDate = NSDate(timeInterval: 3600, sinceDate: evento.startDate)
         
-        evento.startDate = data
+        eventStore.removeEvent((eventos.first as! EKEvent), span: EKSpanThisEvent, error: NSErrorPointer())
         
-        evento.endDate = NSDate(timeInterval: 3600, sinceDate: evento.startDate)
-        
-        eventStore.requestAccessToEntityType(EKEntityTypeEvent, completion: { (granted: Bool, error NSError) -> Void in
-            if !granted {
-                return
-            } else {
-                evento.calendar = eventStore.defaultCalendarForNewEvents
-                
-                var conseguiu = eventStore.removeEvent(evento, span: EKSpanThisEvent, commit: true, error: NSErrorPointer())
-            }
-        })
+//        eventStore.requestAccessToEntityType(EKEntityTypeEvent, completion: { (granted: Bool, error NSError) -> Void in
+//            if !granted {
+//                return
+//            } else {
+//                evento.calendar = eventStore.defaultCalendarForNewEvents
+//                
+//                var conseguiu = eventStore.removeEvent(evento, span: EKSpanThisEvent, commit: true, error: NSErrorPointer())
+//            }
+//        })
         
     }
 
