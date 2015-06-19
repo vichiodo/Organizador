@@ -17,8 +17,6 @@ class CellProva: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        barra.layer.cornerRadius = barra.frame.size.height
-        barra.clipsToBounds = true
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

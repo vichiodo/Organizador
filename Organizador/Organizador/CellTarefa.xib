@@ -16,11 +16,11 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1rp-on-sfk">
-                        <rect key="frame" x="10" y="5" width="40" height="39.5"/>
+                        <rect key="frame" x="20" y="5" width="40" height="39.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xzZ-VD-cQc">
                                 <rect key="frame" x="4" y="4" width="32" height="31.5"/>
-                                <color key="backgroundColor" white="0.90000000000000002" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.95000000000000007" alpha="1" colorSpace="calibratedWhite"/>
                                 <attributedString key="attributedText">
                                     <fragment>
                                         <string key="content">27
@@ -55,7 +55,7 @@ JUL</string>
                         </variation>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="História" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m32-kI-rpC">
-                        <rect key="frame" x="70" y="25" width="285" height="16.5"/>
+                        <rect key="frame" x="80" y="25" width="275" height="16.5"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="m32-kI-rpC" secondAttribute="height" multiplier="2:1" id="5Al-Yj-GxY"/>
                             <constraint firstAttribute="width" secondItem="m32-kI-rpC" secondAttribute="height" multiplier="1:1" id="yqD-w9-goh"/>
@@ -71,7 +71,7 @@ JUL</string>
                         </variation>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Redação sobre o comunismo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P7p-ZP-mHo">
-                        <rect key="frame" x="70" y="8" width="285" height="17"/>
+                        <rect key="frame" x="80" y="8" width="275" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
@@ -105,7 +105,7 @@ JUL</string>
                     <constraint firstItem="1rp-on-sfk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="nDp-AY-eI5"/>
                     <constraint firstItem="m32-kI-rpC" firstAttribute="top" secondItem="P7p-ZP-mHo" secondAttribute="bottom" id="tyf-V8-3ad"/>
                     <constraint firstAttribute="bottom" secondItem="1rp-on-sfk" secondAttribute="bottom" constant="5" id="u52-kD-NgA"/>
-                    <constraint firstItem="1rp-on-sfk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="uwm-yO-Sah"/>
+                    <constraint firstItem="1rp-on-sfk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="uwm-yO-Sah"/>
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">

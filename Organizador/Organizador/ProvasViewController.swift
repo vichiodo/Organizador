@@ -130,10 +130,6 @@ class ProvasViewController: UITableViewController {
         
         if ativ.tipo == 0 {
             let cell: CellProva = tableView.dequeueReusableCellWithIdentifier("CellProva", forIndexPath: indexPath) as! CellProva
-            cell.barra.layer.cornerRadius = cell.barra.frame.size.height/2
-            cell.barra.clipsToBounds = true
-            cell.date.layer.cornerRadius = cell.date.frame.size.height/2
-            cell.date.clipsToBounds = true
             
             cell.title.text = ativ.nome
             cell.date.textColor = stringParaCor(ativ.disciplina.cor)
@@ -157,27 +153,28 @@ class ProvasViewController: UITableViewController {
         if editingStyle == UITableViewCellEditingStyle.Delete {
             let vC: AddProvaViewController = AddProvaViewController()
             
+            var ativ: Atividade!
+            
             switch indexPath.section {
             case 0:
-                AtividadeManager.sharedInstance.removerAtividade(atividades7Dias[indexPath.row].id as Int)
-                vC.cancelarNotificacao(atividades7Dias[indexPath.row].nome, materia: atividades7Dias[indexPath.row].disciplina, data: atividades7Dias[indexPath.row].data)
+                ativ = atividades7Dias[indexPath.row]
             case 1:
-                AtividadeManager.sharedInstance.removerAtividade(atividades15Dias[indexPath.row].id as Int)
-                vC.cancelarNotificacao(atividades15Dias[indexPath.row].nome, materia: atividades15Dias[indexPath.row].disciplina, data: atividades15Dias[indexPath.row].data)
+                ativ = atividades15Dias[indexPath.row]
             case 2:
-                AtividadeManager.sharedInstance.removerAtividade(atividades30Dias[indexPath.row].id as Int)
-                vC.cancelarNotificacao(atividades30Dias[indexPath.row].nome, materia: atividades30Dias[indexPath.row].disciplina, data: atividades30Dias[indexPath.row].data)
+                ativ = atividades30Dias[indexPath.row]
             case 3:
-                AtividadeManager.sharedInstance.removerAtividade(atividades30MaisDias[indexPath.row].id as Int)
-                vC.cancelarNotificacao(atividades30MaisDias[indexPath.row].nome, materia: atividades30MaisDias[indexPath.row].disciplina, data: atividades30MaisDias[indexPath.row].data)
+                ativ = atividades30MaisDias[indexPath.row]
             default:
                 break
             }
+            
+            vC.cancelarNotificacao(ativ.nome, materia: ativ.disciplina, data: ativ.data)
+            AtividadeManager.sharedInstance.removerAtividade(ativ.id as Int)
         }
         atualiza_OrdenaVetores()
     }
     
-    @IBAction func mudarTable(sender: AnyObject) {
+    func mudarTable(sender: AnyObject) {
         self.tableView.reloadData()
     }
     
