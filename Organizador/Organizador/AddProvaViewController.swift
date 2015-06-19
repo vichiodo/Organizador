@@ -194,9 +194,12 @@ class AddProvaViewController: UITableViewController, UITextViewDelegate {
             
             let intervalo: NSTimeInterval = -NSTimeInterval(60*60*24 * (diasRestantes))
             
+            localNotification.soundName = UILocalNotificationDefaultSoundName
+            localNotification.applicationIconBadgeNumber = 1
+
             localNotification.fireDate = NSDate(timeInterval: intervalo, sinceDate: horario)
             UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
-            
+            println("\(localNotification)")
             //            println("notificacao \(i) criada - \(localNotification.fireDate!) - nome \(localNotification.alertBody!)")
         }
     }
@@ -222,27 +225,14 @@ class AddProvaViewController: UITableViewController, UITextViewDelegate {
             
             let intervalo: NSTimeInterval = -NSTimeInterval(60*60*24 * (diasRestantes))
             
+            localNotification.soundName = UILocalNotificationDefaultSoundName
+            localNotification.applicationIconBadgeNumber = 1
+
             localNotification.fireDate = NSDate(timeInterval: intervalo, sinceDate: horario)
             UIApplication.sharedApplication().cancelLocalNotification(localNotification)
         }
     }
 
-    
-    
-//    func setBadgeNumbers() {
-//        var notifications = UIApplication.sharedApplication().scheduledLocalNotifications as! [UILocalNotification] // all scheduled notifications
-//        var todoItems: [TodoItem] = self.allItems()
-//        for notification in notifications {
-//            var overdueItems = todoItems.filter({ (todoItem) -> Bool in // array of to-do items...
-//                return (todoItem.deadline.compare(notification.fireDate!) != .OrderedDescending) // ...where item deadline is before or on notification fire date
-//            })
-//            UIApplication.sharedApplication().cancelLocalNotification(notification) // cancel old notification
-//            notification.applicationIconBadgeNumber = overdueItems.count // set new badge number
-//            UIApplication.sharedApplication().scheduleLocalNotification(notification) // reschedule notification
-//        }
-//    }
-
-    
     //método que salva no calendário nativo a atividade
     func criarEventoCalendario(){
         var eventStore: EKEventStore = EKEventStore()
