@@ -96,29 +96,8 @@ class ProvasViewController: UITableViewController {
         
         //        var ativi: Array<Atividade>!
         var ativ: Atividade!
-        
-        switch indexPath.section {
-        case 0:
-            ativ = atividades7Dias[indexPath.row]
-        case 1:
-            ativ = atividades15Dias[indexPath.row]
-        case 2:
-            ativ = atividades30Dias[indexPath.row]
-        case 3:
-            ativ = atividades30Dias[indexPath.row]
-        default:
-            break
-        }
-        
-        var cell: UITableViewCell!
-        
-        if ativ.tipo == 0 {
-            let cell: CellProva = tableView.dequeueReusableCellWithIdentifier("CellProva", forIndexPath: indexPath) as! CellProva
-            
-            
-            
-            
-            
+
+        if segmentedC.selectedSegmentIndex == 0 {
             switch indexPath.section {
             case 0:
                 ativ = atividades7Dias[indexPath.row]
@@ -151,14 +130,10 @@ class ProvasViewController: UITableViewController {
             
             if ativ.tipo == 0 {
                 let cell: CellProva = tableView.dequeueReusableCellWithIdentifier("CellProva", forIndexPath: indexPath) as! CellProva
-                cell.barra.layer.cornerRadius = cell.barra.frame.size.height/2
-                cell.barra.clipsToBounds = true
-                cell.date.text = "\(diaAtividade) \(mesString)"
-                cell.date.layer.cornerRadius = cell.date.frame.size.height/2
-                cell.date.clipsToBounds = true
                 
                 cell.title.text = ativ.nome
                 cell.date.textColor = stringParaCor(ativ.disciplina.cor)
+                cell.date.text = "\(diaAtividade) \(mesString)"
                 cell.matIcon.text = ativ.disciplina.nome
                 cell.barra.backgroundColor = stringParaCor(ativ.disciplina.cor)
                 return cell
@@ -199,8 +174,6 @@ class ProvasViewController: UITableViewController {
             cell.barra.backgroundColor = stringParaCor(ativ.disciplina.cor)
             return cell
         }
-        
-        
     }
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
