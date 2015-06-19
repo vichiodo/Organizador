@@ -133,7 +133,7 @@ class DetalhesViewController: UITableViewController {
                 cancelarNotificacao(atividadeSelecionada.nome, materia: atividadeSelecionada.disciplina, data: atividadeSelecionada.data)
                 atividadeSelecionada.data = datePicker.date
                 criarNotificacao(nomeTxt.text, materia: atividadeSelecionada.disciplina, data: datePicker.date)
-//                criarEventoCalendario(nomeTxt.text, materia: atividadeSelecionada.disciplina, data: datePicker.date)
+                criarEventoCalendario(nomeTxt.text, materia: atividadeSelecionada.disciplina, data: datePicker.date)
             }
 
             atividadeSelecionada.nome = nomeTxt.text
