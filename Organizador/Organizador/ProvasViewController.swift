@@ -24,7 +24,7 @@ class ProvasViewController: UITableViewController {
     var atividadeSelecionada: Atividade!
     
     // carrega o vetor de atividades cadastradas no CoreData
-    lazy var materias:Array<Disciplina> = {
+    lazy var disciplinas:Array<Disciplina> = {
         return DisciplinaManager.sharedInstance.buscarDisciplinas()
         }()
     
@@ -95,8 +95,6 @@ class ProvasViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        //        var ativi: Array<Atividade>!
         var ativ: Atividade!
         
         if segmentedC.selectedSegmentIndex == 0 {
@@ -151,7 +149,6 @@ class ProvasViewController: UITableViewController {
                 return cell
             }
         } else {
-            let cell: CellTarefa = tableView.dequeueReusableCellWithIdentifier("CellTarefa", forIndexPath: indexPath) as! CellTarefa
             ativ = atividadesConcluidas[indexPath.row]
             let dataAtividade = ativ.data
             let calendar = NSCalendar.currentCalendar()
@@ -169,12 +166,26 @@ class ProvasViewController: UITableViewController {
             var aux: NSString = dateFormatter.stringFromDate(myDate)
             var mesString = aux.uppercaseString
             
-            cell.title.text = ativ.nome
-            cell.date.text = "\(diaAtividade)\n\(mesString)"
-            cell.date.textColor = stringParaCor(ativ.disciplina.cor)
-            cell.matIcon.text = ativ.disciplina.nome
-            cell.barra.backgroundColor = stringParaCor(ativ.disciplina.cor)
-            return cell
+            if ativ.tipo == 0 {
+                let cell: CellProva = tableView.dequeueReusableCellWithIdentifier("CellProva", forIndexPath: indexPath) as! CellProva
+                
+                cell.title.text = ativ.nome
+                cell.date.textColor = stringParaCor(ativ.disciplina.cor)
+                cell.date.text = "\(diaAtividade) \(mesString)"
+                cell.matIcon.text = ativ.disciplina.nome
+                cell.barra.backgroundColor = stringParaCor(ativ.disciplina.cor)
+                return cell
+            }
+            else {
+                let cell: CellTarefa = tableView.dequeueReusableCellWithIdentifier("CellTarefa", forIndexPath: indexPath) as! CellTarefa
+                
+                cell.title.text = ativ.nome
+                cell.date.text = "\(diaAtividade)\n\(mesString)"
+                cell.date.textColor = stringParaCor(ativ.disciplina.cor)
+                cell.matIcon.text = ativ.disciplina.nome
+                cell.barra.backgroundColor = stringParaCor(ativ.disciplina.cor)
+                return cell
+            }
         }
     }
     
@@ -216,9 +227,6 @@ class ProvasViewController: UITableViewController {
     //        return [deleteAction, done]
     //    }
     
-    
-    
-    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if segmentedC.selectedSegmentIndex == 0 {
             switch indexPath.section {
@@ -248,6 +256,7 @@ class ProvasViewController: UITableViewController {
     
     func atualiza_OrdenaVetores() {
         atividades = AtividadeManager.sharedInstance.buscarAtividades()
+        disciplinas = DisciplinaManager.sharedInstance.buscarDisciplinas()
         
         atividadesOrdenadas = atividades
         atividadesOrdenadas.sort({$0.data.timeIntervalSinceNow < $1.data.timeIntervalSinceNow })

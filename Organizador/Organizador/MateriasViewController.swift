@@ -19,6 +19,10 @@ class MateriasViewController: UIViewController, UITableViewDataSource, UITableVi
         return DisciplinaManager.sharedInstance.buscarDisciplinas()
         }()
     
+    lazy var atividades:Array<Atividade> = {
+        return AtividadeManager.sharedInstance.buscarAtividades()
+        }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -55,19 +59,33 @@ class MateriasViewController: UIViewController, UITableViewDataSource, UITableVi
         cell.textLabel?.text = disciplinas[indexPath.row].nome
         cell.textLabel?.textColor = self.stringParaCor(disciplinas[indexPath.row].cor)
         cell.detailTextLabel?.text = "Média: \(disciplinas[indexPath.row].media)"
-//        cell.backgroundColor =
+        cell.tag = indexPath.row
+        //        cell.backgroundColor =
         
         return cell
     }
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
+//            if atividades.count != 0 {
+//                for i in 0...atividades.count - 1 {
+//                    if atividades[i].disciplina == disciplinas[indexPath.row] {
+//                        AtividadeManager.sharedInstance.removerAtividade(atividades[i].id as Int)
+//                    }
+//                }
+//            }
             DisciplinaManager.sharedInstance.removerDisciplina(indexPath.row)
             disciplinas = DisciplinaManager.sharedInstance.buscarDisciplinas()
+
         }
         self.tableView.reloadData()
+        if disciplinas.isEmpty {
+            viewIntro.hidden = false
+        }
+        else {
+            viewIntro.hidden = true
+        }
     }
-
     
     // tranforma uma cor em hexa para um UIColor
     func stringParaCor (hex:String) -> UIColor {
@@ -81,5 +99,14 @@ class MateriasViewController: UIViewController, UITableViewDataSource, UITableVi
             alpha: CGFloat(1.0)
         )
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "detalhesDisciplinaView" {
+            var cell = sender as! UITableViewCell
+            let vC: AtividadesMateriaViewController = segue.destinationViewController as! AtividadesMateriaViewController
+            vC.discliplinaSelecionada = disciplinas[cell.tag]
+        }
+    }
+    
     
 }

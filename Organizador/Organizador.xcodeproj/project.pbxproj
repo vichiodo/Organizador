@@ -11,6 +11,7 @@
 		44C5CB341B33B264007B7A7A /* DetalhesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C5CB331B33B264007B7A7A /* DetalhesViewController.swift */; };
 		8C6DFDC41B2B6D1500C09A4E /* Atividade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6DFDC31B2B6D1500C09A4E /* Atividade.swift */; };
 		8C6DFDC61B2B6D1500C09A4E /* Disciplina.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6DFDC51B2B6D1500C09A4E /* Disciplina.swift */; };
+		8C841B241B349D8A006EC3F3 /* AtividadesMateriaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C841B231B349D8A006EC3F3 /* AtividadesMateriaViewController.swift */; };
 		B3581EBF1B1E194B004BC32E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3581EBE1B1E194B004BC32E /* AppDelegate.swift */; };
 		B3581EC21B1E194C004BC32E /* Organizador.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B3581EC01B1E194B004BC32E /* Organizador.xcdatamodeld */; };
 		B3581EC71B1E194C004BC32E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3581EC51B1E194C004BC32E /* Main.storyboard */; };
@@ -43,6 +44,7 @@
 		44C5CB331B33B264007B7A7A /* DetalhesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetalhesViewController.swift; sourceTree = "<group>"; };
 		8C6DFDC31B2B6D1500C09A4E /* Atividade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Atividade.swift; path = ../Atividade.swift; sourceTree = "<group>"; };
 		8C6DFDC51B2B6D1500C09A4E /* Disciplina.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Disciplina.swift; path = ../Disciplina.swift; sourceTree = "<group>"; };
+		8C841B231B349D8A006EC3F3 /* AtividadesMateriaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtividadesMateriaViewController.swift; sourceTree = "<group>"; };
 		B3581EB91B1E194B004BC32E /* Organizador.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Organizador.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3581EBD1B1E194B004BC32E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B3581EBE1B1E194B004BC32E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				B3581EF51B23AA31004BC32E /* MateriasViewController.swift */,
+				8C841B231B349D8A006EC3F3 /* AtividadesMateriaViewController.swift */,
 				44B148561B2E0A250071A5D6 /* AddMateriaViewController.swift */,
 				B3581EF91B23AEF0004BC32E /* ProvasViewController.swift */,
 				B3581F071B262623004BC32E /* AddProvaViewController.swift */,
@@ -294,6 +297,7 @@
 				B3581EFA1B23AEF0004BC32E /* ProvasViewController.swift in Sources */,
 				B3581EC21B1E194C004BC32E /* Organizador.xcdatamodeld in Sources */,
 				D5DA8B691B31ACA9001E0DE7 /* CellTarefa.swift in Sources */,
+				8C841B241B349D8A006EC3F3 /* AtividadesMateriaViewController.swift in Sources */,
 				B3581EBF1B1E194B004BC32E /* AppDelegate.swift in Sources */,
 				D5DA8B651B31AC8D001E0DE7 /* CellProva.swift in Sources */,
 				B3581EF41B1F4262004BC32E /* AtividadeManager.swift in Sources */,

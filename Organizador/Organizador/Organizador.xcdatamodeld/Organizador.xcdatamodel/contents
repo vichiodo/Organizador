@@ -10,16 +10,16 @@
         <attribute name="peso" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="tipo" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="valeNota" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <relationship name="disciplina" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Disciplina" inverseName="atividades" inverseEntity="Disciplina" syncable="YES"/>
+        <relationship name="disciplina" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Disciplina" inverseName="atividades" inverseEntity="Disciplina" syncable="YES"/>
     </entity>
     <entity name="Disciplina" representedClassName="Organizador.Disciplina" syncable="YES">
         <attribute name="cor" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="media" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="nome" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="atividades" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Atividade" inverseName="disciplina" inverseEntity="Atividade" syncable="YES"/>
+        <relationship name="atividades" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Atividade" inverseName="disciplina" inverseEntity="Atividade" syncable="YES"/>
     </entity>
     <elements>
         <element name="Atividade" positionX="-425" positionY="468" width="128" height="195"/>
-        <element name="Disciplina" positionX="-407" positionY="225" width="128" height="103"/>
+        <element name="Disciplina" positionX="-407" positionY="225" width="128" height="105"/>
     </elements>
 </model>
