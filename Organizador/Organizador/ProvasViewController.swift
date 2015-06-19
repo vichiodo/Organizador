@@ -20,8 +20,8 @@ class ProvasViewController: UITableViewController {
     var atividades30Dias: Array<Atividade> = []
     var atividades30MaisDias: Array<Atividade> = []
     var atividadesConcluidas: Array<Atividade> = []
-    var txtField: UITextField?
-
+    
+    var atividadeSelecionada: Atividade!
     
     // carrega o vetor de atividades cadastradas no CoreData
     lazy var materias:Array<Disciplina> = {
@@ -98,7 +98,7 @@ class ProvasViewController: UITableViewController {
         
         //        var ativi: Array<Atividade>!
         var ativ: Atividade!
-
+        
         if segmentedC.selectedSegmentIndex == 0 {
             switch indexPath.section {
             case 0:
@@ -168,7 +168,7 @@ class ProvasViewController: UITableViewController {
             dateFormatter.dateFormat = "MMM"
             var aux: NSString = dateFormatter.stringFromDate(myDate)
             var mesString = aux.uppercaseString
-
+            
             cell.title.text = ativ.nome
             cell.date.text = "\(diaAtividade)\n\(mesString)"
             cell.date.textColor = stringParaCor(ativ.disciplina.cor)
@@ -219,35 +219,28 @@ class ProvasViewController: UITableViewController {
     
     
     
-//    
-//    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        var atividade: Atividade = AtividadeManager.sharedInstance.buscarAtividade(atividades[indexPath.row].id as Int)
-//        
-//        
-////        if segmentedC.selectedSegmentIndex == 1 {
-////            let alerta: UIAlertController = UIAlertController(title: "Nota da atividade", message: nil, preferredStyle: .Alert)
-////            alerta.addTextFieldWithConfigurationHandler { (textField: UITextField!) -> Void in
-////                textField.placeholder = "Nota"
-////                self.txtField = textField
-////            }
-////            let salvar:UIAlertAction = UIAlertAction(title: "Salvar", style: .Default, handler: { (ACTION) -> Void in
-////                atividade.nota = NSNumber(integer: self.txtField!.text.toInt()!)
-////                
-////                AtividadeManager.sharedInstance.salvarAtividade()
-////
-////            })
-////            let cancelar:UIAlertAction = UIAlertAction(title: "Cancelar", style: .Default, handler: nil)
-////            
-////            [alerta.addAction(cancelar)]
-////            [alerta.addAction(salvar)]
-////            
-////            self.presentViewController(alerta, animated: true, completion: nil)
-////        }
-//    }
-    
-    
-    
-    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if segmentedC.selectedSegmentIndex == 0 {
+            switch indexPath.section {
+            case 0:
+                atividadeSelecionada = atividades7Dias[indexPath.row]
+            case 1:
+                atividadeSelecionada = atividades15Dias[indexPath.row]
+            case 2:
+                atividadeSelecionada = atividades30Dias[indexPath.row]
+            case 3:
+                atividadeSelecionada = atividades30MaisDias[indexPath.row]
+            default:
+                break
+            }
+        }
+        else {
+            atividadeSelecionada = atividadesConcluidas[indexPath.row]
+        }
+        
+        self.performSegueWithIdentifier("detalhesView", sender: nil)
+        
+    }
     
     func mudarTable(sender: AnyObject) {
         self.tableView.reloadData()
@@ -321,14 +314,16 @@ class ProvasViewController: UITableViewController {
     }
     
     
-    /*
+    
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
+        if segue.identifier == "detalhesView" {
+            let vC: DetalhesViewController = segue.destinationViewController as! DetalhesViewController
+            vC.atividadeSelecionada = atividadeSelecionada
+        }
     }
-    */
+    
     
 }

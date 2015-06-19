@@ -9,7 +9,7 @@
 import UIKit
 import EventKit
 
-class AddProvaViewController: UITableViewController, UITextViewDelegate {
+class AddProvaViewController: UITableViewController, UITextFieldDelegate, UITextViewDelegate {
     
     @IBOutlet weak var materias: UIPickerView!
     @IBOutlet weak var provaTxt: UITextField!
@@ -28,14 +28,27 @@ class AddProvaViewController: UITableViewController, UITextViewDelegate {
     var tipo = 0
     var obs: String!
     
+    var placeholderLabel : UILabel!
+    
     // carrega o vetor de disciplinas cadastrados no CoreData
     lazy var disciplinas:Array<Disciplina> = {
         return DisciplinaManager.sharedInstance.buscarDisciplinas()
         }()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        provaTxt.delegate = self
+        pesoTextField.delegate = self
+        txtObs.delegate = self
+        
+        placeholderLabel = UILabel()
+        placeholderLabel.text = "Digite suas observações aqui"
+        placeholderLabel.font = UIFont.italicSystemFontOfSize(txtObs.font.pointSize)
+        placeholderLabel.sizeToFit()
+        txtObs.addSubview(placeholderLabel)
+        placeholderLabel.frame.origin = CGPointMake(5, txtObs.font.pointSize / 2)
+        placeholderLabel.textColor = UIColor(white: 0, alpha: 0.3)
+        placeholderLabel.hidden = count(txtObs.text) != 0
         
         // impede de colocar uma data menor que a atual
         date.minimumDate = NSDate()
@@ -72,6 +85,10 @@ class AddProvaViewController: UITableViewController, UITextViewDelegate {
             [alerta.addAction(al1)]
             self.presentViewController(alerta, animated: true, completion: nil)
         }
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     override func didReceiveMemoryWarning() {
@@ -154,7 +171,6 @@ class AddProvaViewController: UITableViewController, UITextViewDelegate {
         obs = txtObs.text
         
         
-        //////////////////// SALVAR NO COREDATA ////////////////////
         if peso == nil {
             let alerta: UIAlertController = UIAlertController(title: "Digite o peso da atividade", message: nil, preferredStyle: .Alert)
             let al1:UIAlertAction = UIAlertAction(title: "OK", style: .Default, handler: { (ACTION) -> Void in
@@ -196,11 +212,9 @@ class AddProvaViewController: UITableViewController, UITextViewDelegate {
             
             localNotification.soundName = UILocalNotificationDefaultSoundName
             localNotification.applicationIconBadgeNumber = 1
-
+            
             localNotification.fireDate = NSDate(timeInterval: intervalo, sinceDate: horario)
             UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
-            println("\(localNotification)")
-            //            println("notificacao \(i) criada - \(localNotification.fireDate!) - nome \(localNotification.alertBody!)")
         }
     }
     
@@ -227,12 +241,12 @@ class AddProvaViewController: UITableViewController, UITextViewDelegate {
             
             localNotification.soundName = UILocalNotificationDefaultSoundName
             localNotification.applicationIconBadgeNumber = 1
-
+            
             localNotification.fireDate = NSDate(timeInterval: intervalo, sinceDate: horario)
             UIApplication.sharedApplication().cancelLocalNotification(localNotification)
         }
     }
-
+    
     //método que salva no calendário nativo a atividade
     func criarEventoCalendario(){
         var eventStore: EKEventStore = EKEventStore()
@@ -286,18 +300,14 @@ class AddProvaViewController: UITableViewController, UITextViewDelegate {
     }
     
     
-    func textViewDidBeginEditing(textView: UITextView) {
-        if textView.textColor == UIColor.lightGrayColor() {
-            textView.text = nil
-            textView.textColor = UIColor.blackColor()
-        }
+    func textViewDidChange(textView: UITextView) {
+        placeholderLabel.hidden = count(textView.text) != 0
     }
-
-    func textViewDidEndEditing(textView: UITextView) {
-        if textView.text.isEmpty {
-            textView.text = "Digite suas observações aqui"
-            textView.textColor = UIColor.lightGrayColor()
-        }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return true
     }
-
+    
 }
