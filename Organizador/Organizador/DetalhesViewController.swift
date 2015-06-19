@@ -129,10 +129,11 @@ class DetalhesViewController: UITableViewController {
             atividadeSelecionada.disciplina.media = atividadeSelecionada.disciplina.media.doubleValue - mediaAntigaAtividade
             
             if dataTxt != datePicker.date {
-                atividadeSelecionada.data = datePicker.date
+                excluirEventoCalendario(atividadeSelecionada.nome, materia: atividadeSelecionada.disciplina, data: atividadeSelecionada.data)
                 cancelarNotificacao(atividadeSelecionada.nome, materia: atividadeSelecionada.disciplina, data: atividadeSelecionada.data)
+                atividadeSelecionada.data = datePicker.date
                 criarNotificacao(nomeTxt.text, materia: atividadeSelecionada.disciplina, data: datePicker.date)
-                criarEventoCalendario(nomeTxt.text, materia: atividadeSelecionada.disciplina, data: datePicker.date)
+//                criarEventoCalendario(nomeTxt.text, materia: atividadeSelecionada.disciplina, data: datePicker.date)
             }
 
             atividadeSelecionada.nome = nomeTxt.text
@@ -168,7 +169,6 @@ class DetalhesViewController: UITableViewController {
                 println("PESO INVÁLIDO")
             }
             AtividadeManager.sharedInstance.salvarAtividade()
-            self.excluirEventoCalendario(atividadeSelecionada.nome, materia: atividadeSelecionada.disciplina, data: atividadeSelecionada.data)
             self.navigationController?.popToRootViewControllerAnimated(true)
 
         }
@@ -266,33 +266,13 @@ class DetalhesViewController: UITableViewController {
     func excluirEventoCalendario(nome: NSString, materia: Disciplina, data: NSDate){
         var eventStore = EKEventStore()
         
-        
         var endData: NSDate = NSDate(timeInterval: 3600, sinceDate: data)
         
         var predicate = eventStore.predicateForEventsWithStartDate(data, endDate: endData, calendars:[eventStore.defaultCalendarForNewEvents])
         
         var eventos = eventStore.eventsMatchingPredicate(predicate)
         
-//        var evento: EKEvent = EKEvent(eventStore: eventStore)
-//        
-//        evento.title = "\(nome) de \(materia.nome)"
-//        
-//        evento.startDate = data
-//        
-//        evento.endDate = NSDate(timeInterval: 3600, sinceDate: evento.startDate)
-        
-        eventStore.removeEvent((eventos.first as! EKEvent), span: EKSpanThisEvent, error: NSErrorPointer())
-        
-//        eventStore.requestAccessToEntityType(EKEntityTypeEvent, completion: { (granted: Bool, error NSError) -> Void in
-//            if !granted {
-//                return
-//            } else {
-//                evento.calendar = eventStore.defaultCalendarForNewEvents
-//                
-//                var conseguiu = eventStore.removeEvent(evento, span: EKSpanThisEvent, commit: true, error: NSErrorPointer())
-//            }
-//        })
-        
+        eventStore.removeEvent((eventos.last as! EKEvent), span: EKSpanThisEvent, error: NSErrorPointer())
     }
 
     /*
