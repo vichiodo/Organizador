@@ -153,6 +153,7 @@ class ProvasViewController: UITableViewController {
         } else {
             let cell: CellTarefa = tableView.dequeueReusableCellWithIdentifier("CellTarefa", forIndexPath: indexPath) as! CellTarefa
             ativ = atividadesConcluidas[indexPath.row]
+            ativ.concluido = 1
             let dataAtividade = ativ.data
             let calendar = NSCalendar.currentCalendar()
             let components = calendar.components(.CalendarUnitDay | .CalendarUnitMonth, fromDate:  dataAtividade)

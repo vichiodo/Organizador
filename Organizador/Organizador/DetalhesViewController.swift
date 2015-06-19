@@ -38,20 +38,28 @@ class DetalhesViewController: UITableViewController {
     
     func editar() {
         if editarBtn.title == "Editar" {
-            nomeTxt.userInteractionEnabled = true
-            materiaTxt.userInteractionEnabled = true
-            notaTxt.userInteractionEnabled = true
-            pesoTxt.userInteractionEnabled = true
-            dataTxt.userInteractionEnabled = true
-            obsTxt.userInteractionEnabled = true
-            
-            nomeTxt.borderStyle = .RoundedRect
-            materiaTxt.borderStyle = .RoundedRect
-            notaTxt.borderStyle = .RoundedRect
-            pesoTxt.borderStyle = .RoundedRect
-            nomeTxt.borderStyle = .RoundedRect
+            if atividadeSelecionada.concluido == 0 {
+                nomeTxt.userInteractionEnabled = true
+                pesoTxt.userInteractionEnabled = true
+                dataTxt.userInteractionEnabled = true
+                obsTxt.userInteractionEnabled = true
+                
+                nomeTxt.borderStyle = .RoundedRect
+                pesoTxt.borderStyle = .RoundedRect
+                
+            } else {
+                notaTxt.userInteractionEnabled = true
+                nomeTxt.userInteractionEnabled = true
+                pesoTxt.userInteractionEnabled = true
+                obsTxt.userInteractionEnabled = true
+                
+                nomeTxt.borderStyle = .RoundedRect
+                notaTxt.borderStyle = .RoundedRect
+                pesoTxt.borderStyle = .RoundedRect
+            }
             
             editarBtn.title = "Salvar"
+            
         } else {
             nomeTxt.userInteractionEnabled = false
             materiaTxt.userInteractionEnabled = false
@@ -72,6 +80,9 @@ class DetalhesViewController: UITableViewController {
             ///////////// MUDAR OS DADOS DO COREDATA!!! //////////////////
             // quais dados vao poder mudar???
             // nome, disciplina??? , nota, peso, data??? (como escolher a data?), obs
+            
+            // acho que nome e disciplina nao pode mudar...
+            // data tem que aparecer dia/mes e horario
             println("Nome antigo: \(atividadeSelecionada.nome)")
             
             var mediaAntigaAtividade = (atividadeSelecionada.peso.doubleValue/100) * atividadeSelecionada.nota.doubleValue
@@ -84,16 +95,33 @@ class DetalhesViewController: UITableViewController {
             atividadeSelecionada.obs = obsTxt.text
             
             ///////// VERIFICAR: NOTA ENTRE 0 E 10, PESO ENTRE 0 E 100%
+            var mediaAtividade: Double!
             
-            var mediaAtividade = (atividadeSelecionada.peso.doubleValue/100) * atividadeSelecionada.nota.doubleValue
-            atividadeSelecionada.disciplina.media = atividadeSelecionada.disciplina.media.doubleValue + mediaAtividade
-            println("media atividade \(mediaAtividade)")
-            println("media materia \(atividadeSelecionada.disciplina.media)")
-            AtividadeManager.sharedInstance.salvarAtividade()
-            
-            println("Nome novo: \(atividadeSelecionada.nome)")
+            if (atividadeSelecionada.peso.doubleValue >= 0 && atividadeSelecionada.peso.doubleValue <= 100){
+                if (atividadeSelecionada.nota.doubleValue >= 0 && atividadeSelecionada.nota.doubleValue <= 10) {
+                    mediaAtividade = (atividadeSelecionada.peso.doubleValue/100) * atividadeSelecionada.nota.doubleValue
+                    println("\(mediaAtividade)")
+                    
+                    atividadeSelecionada.disciplina.media = atividadeSelecionada.disciplina.media.doubleValue + mediaAtividade
+                    println("media atividade \(mediaAtividade)")
+                    println("media materia \(atividadeSelecionada.disciplina.media)")
+                    AtividadeManager.sharedInstance.salvarAtividade()
+                    
+                    println("Nome novo: \(atividadeSelecionada.nome)")
+                    
+                    println("\(atividadeSelecionada.concluido)")
+                    
+                }else {
+                    // Aviso de que a nota esta inválida
+                    // Não pode deixar salvar
+                    println("NOTA INVÁLIDA")
+                }
+            } else {
+                // Aviso de que o peso esta incorreto
+                // Não pode deixar salvar
+                println("PESO INVÁLIDO")
+            }
         }
-        
     }
     
     
