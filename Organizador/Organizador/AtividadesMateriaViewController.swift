@@ -23,10 +23,8 @@ class AtividadesMateriaViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Registra o xib da Célula
-        var nibP : UINib = UINib(nibName: "CellProva", bundle: nil);
-        tableView.registerNib(nibP, forCellReuseIdentifier: "CellProva");
-        var nibT : UINib = UINib(nibName: "CellTarefa", bundle: nil);
-        tableView.registerNib(nibT, forCellReuseIdentifier: "CellTarefa");
+        var nibT : UINib = UINib(nibName: "CellAtividade", bundle: nil);
+        tableView.registerNib(nibT, forCellReuseIdentifier: "CellAtividade");
     }
     
     override func didReceiveMemoryWarning() {
@@ -86,27 +84,26 @@ class AtividadesMateriaViewController: UIViewController {
         dateFormatter.dateFormat = "MMM"
         var aux: NSString = dateFormatter.stringFromDate(myDate)
         var mesString = aux.uppercaseString
-        var cell: UITableViewCell!
+        
+        var cor = stringParaCor(ativ.disciplina.cor)
+        
+        let cell: CellAtividade = tableView.dequeueReusableCellWithIdentifier("CellAtividade", forIndexPath: indexPath) as! CellAtividade
+        
+        cell.title.text = ativ.nome
+        cell.date.text = "\(diaAtividade)\n\(mesString)"
+        cell.date.textColor = cor
+        cell.matIcon.text = ativ.disciplina.nome
+        cell.barra.backgroundColor = cor
+        cell.back.backgroundColor = cor
+        
         if ativ.tipo == 0 {
-            let cell: CellProva = tableView.dequeueReusableCellWithIdentifier("CellProva", forIndexPath: indexPath) as! CellProva
-            
-            cell.title.text = ativ.nome
-            cell.date.textColor = stringParaCor(ativ.disciplina.cor)
-            cell.date.text = "\(diaAtividade) \(mesString)"
-            cell.matIcon.text = ativ.disciplina.nome
-            cell.barra.backgroundColor = stringParaCor(ativ.disciplina.cor)
-            return cell
+            cell.barra.hidden = false
         }
         else {
-            let cell: CellTarefa = tableView.dequeueReusableCellWithIdentifier("CellTarefa", forIndexPath: indexPath) as! CellTarefa
-            
-            cell.title.text = ativ.nome
-            cell.date.text = "\(diaAtividade)\n\(mesString)"
-            cell.date.textColor = stringParaCor(ativ.disciplina.cor)
-            cell.matIcon.text = ativ.disciplina.nome
-            cell.barra.backgroundColor = stringParaCor(ativ.disciplina.cor)
-            return cell
+            cell.barra.hidden = true
         }
+        
+        return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
