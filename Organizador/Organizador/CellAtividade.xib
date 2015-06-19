@@ -8,15 +8,22 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CellTarefa" rowHeight="72" id="KGk-i7-Jjw" customClass="CellTarefa" customModule="Organizador" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CellAtividade" rowHeight="72" id="KGk-i7-Jjw" customClass="CellAtividade" customModule="Organizador" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fSX-Am-G9T">
+                        <rect key="frame" x="0.0" y="5" width="19" height="39.5"/>
+                        <color key="backgroundColor" red="1" green="0.59999999999999998" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="19" id="6VN-gu-a3Q"/>
+                        </constraints>
+                    </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1rp-on-sfk">
-                        <rect key="frame" x="20" y="5" width="40" height="39.5"/>
+                        <rect key="frame" x="15" y="5" width="40" height="39.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xzZ-VD-cQc">
                                 <rect key="frame" x="4" y="4" width="32" height="31.5"/>
@@ -54,8 +61,8 @@ JUL</string>
                             </mask>
                         </variation>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="História" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m32-kI-rpC">
-                        <rect key="frame" x="80" y="25" width="242" height="16.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="História" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m32-kI-rpC">
+                        <rect key="frame" x="75" y="25" width="247" height="16.5"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="m32-kI-rpC" secondAttribute="height" multiplier="2:1" id="5Al-Yj-GxY"/>
                             <constraint firstAttribute="width" secondItem="m32-kI-rpC" secondAttribute="height" multiplier="1:1" id="yqD-w9-goh"/>
@@ -70,10 +77,10 @@ JUL</string>
                             </mask>
                         </variation>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Redação sobre o comunismo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P7p-ZP-mHo">
-                        <rect key="frame" x="80" y="8" width="242" height="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Redação sobre o comunismo" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P7p-ZP-mHo">
+                        <rect key="frame" x="75" y="8" width="247" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -81,6 +88,7 @@ JUL</string>
                     <constraint firstItem="1rp-on-sfk" firstAttribute="leading" secondItem="m32-kI-rpC" secondAttribute="trailing" constant="20" id="0V5-Lc-dHU"/>
                     <constraint firstItem="m32-kI-rpC" firstAttribute="centerY" secondItem="1rp-on-sfk" secondAttribute="centerY" id="0uM-QJ-6qG"/>
                     <constraint firstItem="m32-kI-rpC" firstAttribute="leading" secondItem="1rp-on-sfk" secondAttribute="trailing" id="19c-ei-HCR"/>
+                    <constraint firstAttribute="bottom" secondItem="fSX-Am-G9T" secondAttribute="bottom" constant="5" id="3DV-N3-aR7"/>
                     <constraint firstItem="m32-kI-rpC" firstAttribute="centerX" secondItem="1rp-on-sfk" secondAttribute="centerX" id="3b8-wQ-2ko"/>
                     <constraint firstItem="m32-kI-rpC" firstAttribute="height" secondItem="1rp-on-sfk" secondAttribute="height" id="3i7-Bw-MYU"/>
                     <constraint firstAttribute="trailing" secondItem="m32-kI-rpC" secondAttribute="trailing" constant="20" id="6lh-74-bwp"/>
@@ -94,18 +102,20 @@ JUL</string>
                     <constraint firstItem="m32-kI-rpC" firstAttribute="centerX" secondItem="P7p-ZP-mHo" secondAttribute="centerX" id="Hlf-or-IBE"/>
                     <constraint firstAttribute="bottomMargin" secondItem="m32-kI-rpC" secondAttribute="bottom" id="IKC-TP-VVW"/>
                     <constraint firstAttribute="bottom" secondItem="m32-kI-rpC" secondAttribute="bottom" id="KDx-W5-fIt"/>
+                    <constraint firstItem="fSX-Am-G9T" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="RRx-Yd-6j5"/>
                     <constraint firstItem="m32-kI-rpC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="Vsb-ur-tei"/>
                     <constraint firstItem="P7p-ZP-mHo" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="WeW-Kd-IP4"/>
                     <constraint firstItem="m32-kI-rpC" firstAttribute="height" secondItem="P7p-ZP-mHo" secondAttribute="height" id="Y9t-tA-C16"/>
                     <constraint firstItem="m32-kI-rpC" firstAttribute="leading" secondItem="1rp-on-sfk" secondAttribute="trailing" constant="20" id="YZZ-pS-KiA"/>
                     <constraint firstItem="m32-kI-rpC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="ZTc-oV-gzN"/>
                     <constraint firstItem="m32-kI-rpC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="ZWt-ed-Ijs"/>
+                    <constraint firstItem="fSX-Am-G9T" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="c4b-jq-J6r"/>
                     <constraint firstAttribute="bottomMargin" secondItem="m32-kI-rpC" secondAttribute="bottom" id="jFH-Gb-B9I"/>
                     <constraint firstItem="1rp-on-sfk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="-75" id="kRQ-co-y42"/>
                     <constraint firstItem="1rp-on-sfk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="nDp-AY-eI5"/>
                     <constraint firstItem="m32-kI-rpC" firstAttribute="top" secondItem="P7p-ZP-mHo" secondAttribute="bottom" id="tyf-V8-3ad"/>
                     <constraint firstAttribute="bottom" secondItem="1rp-on-sfk" secondAttribute="bottom" constant="5" id="u52-kD-NgA"/>
-                    <constraint firstItem="1rp-on-sfk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="uwm-yO-Sah"/>
+                    <constraint firstItem="1rp-on-sfk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="uwm-yO-Sah"/>
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">
@@ -131,7 +141,8 @@ JUL</string>
             </tableViewCellContentView>
             <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
-                <outlet property="barra" destination="1rp-on-sfk" id="hbu-sK-EHD"/>
+                <outlet property="back" destination="1rp-on-sfk" id="Pje-Kf-Vtp"/>
+                <outlet property="barra" destination="fSX-Am-G9T" id="wIb-gp-FR7"/>
                 <outlet property="date" destination="xzZ-VD-cQc" id="Ad7-b2-puf"/>
                 <outlet property="matIcon" destination="m32-kI-rpC" id="Wce-FY-Zg4"/>
                 <outlet property="title" destination="P7p-ZP-mHo" id="k9e-Pb-ZqH"/>

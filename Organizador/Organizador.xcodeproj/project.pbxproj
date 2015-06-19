@@ -23,10 +23,8 @@
 		B3581EFA1B23AEF0004BC32E /* ProvasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3581EF91B23AEF0004BC32E /* ProvasViewController.swift */; };
 		B3581F061B23C322004BC32E /* DisciplinaMananer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3581F051B23C322004BC32E /* DisciplinaMananer.swift */; };
 		B3581F081B262623004BC32E /* AddProvaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3581F071B262623004BC32E /* AddProvaViewController.swift */; };
-		D5DA8B651B31AC8D001E0DE7 /* CellProva.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DA8B631B31AC8D001E0DE7 /* CellProva.swift */; };
-		D5DA8B661B31AC8D001E0DE7 /* CellProva.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5DA8B641B31AC8D001E0DE7 /* CellProva.xib */; };
-		D5DA8B691B31ACA9001E0DE7 /* CellTarefa.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DA8B671B31ACA9001E0DE7 /* CellTarefa.swift */; };
-		D5DA8B6A1B31ACA9001E0DE7 /* CellTarefa.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5DA8B681B31ACA9001E0DE7 /* CellTarefa.xib */; };
+		D5DA8B691B31ACA9001E0DE7 /* CellAtividade.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DA8B671B31ACA9001E0DE7 /* CellAtividade.swift */; };
+		D5DA8B6A1B31ACA9001E0DE7 /* CellAtividade.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5DA8B681B31ACA9001E0DE7 /* CellAtividade.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,10 +58,8 @@
 		B3581EF91B23AEF0004BC32E /* ProvasViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProvasViewController.swift; sourceTree = "<group>"; };
 		B3581F051B23C322004BC32E /* DisciplinaMananer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisciplinaMananer.swift; sourceTree = "<group>"; };
 		B3581F071B262623004BC32E /* AddProvaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddProvaViewController.swift; sourceTree = "<group>"; };
-		D5DA8B631B31AC8D001E0DE7 /* CellProva.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellProva.swift; sourceTree = "<group>"; };
-		D5DA8B641B31AC8D001E0DE7 /* CellProva.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellProva.xib; sourceTree = "<group>"; };
-		D5DA8B671B31ACA9001E0DE7 /* CellTarefa.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellTarefa.swift; sourceTree = "<group>"; };
-		D5DA8B681B31ACA9001E0DE7 /* CellTarefa.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellTarefa.xib; sourceTree = "<group>"; };
+		D5DA8B671B31ACA9001E0DE7 /* CellAtividade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellAtividade.swift; sourceTree = "<group>"; };
+		D5DA8B681B31ACA9001E0DE7 /* CellAtividade.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellAtividade.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,10 +174,8 @@
 		B3581F0A1B262F72004BC32E /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				D5DA8B631B31AC8D001E0DE7 /* CellProva.swift */,
-				D5DA8B641B31AC8D001E0DE7 /* CellProva.xib */,
-				D5DA8B671B31ACA9001E0DE7 /* CellTarefa.swift */,
-				D5DA8B681B31ACA9001E0DE7 /* CellTarefa.xib */,
+				D5DA8B671B31ACA9001E0DE7 /* CellAtividade.swift */,
+				D5DA8B681B31ACA9001E0DE7 /* CellAtividade.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -268,9 +262,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3581EC71B1E194C004BC32E /* Main.storyboard in Resources */,
-				D5DA8B6A1B31ACA9001E0DE7 /* CellTarefa.xib in Resources */,
+				D5DA8B6A1B31ACA9001E0DE7 /* CellAtividade.xib in Resources */,
 				B3581ECC1B1E194C004BC32E /* LaunchScreen.xib in Resources */,
-				D5DA8B661B31AC8D001E0DE7 /* CellProva.xib in Resources */,
 				B3581EC91B1E194C004BC32E /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -296,10 +289,9 @@
 				44B148571B2E0A250071A5D6 /* AddMateriaViewController.swift in Sources */,
 				B3581EFA1B23AEF0004BC32E /* ProvasViewController.swift in Sources */,
 				B3581EC21B1E194C004BC32E /* Organizador.xcdatamodeld in Sources */,
-				D5DA8B691B31ACA9001E0DE7 /* CellTarefa.swift in Sources */,
+				D5DA8B691B31ACA9001E0DE7 /* CellAtividade.swift in Sources */,
 				8C841B241B349D8A006EC3F3 /* AtividadesMateriaViewController.swift in Sources */,
 				B3581EBF1B1E194B004BC32E /* AppDelegate.swift in Sources */,
-				D5DA8B651B31AC8D001E0DE7 /* CellProva.swift in Sources */,
 				B3581EF41B1F4262004BC32E /* AtividadeManager.swift in Sources */,
 				8C6DFDC41B2B6D1500C09A4E /* Atividade.swift in Sources */,
 				8C6DFDC61B2B6D1500C09A4E /* Disciplina.swift in Sources */,

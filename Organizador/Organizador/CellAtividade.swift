@@ -1,5 +1,5 @@
 //
-//  CellProva.swift
+//  CellTarefa.swift
 //  Organizador
 //
 //  Created by Rubens Gondek on 6/17/15.
@@ -8,11 +8,12 @@
 
 import UIKit
 
-class CellProva: UITableViewCell {
+class CellAtividade: UITableViewCell {
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var date: UILabel!
     @IBOutlet weak var matIcon: UILabel!
     @IBOutlet weak var barra: UIView!
+    @IBOutlet weak var back: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
