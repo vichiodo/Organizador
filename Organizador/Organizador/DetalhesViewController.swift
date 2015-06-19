@@ -167,10 +167,11 @@ class DetalhesViewController: UITableViewController {
                 // Não pode deixar salvar
                 println("PESO INVÁLIDO")
             }
+            AtividadeManager.sharedInstance.salvarAtividade()
             self.excluirEventoCalendario(atividadeSelecionada.nome, materia: atividadeSelecionada.disciplina, data: atividadeSelecionada.data)
+            self.navigationController?.popToRootViewControllerAnimated(true)
 
         }
-        self.navigationController?.popToRootViewControllerAnimated(true)
         
     }
     
