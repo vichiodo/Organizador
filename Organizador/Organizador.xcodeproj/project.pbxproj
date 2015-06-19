@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		44B148571B2E0A250071A5D6 /* AddMateriaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B148561B2E0A250071A5D6 /* AddMateriaViewController.swift */; };
+		44C5CB341B33B264007B7A7A /* DetalhesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C5CB331B33B264007B7A7A /* DetalhesViewController.swift */; };
 		8C6DFDC41B2B6D1500C09A4E /* Atividade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6DFDC31B2B6D1500C09A4E /* Atividade.swift */; };
 		8C6DFDC61B2B6D1500C09A4E /* Disciplina.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6DFDC51B2B6D1500C09A4E /* Disciplina.swift */; };
 		B3581EBF1B1E194B004BC32E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3581EBE1B1E194B004BC32E /* AppDelegate.swift */; };
@@ -39,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		44B148561B2E0A250071A5D6 /* AddMateriaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMateriaViewController.swift; sourceTree = "<group>"; };
+		44C5CB331B33B264007B7A7A /* DetalhesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetalhesViewController.swift; sourceTree = "<group>"; };
 		8C6DFDC31B2B6D1500C09A4E /* Atividade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Atividade.swift; path = ../Atividade.swift; sourceTree = "<group>"; };
 		8C6DFDC51B2B6D1500C09A4E /* Disciplina.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Disciplina.swift; path = ../Disciplina.swift; sourceTree = "<group>"; };
 		B3581EB91B1E194B004BC32E /* Organizador.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Organizador.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -165,6 +167,7 @@
 				44B148561B2E0A250071A5D6 /* AddMateriaViewController.swift */,
 				B3581EF91B23AEF0004BC32E /* ProvasViewController.swift */,
 				B3581F071B262623004BC32E /* AddProvaViewController.swift */,
+				44C5CB331B33B264007B7A7A /* DetalhesViewController.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3581EF61B23AA31004BC32E /* MateriasViewController.swift in Sources */,
+				44C5CB341B33B264007B7A7A /* DetalhesViewController.swift in Sources */,
 				B3581F061B23C322004BC32E /* DisciplinaMananer.swift in Sources */,
 				B3581F081B262623004BC32E /* AddProvaViewController.swift in Sources */,
 				44B148571B2E0A250071A5D6 /* AddMateriaViewController.swift in Sources */,

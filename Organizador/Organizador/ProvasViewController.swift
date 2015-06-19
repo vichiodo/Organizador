@@ -20,6 +20,8 @@ class ProvasViewController: UITableViewController {
     var atividades30Dias: Array<Atividade> = []
     var atividades30MaisDias: Array<Atividade> = []
     var atividadesConcluidas: Array<Atividade> = []
+    var txtField: UITextField?
+
     
     // carrega o vetor de atividades cadastradas no CoreData
     lazy var materias:Array<Disciplina> = {
@@ -213,6 +215,37 @@ class ProvasViewController: UITableViewController {
     //
     //        return [deleteAction, done]
     //    }
+    
+    
+    
+    
+//    
+//    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+//        var atividade: Atividade = AtividadeManager.sharedInstance.buscarAtividade(atividades[indexPath.row].id as Int)
+//        
+//        
+////        if segmentedC.selectedSegmentIndex == 1 {
+////            let alerta: UIAlertController = UIAlertController(title: "Nota da atividade", message: nil, preferredStyle: .Alert)
+////            alerta.addTextFieldWithConfigurationHandler { (textField: UITextField!) -> Void in
+////                textField.placeholder = "Nota"
+////                self.txtField = textField
+////            }
+////            let salvar:UIAlertAction = UIAlertAction(title: "Salvar", style: .Default, handler: { (ACTION) -> Void in
+////                atividade.nota = NSNumber(integer: self.txtField!.text.toInt()!)
+////                
+////                AtividadeManager.sharedInstance.salvarAtividade()
+////
+////            })
+////            let cancelar:UIAlertAction = UIAlertAction(title: "Cancelar", style: .Default, handler: nil)
+////            
+////            [alerta.addAction(cancelar)]
+////            [alerta.addAction(salvar)]
+////            
+////            self.presentViewController(alerta, animated: true, completion: nil)
+////        }
+//    }
+    
+    
     
     
     
