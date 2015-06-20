@@ -10,7 +10,7 @@
         <attribute name="peso" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="tipo" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="valeNota" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <relationship name="disciplina" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Disciplina" inverseName="atividades" inverseEntity="Disciplina" syncable="YES"/>
+        <relationship name="disciplina" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Disciplina" inverseName="atividades" inverseEntity="Disciplina" syncable="YES"/>
     </entity>
     <entity name="Disciplina" representedClassName="Organizador.Disciplina" syncable="YES">
         <attribute name="cor" optional="YES" attributeType="String" syncable="YES"/>

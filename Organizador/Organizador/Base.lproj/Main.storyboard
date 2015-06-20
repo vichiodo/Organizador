@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="GW1-yY-QIC">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -63,7 +64,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ez9-ZC-iVY">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="ez9-ZC-iVY">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ez9-ZC-iVY" id="efS-ad-VFz">
@@ -295,7 +296,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="%" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FbQ-c5-tYi">
                                                     <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -320,12 +321,12 @@
                                                     <exclude reference="FbQ-c5-tYi"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <exclude reference="3qp-ur-nOm"/>
-                                                    <exclude reference="E28-lR-OzK"/>
-                                                    <exclude reference="g4s-jx-hyz"/>
                                                     <exclude reference="EuR-kZ-8eO"/>
                                                     <exclude reference="Yo6-4O-RZF"/>
                                                     <exclude reference="lB5-O0-OaI"/>
+                                                    <exclude reference="3qp-ur-nOm"/>
+                                                    <exclude reference="E28-lR-OzK"/>
+                                                    <exclude reference="g4s-jx-hyz"/>
                                                 </mask>
                                             </variation>
                                             <variation key="heightClass=regular-widthClass=compact">
@@ -333,11 +334,11 @@
                                                     <include reference="FbQ-c5-tYi"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <include reference="E28-lR-OzK"/>
-                                                    <exclude reference="OII-Gd-vvQ"/>
                                                     <include reference="EuR-kZ-8eO"/>
                                                     <include reference="Yo6-4O-RZF"/>
                                                     <include reference="lB5-O0-OaI"/>
+                                                    <include reference="E28-lR-OzK"/>
+                                                    <exclude reference="OII-Gd-vvQ"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
