@@ -72,6 +72,7 @@ class AddAtividadeViewController: UITableViewController, UITextFieldDelegate, UI
     }
     
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
         disciplinas = DisciplinaManager.sharedInstance.buscarDisciplinas()
         self.materias.reloadAllComponents()
         

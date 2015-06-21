@@ -49,6 +49,7 @@ class DetalhesAtividadeViewController: UITableViewController, UITextFieldDelegat
     
     
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
         nomeTxt.text = atividadeSelecionada.nome
         materiaTxt.text = atividadeSelecionada.disciplina.nome
         notaTxt.text = "\(atividadeSelecionada.nota)"
