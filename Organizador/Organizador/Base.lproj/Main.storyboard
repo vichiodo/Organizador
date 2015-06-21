@@ -26,11 +26,15 @@
             </objects>
             <point key="canvasLocation" x="764" y="-503"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Atividades-->
         <scene sceneID="v6U-Mf-E4T">
             <objects>
                 <navigationController id="Jug-ob-dj1" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="bookmarks" id="6re-JH-cEk"/>
+                    <tabBarItem key="tabBarItem" title="Atividades" image="Exam-32" id="6re-JH-cEk">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="image" keyPath="selectedImage" value="Exam Filled-32"/>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="jwc-TB-nh5">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1076,10 +1080,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Exam Filled-32" width="32" height="32"/>
+        <image name="Exam-32" width="32" height="32"/>
         <image name="seta" width="749" height="705"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="uYV-nO-ZE6"/>
+        <segue reference="u0e-80-tCU"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
 </document>
