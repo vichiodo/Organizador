@@ -129,7 +129,7 @@ class AtividadesMateriaViewController: UIViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDetalheMat" {
-            let vC: DetalhesViewController = segue.destinationViewController as! DetalhesViewController
+            let vC: DetalhesAtividadeViewController = segue.destinationViewController as! DetalhesAtividadeViewController
             vC.atividadeSelecionada = atividadeSelecionada
         }
     }

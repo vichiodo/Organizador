@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		44B148571B2E0A250071A5D6 /* AddMateriaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B148561B2E0A250071A5D6 /* AddMateriaViewController.swift */; };
-		44C5CB341B33B264007B7A7A /* DetalhesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C5CB331B33B264007B7A7A /* DetalhesViewController.swift */; };
+		44C5CB341B33B264007B7A7A /* DetalhesAtividadeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C5CB331B33B264007B7A7A /* DetalhesAtividadeViewController.swift */; };
 		8C6DFDC41B2B6D1500C09A4E /* Atividade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6DFDC31B2B6D1500C09A4E /* Atividade.swift */; };
 		8C6DFDC61B2B6D1500C09A4E /* Disciplina.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6DFDC51B2B6D1500C09A4E /* Disciplina.swift */; };
 		8C841B241B349D8A006EC3F3 /* AtividadesMateriaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C841B231B349D8A006EC3F3 /* AtividadesMateriaViewController.swift */; };
@@ -20,9 +20,9 @@
 		B3581ED81B1E194C004BC32E /* OrganizadorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3581ED71B1E194C004BC32E /* OrganizadorTests.swift */; };
 		B3581EF41B1F4262004BC32E /* AtividadeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3581EF31B1F4261004BC32E /* AtividadeManager.swift */; };
 		B3581EF61B23AA31004BC32E /* MateriasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3581EF51B23AA31004BC32E /* MateriasViewController.swift */; };
-		B3581EFA1B23AEF0004BC32E /* ProvasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3581EF91B23AEF0004BC32E /* ProvasViewController.swift */; };
+		B3581EFA1B23AEF0004BC32E /* AtividadesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3581EF91B23AEF0004BC32E /* AtividadesViewController.swift */; };
 		B3581F061B23C322004BC32E /* DisciplinaMananer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3581F051B23C322004BC32E /* DisciplinaMananer.swift */; };
-		B3581F081B262623004BC32E /* AddProvaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3581F071B262623004BC32E /* AddProvaViewController.swift */; };
+		B3581F081B262623004BC32E /* AddAtividadeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3581F071B262623004BC32E /* AddAtividadeViewController.swift */; };
 		D5DA8B691B31ACA9001E0DE7 /* CellAtividade.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DA8B671B31ACA9001E0DE7 /* CellAtividade.swift */; };
 		D5DA8B6A1B31ACA9001E0DE7 /* CellAtividade.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5DA8B681B31ACA9001E0DE7 /* CellAtividade.xib */; };
 /* End PBXBuildFile section */
@@ -39,7 +39,7 @@
 
 /* Begin PBXFileReference section */
 		44B148561B2E0A250071A5D6 /* AddMateriaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMateriaViewController.swift; sourceTree = "<group>"; };
-		44C5CB331B33B264007B7A7A /* DetalhesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetalhesViewController.swift; sourceTree = "<group>"; };
+		44C5CB331B33B264007B7A7A /* DetalhesAtividadeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetalhesAtividadeViewController.swift; sourceTree = "<group>"; };
 		8C6DFDC31B2B6D1500C09A4E /* Atividade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Atividade.swift; path = ../Atividade.swift; sourceTree = "<group>"; };
 		8C6DFDC51B2B6D1500C09A4E /* Disciplina.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Disciplina.swift; path = ../Disciplina.swift; sourceTree = "<group>"; };
 		8C841B231B349D8A006EC3F3 /* AtividadesMateriaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtividadesMateriaViewController.swift; sourceTree = "<group>"; };
@@ -55,9 +55,9 @@
 		B3581ED71B1E194C004BC32E /* OrganizadorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizadorTests.swift; sourceTree = "<group>"; };
 		B3581EF31B1F4261004BC32E /* AtividadeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtividadeManager.swift; sourceTree = "<group>"; };
 		B3581EF51B23AA31004BC32E /* MateriasViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MateriasViewController.swift; sourceTree = "<group>"; };
-		B3581EF91B23AEF0004BC32E /* ProvasViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProvasViewController.swift; sourceTree = "<group>"; };
+		B3581EF91B23AEF0004BC32E /* AtividadesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtividadesViewController.swift; sourceTree = "<group>"; };
 		B3581F051B23C322004BC32E /* DisciplinaMananer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisciplinaMananer.swift; sourceTree = "<group>"; };
-		B3581F071B262623004BC32E /* AddProvaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddProvaViewController.swift; sourceTree = "<group>"; };
+		B3581F071B262623004BC32E /* AddAtividadeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAtividadeViewController.swift; sourceTree = "<group>"; };
 		D5DA8B671B31ACA9001E0DE7 /* CellAtividade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellAtividade.swift; sourceTree = "<group>"; };
 		D5DA8B681B31ACA9001E0DE7 /* CellAtividade.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellAtividade.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -162,11 +162,11 @@
 			isa = PBXGroup;
 			children = (
 				B3581EF51B23AA31004BC32E /* MateriasViewController.swift */,
-				8C841B231B349D8A006EC3F3 /* AtividadesMateriaViewController.swift */,
 				44B148561B2E0A250071A5D6 /* AddMateriaViewController.swift */,
-				B3581EF91B23AEF0004BC32E /* ProvasViewController.swift */,
-				B3581F071B262623004BC32E /* AddProvaViewController.swift */,
-				44C5CB331B33B264007B7A7A /* DetalhesViewController.swift */,
+				8C841B231B349D8A006EC3F3 /* AtividadesMateriaViewController.swift */,
+				B3581EF91B23AEF0004BC32E /* AtividadesViewController.swift */,
+				B3581F071B262623004BC32E /* AddAtividadeViewController.swift */,
+				44C5CB331B33B264007B7A7A /* DetalhesAtividadeViewController.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -283,11 +283,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3581EF61B23AA31004BC32E /* MateriasViewController.swift in Sources */,
-				44C5CB341B33B264007B7A7A /* DetalhesViewController.swift in Sources */,
+				44C5CB341B33B264007B7A7A /* DetalhesAtividadeViewController.swift in Sources */,
 				B3581F061B23C322004BC32E /* DisciplinaMananer.swift in Sources */,
-				B3581F081B262623004BC32E /* AddProvaViewController.swift in Sources */,
+				B3581F081B262623004BC32E /* AddAtividadeViewController.swift in Sources */,
 				44B148571B2E0A250071A5D6 /* AddMateriaViewController.swift in Sources */,
-				B3581EFA1B23AEF0004BC32E /* ProvasViewController.swift in Sources */,
+				B3581EFA1B23AEF0004BC32E /* AtividadesViewController.swift in Sources */,
 				B3581EC21B1E194C004BC32E /* Organizador.xcdatamodeld in Sources */,
 				D5DA8B691B31ACA9001E0DE7 /* CellAtividade.swift in Sources */,
 				8C841B241B349D8A006EC3F3 /* AtividadesMateriaViewController.swift in Sources */,

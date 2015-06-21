@@ -9,7 +9,7 @@
 import UIKit
 import EventKit
 
-class DetalhesViewController: UITableViewController {
+class DetalhesAtividadeViewController: UITableViewController, UITextFieldDelegate {
     
 //    let vC: ProvasViewController = ProvasViewController()
     @IBOutlet weak var nomeTxt: UITextField!
@@ -28,6 +28,10 @@ class DetalhesViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // impede de colocar uma data menor que a atual
+        datePicker.minimumDate = NSDate()
+
         nomeTxt.userInteractionEnabled = false
         materiaTxt.userInteractionEnabled = false
         notaTxt.userInteractionEnabled = false
@@ -37,7 +41,7 @@ class DetalhesViewController: UITableViewController {
         cellDateP.hidden = true
         datePicker.userInteractionEnabled = false
         
-        
+        self.navigationItem.title = atividadeSelecionada.nome
         editarBtn = UIBarButtonItem(title: "Editar", style: .Plain, target: self, action: "editar")
         navigationItem.rightBarButtonItem = editarBtn
         
@@ -49,14 +53,15 @@ class DetalhesViewController: UITableViewController {
         materiaTxt.text = atividadeSelecionada.disciplina.nome
         notaTxt.text = "\(atividadeSelecionada.nota)"
         pesoTxt.text = "\(atividadeSelecionada.peso)"
-        dataTxt.text = "\(atividadeSelecionada.data)"
+        
         obsTxt.text = atividadeSelecionada.obs
         datePicker.date = atividadeSelecionada.data
+
         
-        
-        
-        //                atividade.nota = NSNumber(integer: self.txtField!.text.toInt()!)
-        
+        var dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy hh:mm"
+        var dateString = dateFormatter.stringFromDate(atividadeSelecionada.data)
+        dataTxt.text = dateString
         
     }
     
@@ -69,11 +74,11 @@ class DetalhesViewController: UITableViewController {
         case 0: return 2
         case 1: return 2
         case 2:
-            if atividadeSelecionada.concluido == 0{
+            if atividadeSelecionada.concluido == 0 {
                 return 3
             }
             cellDateP.hidden = true
-            return 1
+            return 2
         default: return 0
         }
     }
@@ -105,74 +110,79 @@ class DetalhesViewController: UITableViewController {
             editarBtn.title = "Salvar"
             
         } else {
-            nomeTxt.userInteractionEnabled = false
-            materiaTxt.userInteractionEnabled = false
-            notaTxt.userInteractionEnabled = false
-            pesoTxt.userInteractionEnabled = false
-            dataTxt.userInteractionEnabled = false
-            obsTxt.userInteractionEnabled = false
-            
-            nomeTxt.borderStyle = .None
-            materiaTxt.borderStyle = .None
-            notaTxt.borderStyle = .None
-            pesoTxt.borderStyle = .None
-            nomeTxt.borderStyle = .None
-            
-            editarBtn.title = "Editar"
-            
-            
-            ///////////// MUDAR OS DADOS DO COREDATA!!! //////////////////
-            
-            println("Nome antigo: \(atividadeSelecionada.nome)")
-            
-            var mediaAntigaAtividade = (atividadeSelecionada.peso.doubleValue/100) * atividadeSelecionada.nota.doubleValue
-            atividadeSelecionada.disciplina.media = atividadeSelecionada.disciplina.media.doubleValue - mediaAntigaAtividade
-            
             if dataTxt != datePicker.date {
                 excluirEventoCalendario(atividadeSelecionada.nome, materia: atividadeSelecionada.disciplina, data: atividadeSelecionada.data)
                 cancelarNotificacao(atividadeSelecionada.nome, materia: atividadeSelecionada.disciplina, data: atividadeSelecionada.data)
                 atividadeSelecionada.data = datePicker.date
+
+                var dateFormatter = NSDateFormatter()
+                dateFormatter.dateFormat = "dd/MM/yyyy hh:mm"
+                var dateString = dateFormatter.stringFromDate(atividadeSelecionada.data)
+                dataTxt.text = dateString
+
+                
                 criarNotificacao(nomeTxt.text, materia: atividadeSelecionada.disciplina, data: datePicker.date)
                 criarEventoCalendario(nomeTxt.text, materia: atividadeSelecionada.disciplina, data: datePicker.date)
             }
+            
+            if (pesoTxt.text.toInt() >= 0 && pesoTxt.text.toInt() <= 100){
+                if ((notaTxt.text as NSString).doubleValue >= 0 && (notaTxt.text as NSString).doubleValue <= 10) {
+                    
+                    var mediaAntigaAtividade = (atividadeSelecionada.peso.doubleValue/100) * atividadeSelecionada.nota.doubleValue
+                    atividadeSelecionada.disciplina.media = atividadeSelecionada.disciplina.media.doubleValue - mediaAntigaAtividade
+                    
+                    atividadeSelecionada.nome = nomeTxt.text
+                    atividadeSelecionada.nota = (notaTxt.text as NSString).doubleValue
+                    atividadeSelecionada.peso = pesoTxt.text.toInt()!
+                    atividadeSelecionada.obs = obsTxt.text
 
-            atividadeSelecionada.nome = nomeTxt.text
-            atividadeSelecionada.nota = notaTxt.text.toInt()!
-            atividadeSelecionada.peso = pesoTxt.text.toInt()!
-            atividadeSelecionada.obs = obsTxt.text
-            
-            
-            ///////// VERIFICAR: NOTA ENTRE 0 E 10, PESO ENTRE 0 E 100%
-            var mediaAtividade: Double!
-            
-            if (atividadeSelecionada.peso.doubleValue >= 0 && atividadeSelecionada.peso.doubleValue <= 100){
-                if (atividadeSelecionada.nota.doubleValue >= 0 && atividadeSelecionada.nota.doubleValue <= 10) {
-                    mediaAtividade = (atividadeSelecionada.peso.doubleValue/100) * atividadeSelecionada.nota.doubleValue
-                    println("\(mediaAtividade)")
+                    var mediaAtividade = (atividadeSelecionada.peso.doubleValue/100) * atividadeSelecionada.nota.doubleValue
+//                    println("\(mediaAtividade)")
                     
                     atividadeSelecionada.disciplina.media = atividadeSelecionada.disciplina.media.doubleValue + mediaAtividade
-                    println("media atividade \(mediaAtividade)")
-                    println("media materia \(atividadeSelecionada.disciplina.media)")
+                    AtividadeManager.sharedInstance.salvarAtividade()
                     
-                    println("Nome novo: \(atividadeSelecionada.nome)")
+                    nomeTxt.userInteractionEnabled = false
+                    materiaTxt.userInteractionEnabled = false
+                    notaTxt.userInteractionEnabled = false
+                    pesoTxt.userInteractionEnabled = false
+                    dataTxt.userInteractionEnabled = false
+                    obsTxt.userInteractionEnabled = false
+                    cellDateP.hidden = true
                     
-                    println("\(atividadeSelecionada.concluido)")
+                    nomeTxt.borderStyle = .None
+                    materiaTxt.borderStyle = .None
+                    notaTxt.borderStyle = .None
+                    pesoTxt.borderStyle = .None
+                    nomeTxt.borderStyle = .None
                     
-                }else {
+                    editarBtn.title = "Editar"
+
+                } else {
                     // Aviso de que a nota esta inválida
                     // Não pode deixar salvar
-                    println("NOTA INVÁLIDA")
+//                    println("NOTA INVÁLIDA")
+                    let alerta: UIAlertController = UIAlertController(title: "Nota inválida", message: "Digite uma nota entre 0 e 10", preferredStyle: .Alert)
+                    let al1:UIAlertAction = UIAlertAction(title: "OK", style: .Default, handler: { (ACTION) -> Void in
+                        self.notaTxt.becomeFirstResponder()
+                        self.notaTxt.text = "\(self.atividadeSelecionada.nota)"
+                    })
+                    [alerta.addAction(al1)]
+                    self.presentViewController(alerta, animated: true, completion: nil)
+
                 }
             } else {
                 // Aviso de que o peso esta incorreto
                 // Não pode deixar salvar
-                println("PESO INVÁLIDO")
+                let alerta: UIAlertController = UIAlertController(title: "Peso inválido", message: "Digite um peso entre 0% e 100%", preferredStyle: .Alert)
+                let al1:UIAlertAction = UIAlertAction(title: "OK", style: .Default, handler: { (ACTION) -> Void in
+                    self.pesoTxt.becomeFirstResponder()
+                    self.pesoTxt.text = "\(self.atividadeSelecionada.peso)"
+                })
+                [alerta.addAction(al1)]
+                self.presentViewController(alerta, animated: true, completion: nil)
             }
-            AtividadeManager.sharedInstance.salvarAtividade()
-            self.navigationController?.popToRootViewControllerAnimated(true)
-
         }
-        
     }
     
     func criarNotificacao(nome: NSString, materia: Disciplina, data: NSDate) {
@@ -274,15 +284,5 @@ class DetalhesViewController: UITableViewController {
         
         eventStore.removeEvent((eventos.last as! EKEvent), span: EKSpanThisEvent, error: NSErrorPointer())
     }
-
-    /*
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
-    }
-    */
     
 }
