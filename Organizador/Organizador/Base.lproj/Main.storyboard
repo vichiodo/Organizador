@@ -459,7 +459,7 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="8lR-Qk-569">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="8lR-Qk-569">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -568,7 +568,7 @@
                     <navigationItem key="navigationItem" title="Matérias" id="uw9-wN-hAp">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="3B5-kF-8Jc">
                             <connections>
-                                <segue destination="tW1-C6-LoR" kind="show" id="BCL-YD-zpl"/>
+                                <segue destination="tW1-C6-LoR" kind="show" identifier="btnEditar" id="BCL-YD-zpl"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

@@ -13,6 +13,8 @@ class MateriasViewController: UIViewController, UITableViewDataSource, UITableVi
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var viewIntro: UIView!
+    var editarBtn: UIBarButtonItem!
+    var disciplinaSelecionada: Disciplina!
     
     // carrega o vetor de usuarios cadastrados no CoreData
     lazy var disciplinas:Array<Disciplina> = {
@@ -25,7 +27,8 @@ class MateriasViewController: UIViewController, UITableViewDataSource, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        editarBtn = UIBarButtonItem(title: "Editar", style: .Plain, target: self, action: "editar")
+        navigationItem.leftBarButtonItem = editarBtn
     }
     
     override func didReceiveMemoryWarning() {
@@ -34,6 +37,9 @@ class MateriasViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     override func viewWillAppear(animated: Bool) {
+        disciplinaSelecionada == nil
+        editarBtn.title = "Editar"
+        self.tableView.setEditing(false, animated: true)
         disciplinas = DisciplinaManager.sharedInstance.buscarDisciplinas()
         self.tableView.reloadData()
         if disciplinas.isEmpty {
@@ -60,23 +66,15 @@ class MateriasViewController: UIViewController, UITableViewDataSource, UITableVi
         cell.textLabel?.textColor = self.stringParaCor(disciplinas[indexPath.row].cor)
         cell.detailTextLabel?.text = "Média: \(disciplinas[indexPath.row].media)"
         cell.tag = indexPath.row
-        //        cell.backgroundColor =
         
         return cell
     }
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
-//            if atividades.count != 0 {
-//                for i in 0...atividades.count - 1 {
-//                    if atividades[i].disciplina == disciplinas[indexPath.row] {
-//                        AtividadeManager.sharedInstance.removerAtividade(atividades[i].id as Int)
-//                    }
-//                }
-//            }
             DisciplinaManager.sharedInstance.removerDisciplina(indexPath.row)
             disciplinas = DisciplinaManager.sharedInstance.buscarDisciplinas()
-
+            
         }
         self.tableView.reloadData()
         if disciplinas.isEmpty {
@@ -100,13 +98,37 @@ class MateriasViewController: UIViewController, UITableViewDataSource, UITableVi
         )
     }
     
+    func editar() {
+        if editarBtn.title == "Editar" {
+            editarBtn.title = "Concluido"
+            self.tableView.setEditing(true, animated: true)
+        } else {
+            editarBtn.title = "Editar"
+            self.tableView.setEditing(false, animated: true)
+        }
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if editarBtn.title == "Concluido" {
+            disciplinaSelecionada = disciplinas[indexPath.row]
+            self.performSegueWithIdentifier("btnEditar", sender: nil)
+        }
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "detalhesDisciplinaView" {
             var cell = sender as! UITableViewCell
             let vC: AtividadesMateriaViewController = segue.destinationViewController as! AtividadesMateriaViewController
-            vC.discliplinaSelecionada = disciplinas[cell.tag]
+            vC.disciplinaSelecionada = disciplinas[cell.tag]
+        }
+        else if segue.identifier == "btnEditar" {
+            let vC: AddMateriaViewController = segue.destinationViewController as! AddMateriaViewController
+            if editarBtn.title == "Editar" {
+                vC.disciplinaSelecionada = nil
+            } else {
+                editarBtn.title = "Editar"
+                vC.disciplinaSelecionada = disciplinaSelecionada
+            }
         }
     }
-    
-    
 }

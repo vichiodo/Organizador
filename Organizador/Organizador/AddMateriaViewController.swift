@@ -13,6 +13,7 @@ class AddMateriaViewController: UITableViewController, UICollectionViewDataSourc
     var arrayCores = ["CF000F", "D2527F", "663399", "22A7F0", "00B16A", "F9690E", "F7CA18", "BFBFBF", "000000", "8B4513"]
     var corSelecionada: String = ""
     var indexOld: Int = 0
+    var disciplinaSelecionada: Disciplina?
     
     @IBOutlet weak var txtNome: UITextField!
     @IBOutlet weak var coresCollectionView: UICollectionView!
@@ -25,6 +26,23 @@ class AddMateriaViewController: UITableViewController, UICollectionViewDataSourc
         super.didReceiveMemoryWarning()
     }
     
+    override func viewDidAppear(animated: Bool) {
+        if disciplinaSelecionada != nil {
+            txtNome.text = disciplinaSelecionada!.nome
+            corSelecionada = disciplinaSelecionada!.cor
+            for i in 0...arrayCores.count - 1 {
+                if disciplinaSelecionada!.cor == arrayCores[i] {
+                    var path: NSIndexPath = NSIndexPath(forItem: i, inSection: 0)
+                    self.coresCollectionView.selectItemAtIndexPath(path, animated: true, scrollPosition: UICollectionViewScrollPosition.Left)
+
+                    var datasetCell2: UICollectionViewCell = coresCollectionView.cellForItemAtIndexPath(path)!
+                    datasetCell2.contentView.layer.borderWidth = 3.0
+                    datasetCell2.contentView.layer.borderColor = atualizaCorBorda(self.stringParaCor(arrayCores[path.row])).CGColor
+                }
+            }
+        }
+        
+    }
     // MARK: TableView
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 2
@@ -43,7 +61,6 @@ class AddMateriaViewController: UITableViewController, UICollectionViewDataSourc
         return 1
     }
     
-    
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return arrayCores.count
     }
@@ -54,7 +71,6 @@ class AddMateriaViewController: UITableViewController, UICollectionViewDataSourc
         // background de acordo com a label
         cell.contentView.backgroundColor = self.stringParaCor(arrayCores[indexPath.row])
         cell.contentView.layer.cornerRadius = cell.contentView.frame.size.width * 0.2
-//        cell.contentView.clipsToBounds = true
         
         return cell
     }
@@ -62,7 +78,7 @@ class AddMateriaViewController: UITableViewController, UICollectionViewDataSourc
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         if indexPath.row != indexOld {
             var path: NSIndexPath = NSIndexPath(forItem: indexOld, inSection: 0)
-
+            
             var datasetCell: UICollectionViewCell = coresCollectionView.cellForItemAtIndexPath(path)!
             datasetCell.contentView.layer.borderWidth = 0.0
             datasetCell.contentView.layer.borderColor = atualizaCorBorda(self.stringParaCor(arrayCores[indexPath.row])).CGColor
@@ -135,8 +151,13 @@ class AddMateriaViewController: UITableViewController, UICollectionViewDataSourc
                 self.presentViewController(alerta, animated: true, completion: nil)
             }
             else {
-                DisciplinaManager.sharedInstance.salvarNovaDisciplina(txtNome.text, cor: corSelecionada)
-                println("matéria salva")
+                if disciplinaSelecionada != nil {
+                    disciplinaSelecionada!.nome = txtNome.text
+                    disciplinaSelecionada!.cor = corSelecionada
+                    DisciplinaManager.sharedInstance.salvarDisciplina()
+                } else {
+                    DisciplinaManager.sharedInstance.salvarNovaDisciplina(txtNome.text, cor: corSelecionada)
+                }
                 navigationController?.popViewControllerAnimated(true)
             }
         }

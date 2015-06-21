@@ -10,7 +10,7 @@ import UIKit
 
 class AtividadesMateriaViewController: UIViewController {
     
-    var discliplinaSelecionada: Disciplina!
+    var disciplinaSelecionada: Disciplina!
     var atividadesDisciplinaSelecionada: [Atividade]!
     
     @IBOutlet weak var tableView: UITableView!
@@ -34,7 +34,7 @@ class AtividadesMateriaViewController: UIViewController {
     
     
     override func viewWillAppear(animated: Bool) {
-        self.navigationItem.title = discliplinaSelecionada.nome
+        self.navigationItem.title = disciplinaSelecionada.nome
         atividades = AtividadeManager.sharedInstance.buscarAtividades()
         
         
@@ -45,11 +45,10 @@ class AtividadesMateriaViewController: UIViewController {
 
         if atividadesOrdenadas.count != 0 {
             for i in 0...atividadesOrdenadas.count - 1 {
-                if atividadesOrdenadas[i].disciplina == discliplinaSelecionada {
+                if atividadesOrdenadas[i].disciplina == disciplinaSelecionada {
                     atividadesDisciplinaSelecionada.append(atividadesOrdenadas[i])
                 }
             }
-            println(atividadesDisciplinaSelecionada)
         }
     }
     
