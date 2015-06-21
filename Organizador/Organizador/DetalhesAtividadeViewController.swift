@@ -100,7 +100,7 @@ class DetalhesAtividadeViewController: UITableViewController, UITextFieldDelegat
                 notaTxt.userInteractionEnabled = true
                 nomeTxt.userInteractionEnabled = true
                 pesoTxt.userInteractionEnabled = true
-                obsTxt.userInteractionEnabled = true
+                obsTxt.userInteractionEnabled = false
                 
                 nomeTxt.borderStyle = .RoundedRect
                 notaTxt.borderStyle = .RoundedRect
@@ -157,7 +157,6 @@ class DetalhesAtividadeViewController: UITableViewController, UITextFieldDelegat
                     nomeTxt.borderStyle = .None
                     
                     editarBtn.title = "Editar"
-
                 } else {
                     // Aviso de que a nota esta inválida
                     // Não pode deixar salvar
@@ -284,5 +283,4 @@ class DetalhesAtividadeViewController: UITableViewController, UITextFieldDelegat
         
         eventStore.removeEvent((eventos.last as! EKEvent), span: EKSpanThisEvent, error: NSErrorPointer())
     }
-    
 }
