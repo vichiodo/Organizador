@@ -25,6 +25,8 @@
 		D556655C1B37608B00DE6D9E /* Disciplina.swift in Sources */ = {isa = PBXBuildFile; fileRef = D556655B1B37608B00DE6D9E /* Disciplina.swift */; };
 		D556655E1B37608C00DE6D9E /* Atividade.swift in Sources */ = {isa = PBXBuildFile; fileRef = D556655D1B37608C00DE6D9E /* Atividade.swift */; };
 		D55665601B3762F300DE6D9E /* CloudKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D556655F1B3762F300DE6D9E /* CloudKitHelper.swift */; };
+		D564443A1B38856000560627 /* StoryboardiPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D56444391B38856000560627 /* StoryboardiPad.storyboard */; };
+		D564443C1B388DBA00560627 /* EventHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D564443B1B388DBA00560627 /* EventHelper.swift */; };
 		D5DA8B691B31ACA9001E0DE7 /* CellAtividade.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DA8B671B31ACA9001E0DE7 /* CellAtividade.swift */; };
 		D5DA8B6A1B31ACA9001E0DE7 /* CellAtividade.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5DA8B681B31ACA9001E0DE7 /* CellAtividade.xib */; };
 /* End PBXBuildFile section */
@@ -63,6 +65,8 @@
 		D556655B1B37608B00DE6D9E /* Disciplina.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Disciplina.swift; sourceTree = "<group>"; };
 		D556655D1B37608C00DE6D9E /* Atividade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Atividade.swift; sourceTree = "<group>"; };
 		D556655F1B3762F300DE6D9E /* CloudKitHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitHelper.swift; sourceTree = "<group>"; };
+		D56444391B38856000560627 /* StoryboardiPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StoryboardiPad.storyboard; sourceTree = "<group>"; };
+		D564443B1B388DBA00560627 /* EventHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventHelper.swift; sourceTree = "<group>"; };
 		D5DA8B671B31ACA9001E0DE7 /* CellAtividade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellAtividade.swift; sourceTree = "<group>"; };
 		D5DA8B681B31ACA9001E0DE7 /* CellAtividade.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellAtividade.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -114,12 +118,13 @@
 				B3581EEE1B1F4220004BC32E /* Managers */,
 				B3581F091B262F69004BC32E /* Views */,
 				B3581EBE1B1E194B004BC32E /* AppDelegate.swift */,
+				D56444391B38856000560627 /* StoryboardiPad.storyboard */,
 				B3581EC51B1E194C004BC32E /* Main.storyboard */,
-				44C5CB371B3770B6007B7A7A /* StoryboardiPad.storyboard */,
 				B3581EC81B1E194C004BC32E /* Images.xcassets */,
 				B3581ECA1B1E194C004BC32E /* LaunchScreen.xib */,
 				B3581EC01B1E194B004BC32E /* Organizador.xcdatamodeld */,
 				D556655F1B3762F300DE6D9E /* CloudKitHelper.swift */,
+				D564443B1B388DBA00560627 /* EventHelper.swift */,
 				B3581EBC1B1E194B004BC32E /* Supporting Files */,
 			);
 			path = Organizador;
@@ -277,7 +282,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3581EC71B1E194C004BC32E /* Main.storyboard in Resources */,
-				44C5CB381B3770B6007B7A7A /* StoryboardiPad.storyboard in Resources */,
+				D564443A1B38856000560627 /* StoryboardiPad.storyboard in Resources */,
 				D5DA8B6A1B31ACA9001E0DE7 /* CellAtividade.xib in Resources */,
 				B3581ECC1B1E194C004BC32E /* LaunchScreen.xib in Resources */,
 				B3581EC91B1E194C004BC32E /* Images.xcassets in Resources */,
@@ -307,6 +312,7 @@
 				D556655E1B37608C00DE6D9E /* Atividade.swift in Sources */,
 				B3581EC21B1E194C004BC32E /* Organizador.xcdatamodeld in Sources */,
 				D5DA8B691B31ACA9001E0DE7 /* CellAtividade.swift in Sources */,
+				D564443C1B388DBA00560627 /* EventHelper.swift in Sources */,
 				8C841B241B349D8A006EC3F3 /* AtividadesMateriaViewController.swift in Sources */,
 				D55665601B3762F300DE6D9E /* CloudKitHelper.swift in Sources */,
 				B3581EBF1B1E194B004BC32E /* AppDelegate.swift in Sources */,

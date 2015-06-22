@@ -21,7 +21,7 @@ class AddAtividadeViewController: UITableViewController, UITextFieldDelegate, UI
     @IBOutlet weak var pesoTextField: UITextField!
     @IBOutlet weak var segmentedC: UISegmentedControl!
     @IBOutlet weak var txtObs: UITextView!
-    
+    @IBOutlet weak var pesoTarefa: UITextField!
     
     var materiaSelecionada = 0
     var peso: Int?
@@ -155,7 +155,7 @@ class AddAtividadeViewController: UITableViewController, UITextFieldDelegate, UI
             vale = true
         default:
             if valeNota.on {
-                peso = pesoTextField.text.toInt()
+                peso = pesoTarefa.text.toInt()
             } else {
                 peso = 0
             }
@@ -180,95 +180,10 @@ class AddAtividadeViewController: UITableViewController, UITextFieldDelegate, UI
         else {
             AtividadeManager.sharedInstance.salvarNovaAtividade(provaTxt.text, data: date.date, materia: disciplinas[materiaSelecionada], peso: peso!, tipo: tipo, valeNota: vale, obs: obs)
             
-            criarNotificacao()
-            criarEventoCalendario()
-            
             self.navigationController?.popViewControllerAnimated(true)
         }
     }
     
-    func criarNotificacao() {
-        for i in 0...7 {
-            var localNotification:UILocalNotification = UILocalNotification()
-            localNotification.alertAction = "Ver a prova"
-            var diasRestantes = 7 - i
-            var strNotif = "\(provaTxt.text) de \(disciplinas[materiaSelecionada].nome)"
-            if diasRestantes == 0 {
-                localNotification.alertBody = "Vish, a '\(strNotif)' é hoje!"
-            }
-            else if diasRestantes == 1 {
-                localNotification.alertBody = "Vish, falta \(diasRestantes) dia para a '\(strNotif)'!"
-            }
-            else {
-                localNotification.alertBody = "Vish, faltam \(diasRestantes) dias para a '\(strNotif)'!"
-            }
-            
-            let dateFix: NSTimeInterval = floor(date.date.timeIntervalSinceReferenceDate / 60.0) * 60.0
-            var horario: NSDate = NSDate(timeIntervalSinceReferenceDate: dateFix)
-            
-            let intervalo: NSTimeInterval = -NSTimeInterval(60*60*24 * (diasRestantes))
-            
-            localNotification.soundName = UILocalNotificationDefaultSoundName
-            localNotification.applicationIconBadgeNumber = 1
-            
-            localNotification.fireDate = NSDate(timeInterval: intervalo, sinceDate: horario)
-            UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
-        }
-    }
-    
-    func cancelarNotificacao(nome: NSString, materia: Disciplina, data: NSDate) {
-        for i in 0...7 {
-            var localNotification:UILocalNotification = UILocalNotification()
-            localNotification.alertAction = "Ver a prova"
-            var diasRestantes = 7 - i
-            var strNotif = "\(nome) de \(materia.nome)"
-            if diasRestantes == 0 {
-                localNotification.alertBody = "Vish, a '\(strNotif)' é hoje!"
-            }
-            else if diasRestantes == 1 {
-                localNotification.alertBody = "Vish, falta \(diasRestantes) dia para a '\(strNotif)'!"
-            }
-            else {
-                localNotification.alertBody = "Vish, faltam \(diasRestantes) dias para a '\(strNotif)'!"
-            }
-            
-            let dateFix: NSTimeInterval = floor(data.timeIntervalSinceReferenceDate / 60.0) * 60.0
-            var horario: NSDate = NSDate(timeIntervalSinceReferenceDate: dateFix)
-            
-            let intervalo: NSTimeInterval = -NSTimeInterval(60*60*24 * (diasRestantes))
-            
-            localNotification.soundName = UILocalNotificationDefaultSoundName
-            localNotification.applicationIconBadgeNumber = 1
-            
-            localNotification.fireDate = NSDate(timeInterval: intervalo, sinceDate: horario)
-            UIApplication.sharedApplication().cancelLocalNotification(localNotification)
-        }
-    }
-    
-    //método que salva no calendário nativo a atividade
-    func criarEventoCalendario(){
-        var eventStore: EKEventStore = EKEventStore()
-        
-        var evento: EKEvent = EKEvent(eventStore: eventStore)
-        
-        evento.title = "\(provaTxt.text) de \(disciplinas[materiaSelecionada].nome)"
-        
-        evento.startDate = date.date
-        
-        evento.endDate = NSDate(timeInterval: 3600, sinceDate: evento.startDate)
-        
-        eventStore.requestAccessToEntityType(EKEntityTypeEvent, completion: { (granted: Bool, error NSError) -> Void in
-            if !granted {
-                return
-            } else {
-                evento.calendar = eventStore.defaultCalendarForNewEvents
-                
-                eventStore.saveEvent(evento, span: EKSpanThisEvent, commit: true, error: NSErrorPointer())
-            }
-        })
-    }
-    
-        
     @IBAction func segControl(sender: AnyObject) {
         switch segmentedC.selectedSegmentIndex {
         case 0:

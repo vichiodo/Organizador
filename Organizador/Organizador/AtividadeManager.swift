@@ -104,6 +104,9 @@ class AtividadeManager {
         atividade.setValue(0, forKey: "concluido")
         
         salvarAtividade()
+        
+        EventHelper.shared.criarNotificacao(atividade)
+        EventHelper.shared.criarEventoCalendario(atividade)
     }
     
     func salvarAtividadeCloud(nome: String, id: Int, nota: Double, data: NSDate, materia: Disciplina, peso: Int, tipo: Int, valeNota: Bool, obs: String, concluido: Bool) {

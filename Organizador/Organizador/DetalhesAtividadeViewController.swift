@@ -126,19 +126,19 @@ class DetalhesAtividadeViewController: UITableViewController, UITextFieldDelegat
             editarBtn.title = "Salvar"
             
         } else {
-            if dataTxt != datePicker.date {
-                excluirEventoCalendario(atividadeSelecionada.nome, materia: atividadeSelecionada.disciplina, data: atividadeSelecionada.data)
-                cancelarNotificacao(atividadeSelecionada.nome, materia: atividadeSelecionada.disciplina, data: atividadeSelecionada.data)
+            if dataTxt != datePicker.date || nomeTxt.text != atividadeSelecionada.nome {
+                EventHelper.shared.excluirEventoCalendario(atividadeSelecionada)
+                EventHelper.shared.cancelarNotificacao(atividadeSelecionada)
                 atividadeSelecionada.data = datePicker.date
+                atividadeSelecionada.nome = nomeTxt.text
 
                 var dateFormatter = NSDateFormatter()
                 dateFormatter.dateFormat = "dd/MM/yyyy hh:mm"
                 var dateString = dateFormatter.stringFromDate(atividadeSelecionada.data)
                 dataTxt.text = dateString
-
                 
-                criarNotificacao(nomeTxt.text, materia: atividadeSelecionada.disciplina, data: datePicker.date)
-                criarEventoCalendario(nomeTxt.text, materia: atividadeSelecionada.disciplina, data: datePicker.date)
+                EventHelper.shared.criarNotificacao(atividadeSelecionada)
+                EventHelper.shared.criarEventoCalendario(atividadeSelecionada)
             }
             
             if (pesoTxt.text.toInt() >= 0 && pesoTxt.text.toInt() <= 100){
@@ -198,104 +198,9 @@ class DetalhesAtividadeViewController: UITableViewController, UITextFieldDelegat
         }
     }
     
-    func criarNotificacao(nome: NSString, materia: Disciplina, data: NSDate) {
-        for i in 0...7 {
-            var localNotification:UILocalNotification = UILocalNotification()
-            localNotification.alertAction = "Ver a prova"
-            var diasRestantes = 7 - i
-            var strNotif = "\(nome) de \(materia.nome)"
-            if diasRestantes == 0 {
-                localNotification.alertBody = "Vish, a '\(strNotif)' é hoje!"
-            }
-            else if diasRestantes == 1 {
-                localNotification.alertBody = "Vish, falta \(diasRestantes) dia para a '\(strNotif)'!"
-            }
-            else {
-                localNotification.alertBody = "Vish, faltam \(diasRestantes) dias para a '\(strNotif)'!"
-            }
-            
-            let dateFix: NSTimeInterval = floor(data.timeIntervalSinceReferenceDate / 60.0) * 60.0
-            var horario: NSDate = NSDate(timeIntervalSinceReferenceDate: dateFix)
-            
-            let intervalo: NSTimeInterval = -NSTimeInterval(60*60*24 * (diasRestantes))
-            
-            localNotification.soundName = UILocalNotificationDefaultSoundName
-            localNotification.applicationIconBadgeNumber = 1
-            
-            localNotification.fireDate = NSDate(timeInterval: intervalo, sinceDate: horario)
-            UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
-        }
-    }
-    
-    func cancelarNotificacao(nome: NSString, materia: Disciplina, data: NSDate) {
-        for i in 0...7 {
-            var localNotification:UILocalNotification = UILocalNotification()
-            localNotification.alertAction = "Ver a prova"
-            var diasRestantes = 7 - i
-            var strNotif = "\(nome) de \(materia.nome)"
-            if diasRestantes == 0 {
-                localNotification.alertBody = "Vish, a '\(strNotif)' é hoje!"
-            }
-            else if diasRestantes == 1 {
-                localNotification.alertBody = "Vish, falta \(diasRestantes) dia para a '\(strNotif)'!"
-            }
-            else {
-                localNotification.alertBody = "Vish, faltam \(diasRestantes) dias para a '\(strNotif)'!"
-            }
-            
-            let dateFix: NSTimeInterval = floor(data.timeIntervalSinceReferenceDate / 60.0) * 60.0
-            var horario: NSDate = NSDate(timeIntervalSinceReferenceDate: dateFix)
-            
-            let intervalo: NSTimeInterval = -NSTimeInterval(60*60*24 * (diasRestantes))
-            
-            localNotification.soundName = UILocalNotificationDefaultSoundName
-            localNotification.applicationIconBadgeNumber = 1
-            
-            localNotification.fireDate = NSDate(timeInterval: intervalo, sinceDate: horario)
-            UIApplication.sharedApplication().cancelLocalNotification(localNotification)
-        }
-    }
-    
-    //método que salva no calendário nativo a atividade
-    func criarEventoCalendario(nome: NSString, materia: Disciplina, data: NSDate){
-        var eventStore: EKEventStore = EKEventStore()
-        
-        var evento: EKEvent = EKEvent(eventStore: eventStore)
-        
-        evento.title = "\(nome) de \(materia.nome)"
-        
-        evento.startDate = data
-        
-        evento.endDate = NSDate(timeInterval: 3600, sinceDate: evento.startDate)
-        
-        eventStore.requestAccessToEntityType(EKEntityTypeEvent, completion: { (granted: Bool, error NSError) -> Void in
-            if !granted {
-                return
-            } else {
-                evento.calendar = eventStore.defaultCalendarForNewEvents
-                
-                eventStore.saveEvent(evento, span: EKSpanThisEvent, commit: true, error: NSErrorPointer())
-            }
-        })
-    }
-
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    //excluir evento do calendário
-    func excluirEventoCalendario(nome: NSString, materia: Disciplina, data: NSDate){
-        var eventStore = EKEventStore()
-        
-        var endData: NSDate = NSDate(timeInterval: 3600, sinceDate: data)
-        
-        var predicate = eventStore.predicateForEventsWithStartDate(data, endDate: endData, calendars:[eventStore.defaultCalendarForNewEvents])
-        
-        var eventos = eventStore.eventsMatchingPredicate(predicate)
-        
-        eventStore.removeEvent((eventos.last as! EKEvent), span: EKSpanThisEvent, error: NSErrorPointer())
     }
     
     func configureView() {

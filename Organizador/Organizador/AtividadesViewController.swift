@@ -219,7 +219,7 @@ class AtividadesViewController: UITableViewController {
                 break
             }
             
-            vC.cancelarNotificacao(ativ.nome, materia: ativ.disciplina, data: ativ.data)
+            EventHelper.shared.cancelarNotificacao(ativ)
             AtividadeManager.sharedInstance.removerAtividade(ativ.id as Int)
         }
         atualiza_OrdenaVetores()

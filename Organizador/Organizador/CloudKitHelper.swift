@@ -17,13 +17,13 @@ class CloudKitHelper {
     
     let userDef = NSUserDefaults.standardUserDefaults()
     
-    lazy var disciplinas:Array<Disciplina> = {
+    func disciplinas() -> Array<Disciplina> {
         return DisciplinaManager.sharedInstance.buscarDisciplinas()
-        }()
+    }
     
-    lazy var atividades:Array<Atividade> = {
+    func atividades() -> Array<Atividade> {
         return AtividadeManager.sharedInstance.buscarAtividades()
-        }()
+    }
     
     init() { privateDB = container.privateCloudDatabase }
     
@@ -31,32 +31,35 @@ class CloudKitHelper {
         println("EIIITA, Mudou o CoreData")
         userDef.setValue(NSDate(), forKey: "CDLastUpdate")
         userDef.synchronize()
-        AtualizaCloud()
     }
     
     func LastUpdateCoreData() -> NSDate {
+        if userDef.valueForKey("CDLastUpdate") as? NSDate == nil {
+            return NSDate(timeIntervalSince1970: 0)
+        }
         return userDef.valueForKey("CDLastUpdate") as! NSDate
     }
     
     func Update() {
-        let query = CKQuery(recordType: "Atividade", predicate: NSPredicate(value: true))
-        privateDB.performQuery(query, inZoneWithID: nil, completionHandler: { (results, error) -> Void in
-            if error != nil {
-                println(error)
-            }
-            else {
-                if results.count > 0 {
-                    var record: CKRecord = results.last as! CKRecord
-                    var dateCloud = record.modificationDate
-                    
-                    println(self.LastUpdateCoreData().timeIntervalSinceDate(dateCloud))
-                    
-                    if self.LastUpdateCoreData().timeIntervalSinceDate(dateCloud) < 0 {
-                        self.AtualizaCoreData()
-                    }
-                }
-            }
-        })
+        AtualizaCoreData()
+//        let query = CKQuery(recordType: "Atividade", predicate: NSPredicate(value: true))
+//        privateDB.performQuery(query, inZoneWithID: nil, completionHandler: { (results, error) -> Void in
+//            if error != nil {
+//                println(error)
+//            }
+//            else {
+//                if results.count > 0 {
+//                    var record: CKRecord = results.last as! CKRecord
+//                    var dateCloud = record.modificationDate
+//                    
+//                    println(self.LastUpdateCoreData().timeIntervalSinceDate(dateCloud))
+//                    
+//                    if self.LastUpdateCoreData().timeIntervalSinceDate(dateCloud) < 0 {
+//                        self.AtualizaCoreData()
+//                    }
+//                }
+//            }
+//        })
     }
     
     @objc func AtualizaCloud() {
@@ -89,7 +92,7 @@ class CloudKitHelper {
             var tem: Bool!
             var record: CKRecord!
             
-            for d in self.disciplinas {
+            for d in self.disciplinas() {
                 tem = false
                 for r in records {
                     if r.valueForKey("id") as! NSNumber == d.id {
@@ -121,7 +124,7 @@ class CloudKitHelper {
             // Exclui registros não existentes
             for record in records {
                 tem = false
-                for disc in self.disciplinas {
+                for disc in self.disciplinas() {
                     if record.valueForKey("id") as! NSNumber == disc.id {
                         tem = true
                     }
@@ -152,7 +155,7 @@ class CloudKitHelper {
             var tem: Bool!
             var record: CKRecord!
             
-            for a in self.atividades {
+            for a in self.atividades() {
                 tem = false
                 for r in records {
                     if r.valueForKey("id") as! NSNumber == a.id {
@@ -190,7 +193,7 @@ class CloudKitHelper {
             // Exclui registros não existentes
             for r in records {
                 tem = false
-                for a in self.atividades {
+                for a in self.atividades() {
                     if r.valueForKey("id") as! NSNumber == a.id {
                         tem = true
                     }
@@ -224,7 +227,7 @@ class CloudKitHelper {
             
             for r in records {
                 tem = false
-                for d in self.disciplinas {
+                for d in self.disciplinas() {
                     if r.valueForKey("id") as! NSNumber == d.id {
                         tem = true
                         println("Update d")
@@ -247,16 +250,15 @@ class CloudKitHelper {
             }
             
             // Exclui registros não existentes
-            for index in 0..<self.disciplinas.count {
+            for d in self.disciplinas() {
                 tem = false
-                var d: Disciplina = self.disciplinas[index]
                 for r in records {
                     if r.valueForKey("id") as! NSNumber == d.id {
                         tem = true
                     }
                 }
                 if !tem {
-                    DisciplinaManager.sharedInstance.removerDisciplina(index)
+                    DisciplinaManager.sharedInstance.removerDisciplina(d.id as! Int)
                 }
             }
         })
@@ -285,12 +287,12 @@ class CloudKitHelper {
             for r in records {
                 tem = false
                 var disciplina: Disciplina!
-                for d in self.disciplinas {
+                for d in self.disciplinas() {
                     if d.id == r.valueForKey("disciplina") as! NSNumber {
                         disciplina = d as Disciplina
                     }
                 }
-                for a in self.atividades {
+                for a in self.atividades() {
                     if r.valueForKey("id") as! NSNumber == a.id {
                         tem = true
                         println("Update a")
@@ -319,7 +321,7 @@ class CloudKitHelper {
             }
             
             // Exclui registros não existentes
-            for a in self.atividades {
+            for a in self.atividades() {
                 tem = false
                 for r in records {
                     if r.valueForKey("id") as! NSNumber == a.id {

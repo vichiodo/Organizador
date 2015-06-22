@@ -5,11 +5,15 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
+        <!--Matérias-->
         <scene sceneID="dTb-Yt-T4a">
             <objects>
                 <navigationController id="b03-q2-wjQ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="more" id="W9F-xf-VEK"/>
+                    <tabBarItem key="tabBarItem" title="Matérias" image="Courses-32" selectedImage="Courses Filled-32" id="W9F-xf-VEK">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="image" keyPath="selectedImage" value="Courses Filled-32"/>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="qTG-Bs-q7c">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -166,7 +170,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Twk-BI-EoE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1490" y="952"/>
+            <point key="canvasLocation" x="1436" y="952"/>
         </scene>
         <!--Detalhes Atividade View Controller-->
         <scene sceneID="cky-qx-zxC">
@@ -185,20 +189,23 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="nome" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k6p-9D-3cR">
-                                                    <rect key="frame" x="11" y="7" width="578" height="29"/>
+                                                    <rect key="frame" x="11" y="8" width="578" height="28"/>
+                                                    <color key="tintColor" red="0.1505631506" green="0.1505586505" blue="0.15056121350000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="k6p-9D-3cR" firstAttribute="centerY" secondItem="uun-Yx-wrL" secondAttribute="centerY" id="8zz-ps-EVe"/>
+                                                <constraint firstItem="k6p-9D-3cR" firstAttribute="top" secondItem="uun-Yx-wrL" secondAttribute="topMargin" id="C2K-5i-hjq"/>
                                                 <constraint firstItem="k6p-9D-3cR" firstAttribute="top" secondItem="uun-Yx-wrL" secondAttribute="topMargin" constant="-1" id="ZNq-tR-BRk"/>
                                                 <constraint firstItem="k6p-9D-3cR" firstAttribute="leading" secondItem="uun-Yx-wrL" secondAttribute="leadingMargin" constant="3" id="aWM-Kx-Rzk"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="k6p-9D-3cR" secondAttribute="bottom" constant="-0.5" id="yk3-gZ-oUw"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="k6p-9D-3cR" secondAttribute="bottom" id="yk3-gZ-oUw"/>
                                                 <constraint firstItem="k6p-9D-3cR" firstAttribute="centerX" secondItem="uun-Yx-wrL" secondAttribute="centerX" id="zIP-nF-3Ju"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
+                                                    <exclude reference="8zz-ps-EVe"/>
                                                     <exclude reference="ZNq-tR-BRk"/>
                                                 </mask>
                                             </variation>
@@ -211,6 +218,7 @@
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="materia" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4UW-jE-C79">
                                                     <rect key="frame" x="11" y="8" width="578" height="28"/>
+                                                    <color key="tintColor" red="0.1505631506" green="0.1505586505" blue="0.15056121350000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="287" id="4jT-v1-LSZ"/>
                                                     </constraints>
@@ -227,7 +235,7 @@
                                                 <constraint firstItem="4UW-jE-C79" firstAttribute="leading" secondItem="QRT-8x-fEl" secondAttribute="leadingMargin" id="1iN-h9-4as"/>
                                                 <constraint firstItem="4UW-jE-C79" firstAttribute="top" secondItem="QRT-8x-fEl" secondAttribute="topMargin" constant="-1" id="3NU-zM-7IE"/>
                                                 <constraint firstAttribute="centerY" secondItem="4UW-jE-C79" secondAttribute="centerY" id="OyT-oU-u75"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="4UW-jE-C79" secondAttribute="bottom" constant="-0.5" id="Q74-qz-S13"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="4UW-jE-C79" secondAttribute="bottom" id="Q74-qz-S13"/>
                                                 <constraint firstAttribute="centerX" secondItem="4UW-jE-C79" secondAttribute="centerX" id="Qcv-GU-2iD"/>
                                                 <constraint firstItem="4UW-jE-C79" firstAttribute="leading" secondItem="QRT-8x-fEl" secondAttribute="leadingMargin" constant="3" id="tlK-5W-CNL"/>
                                             </constraints>
@@ -256,6 +264,7 @@
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="nota" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9yW-tQ-dmm">
                                                     <rect key="frame" x="86" y="8" width="66" height="28"/>
+                                                    <color key="tintColor" red="0.1505631506" green="0.1505586505" blue="0.15056121350000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="97" id="jBG-tR-V41"/>
                                                         <constraint firstAttribute="width" constant="66" id="rf6-MZ-D95"/>
@@ -311,10 +320,10 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="peso" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ybV-wZ-VMO">
-                                                    <rect key="frame" x="100" y="7" width="120" height="30"/>
+                                                    <rect key="frame" x="100" y="14" width="400" height="17"/>
+                                                    <color key="tintColor" red="0.1505631506" green="0.1505586505" blue="0.15056121350000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="120" id="HzB-Mk-Vwj"/>
-                                                        <constraint firstAttribute="width" constant="120" id="fcj-Th-gHc"/>
                                                         <constraint firstAttribute="width" constant="97" id="tJb-Bb-Au2"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -341,7 +350,6 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="ybV-wZ-VMO" secondAttribute="trailing" constant="122" id="E28-lR-OzK">
                                                     <variation key="heightClass=regular-widthClass=compact" constant="310"/>
                                                 </constraint>
-                                                <constraint firstItem="sJl-ci-aOn" firstAttribute="leading" secondItem="ybV-wZ-VMO" secondAttribute="trailing" constant="-212" id="N3h-iJ-Jcf"/>
                                                 <constraint firstAttribute="centerX" secondItem="ybV-wZ-VMO" secondAttribute="centerX" id="OII-Gd-vvQ"/>
                                                 <constraint firstAttribute="centerY" secondItem="sJl-ci-aOn" secondAttribute="centerY" id="Obw-CG-fkz"/>
                                                 <constraint firstItem="ybV-wZ-VMO" firstAttribute="centerY" secondItem="sJl-ci-aOn" secondAttribute="centerY" id="P1K-7v-UkJ"/>
@@ -359,7 +367,13 @@
                                                 <mask key="constraints">
                                                     <exclude reference="3qp-ur-nOm"/>
                                                     <exclude reference="E28-lR-OzK"/>
+                                                    <exclude reference="P1K-7v-UkJ"/>
+                                                    <exclude reference="YJc-60-a1v"/>
                                                     <exclude reference="g4s-jx-hyz"/>
+                                                    <exclude reference="mFB-fZ-qZa"/>
+                                                    <exclude reference="oDr-ZL-SFj"/>
+                                                    <exclude reference="qT4-Si-C3p"/>
+                                                    <exclude reference="zBB-7Z-5oX"/>
                                                 </mask>
                                             </variation>
                                             <variation key="heightClass=regular-widthClass=compact">
@@ -381,6 +395,7 @@
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="data" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Yif-kd-Qsg">
                                                     <rect key="frame" x="11" y="8" width="578" height="28"/>
+                                                    <color key="tintColor" red="0.1505631506" green="0.1505586505" blue="0.15056121350000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="126" id="W1G-Gp-zlx"/>
                                                     </constraints>
@@ -415,8 +430,9 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Observacao" translatesAutoresizingMaskIntoConstraints="NO" id="una-cb-FXO">
-                                                    <rect key="frame" x="24" y="12" width="318" height="72.5"/>
+                                                    <rect key="frame" x="24" y="12" width="318" height="73"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="tintColor" red="0.1505631506" green="0.1505586505" blue="0.15056121350000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
@@ -432,7 +448,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="5" translatesAutoresizingMaskIntoConstraints="NO" id="rx3-aH-Dcy">
-                                                    <rect key="frame" x="140" y="-1.5" width="320" height="162"/>
+                                                    <rect key="frame" x="140" y="-1" width="320" height="162"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="229" id="6h0-wN-4Kt"/>
                                                     </constraints>
@@ -867,6 +883,7 @@
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gDH-Ic-25Z">
                                                     <rect key="frame" x="8" y="8" width="584" height="59"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="tintColor" red="0.1505631506" green="0.1505586505" blue="0.15056121350000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
@@ -890,7 +907,7 @@
                     <navigationItem key="navigationItem" id="f68-ni-KBl">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bordered" selectedSegmentIndex="0" id="u74-2D-usQ">
-                            <rect key="frame" x="227.5" y="7" width="145" height="30"/>
+                            <rect key="frame" x="228" y="7" width="145" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="Prova"/>
@@ -913,6 +930,7 @@
                         <outlet property="lblPerc" destination="45Q-Bn-LL4" id="gpT-bL-uaa"/>
                         <outlet property="lblPeso" destination="z4C-on-lQs" id="wtY-c6-vjM"/>
                         <outlet property="materias" destination="NBt-Bc-Czz" id="LlG-LQ-Qos"/>
+                        <outlet property="pesoTarefa" destination="DYj-bK-aWC" id="wlM-RR-fs2"/>
                         <outlet property="pesoTextField" destination="FgB-Jq-Kn6" id="Ig6-FH-w7x"/>
                         <outlet property="provaTxt" destination="isG-Fp-AEd" id="k7Z-wi-Kpl"/>
                         <outlet property="segmentedC" destination="u74-2D-usQ" id="Bxs-eX-CY2"/>
@@ -922,7 +940,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Xd-BV-I49" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2206" y="952"/>
+            <point key="canvasLocation" x="2205" y="952"/>
         </scene>
         <!--Nova Matéria-->
         <scene sceneID="S6l-1E-BHA">
@@ -942,7 +960,7 @@
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nome da Matéria" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="y0M-C7-Qa2">
                                                     <rect key="frame" x="8" y="11" width="584" height="22"/>
-                                                    <color key="tintColor" white="0.29777446546052633" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="tintColor" red="0.1505631506" green="0.1505586505" blue="0.15056121350000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
                                                 </textField>
@@ -1027,12 +1045,14 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Courses Filled-32" width="32" height="32"/>
+        <image name="Courses-32" width="32" height="32"/>
         <image name="Exam Filled-32" width="32" height="32"/>
         <image name="Exam-32" width="32" height="32"/>
         <image name="seta" width="749" height="705"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="uYV-nO-ZE6"/>
+        <segue reference="u0e-80-tCU"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
 </document>

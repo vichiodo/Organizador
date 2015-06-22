@@ -41,9 +41,20 @@ class DisciplinaManager {
         return Array<Disciplina>()
     }
     
-    func buscarDisciplina(index: Int) -> Disciplina {
-        var disciplina: Disciplina = buscarDisciplinas()[index]
-        return disciplina
+    func buscarDisciplina(id: Int) -> Disciplina {
+        let buscaRequest = NSFetchRequest(entityName: DisciplinaManager.entityName)
+        buscaRequest.predicate = NSPredicate(format: "id == %i", id)
+        var erro: NSError?
+        let buscaResultados = managedContext.executeFetchRequest(buscaRequest, error: &erro) as? [NSManagedObject]
+        if let resultados = buscaResultados as? [Disciplina] {
+            return resultados.last!
+        } else {
+            println("Não foi possível buscar essa Disciplina. Erro: \(erro), \(erro!.userInfo)")
+        }
+        
+        NSFetchRequest(entityName: "FetchRequest")
+        
+        return Disciplina()
     }
     
     func salvarDisciplina() {
@@ -62,9 +73,9 @@ class DisciplinaManager {
         }
     }
     
-    func removerDisciplina(index: Int) {
-        var arrayDisci: Array<Disciplina> = buscarDisciplinas()
-        managedContext.deleteObject(arrayDisci[index] as NSManagedObject)
+    func removerDisciplina(id: Int) {
+        var disciplina: Disciplina = buscarDisciplina(id)
+        managedContext.deleteObject(disciplina as NSManagedObject)
         salvarDisciplina()
     }
     
