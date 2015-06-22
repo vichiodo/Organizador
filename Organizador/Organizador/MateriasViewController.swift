@@ -11,7 +11,6 @@ import EventKit
 
 class MateriasViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
     
-    //@IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var viewIntro: UIView!
     var editarBtn: UIBarButtonItem!
     var atividadesMateria: AtividadesMateriaViewController? = nil
@@ -48,7 +47,7 @@ class MateriasViewController: UITableViewController, UITableViewDataSource, UITa
     override func viewWillAppear(animated: Bool) {
         disciplinaSelecionada == nil
         editarBtn.title = "Editar"
-       // self.tableView.setEditing(false, animated: true)
+        self.tableView.setEditing(false, animated: true)
         disciplinas = DisciplinaManager.sharedInstance.buscarDisciplinas()
         self.tableView.reloadData()
         if disciplinas.isEmpty {
@@ -133,7 +132,6 @@ class MateriasViewController: UITableViewController, UITableViewDataSource, UITa
                 controller.detailItem = disciplina
                 controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
                 controller.navigationItem.leftItemsSupplementBackButton = true
-//                controller.disciplinaSelecionada = disciplinas[cell.tag]
             }
         }
         if segue.identifier == "detalhesDisciplinaView" {

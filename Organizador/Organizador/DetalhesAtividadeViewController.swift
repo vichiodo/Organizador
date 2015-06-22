@@ -301,6 +301,7 @@ class DetalhesAtividadeViewController: UITableViewController, UITextFieldDelegat
     func configureView() {
         // Update the user interface for the detail item.
         if let detail: AnyObject = self.detailItem {
+            atividadeSelecionada = detailItem as! Atividade
             tableView.reloadData()
         }
     }
