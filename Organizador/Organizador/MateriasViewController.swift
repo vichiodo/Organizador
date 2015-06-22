@@ -83,7 +83,6 @@ class MateriasViewController: UITableViewController, UITableViewDataSource, UITa
         if editingStyle == UITableViewCellEditingStyle.Delete {
             DisciplinaManager.sharedInstance.removerDisciplina(indexPath.row)
             disciplinas = DisciplinaManager.sharedInstance.buscarDisciplinas()
-            CloudKitHelper.shared.CoreDataModificado()
         }
         self.tableView.reloadData()
         if disciplinas.isEmpty {

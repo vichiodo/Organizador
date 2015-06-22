@@ -161,6 +161,5 @@ class AddMateriaViewController: UITableViewController, UICollectionViewDataSourc
                 navigationController?.popViewControllerAnimated(true)
             }
         }
-        CloudKitHelper.shared.CoreDataModificado()
     }
 }
