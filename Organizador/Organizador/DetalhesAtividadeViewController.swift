@@ -157,6 +157,8 @@ class DetalhesAtividadeViewController: UITableViewController, UITextFieldDelegat
                     atividadeSelecionada.disciplina.media = atividadeSelecionada.disciplina.media.doubleValue + mediaAtividade
                     AtividadeManager.sharedInstance.salvarAtividade()
                     
+                    CloudKitHelper.shared.CoreDataModificado()
+                    
                     nomeTxt.userInteractionEnabled = false
                     materiaTxt.userInteractionEnabled = false
                     notaTxt.userInteractionEnabled = false

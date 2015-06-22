@@ -221,6 +221,7 @@ class AtividadesViewController: UITableViewController {
             
             vC.cancelarNotificacao(ativ.nome, materia: ativ.disciplina, data: ativ.data)
             AtividadeManager.sharedInstance.removerAtividade(ativ.id as Int)
+            CloudKitHelper.shared.CoreDataModificado()
         }
         atualiza_OrdenaVetores()
     }

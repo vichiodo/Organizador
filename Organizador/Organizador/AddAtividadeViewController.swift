@@ -185,6 +185,7 @@ class AddAtividadeViewController: UITableViewController, UITextFieldDelegate, UI
             
             self.navigationController?.popViewControllerAnimated(true)
         }
+        CloudKitHelper.shared.CoreDataModificado()
     }
     
     func criarNotificacao() {

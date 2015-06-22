@@ -28,8 +28,46 @@ class CloudKitHelper {
     init() { privateDB = container.privateCloudDatabase }
     
     func CoreDataModificado() {
+        println("EIIITA, Mudou o CoreData")
         userDef.setValue(NSDate(), forKey: "CDLastUpdate")
         userDef.synchronize()
+        AtualizaCloud()
+    }
+    
+    func LastUpdateCoreData() -> NSDate {
+        return userDef.valueForKey("CDLastUpdate") as! NSDate
+    }
+    
+    func Update() {
+        let query = CKQuery(recordType: "Atividade", predicate: NSPredicate(value: true))
+        privateDB.performQuery(query, inZoneWithID: nil, completionHandler: { (results, error) -> Void in
+            if error != nil {
+                println(error)
+            }
+            else {
+                if results.count > 0 {
+                    var record: CKRecord = results.last as! CKRecord
+                    var dateCloud = record.modificationDate
+                    
+                    println(self.LastUpdateCoreData().timeIntervalSinceDate(dateCloud))
+                    
+                    if self.LastUpdateCoreData().timeIntervalSinceDate(dateCloud) < 0 {
+                        self.AtualizaCoreData()
+                    }
+                }
+            }
+        })
+    }
+    
+    @objc func AtualizaCloud() {
+        CloudDisciplinas()
+        CloudAtividades()
+    }
+    
+    func AtualizaCoreData() {
+        CoreDataDisciplinas()
+        CoreDataAtividades()
+        CoreDataModificado()
     }
     
     func CloudDisciplinas() {
@@ -145,7 +183,7 @@ class CloudKitHelper {
                         println(error)
                     }
                     
-                    println("Materia \(a.nome) Salva")
+                    println("Atividade \(a.nome) Salva")
                 })
             }
             
@@ -162,17 +200,6 @@ class CloudKitHelper {
                 }
             }
         })
-    }
-    
-    func AtualizaCloud() {
-        CloudDisciplinas()
-        CloudAtividades()
-    }
-    
-    func AtualizaCoreData() {
-        CoreDataDisciplinas()
-        CoreDataAtividades()
-        CoreDataModificado()
     }
     
     func CoreDataDisciplinas() {
@@ -200,7 +227,7 @@ class CloudKitHelper {
                 for d in self.disciplinas {
                     if r.valueForKey("id") as! NSNumber == d.id {
                         tem = true
-                        println("Update")
+                        println("Update d")
                         d.nome = r.valueForKey("nome") as! String
                         d.cor = r.valueForKey("cor") as! String
                         d.media = r.valueForKey("media") as! Double
@@ -266,7 +293,7 @@ class CloudKitHelper {
                 for a in self.atividades {
                     if r.valueForKey("id") as! NSNumber == a.id {
                         tem = true
-                        println("Update")
+                        println("Update a")
                         a.concluido = r.valueForKey("concluido") as! Bool
                         a.data = r.valueForKey("data") as! NSDate
                         a.nome = r.valueForKey("nome") as! String
