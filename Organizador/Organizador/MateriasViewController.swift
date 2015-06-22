@@ -149,4 +149,12 @@ class MateriasViewController: UITableViewController, UITableViewDataSource, UITa
             }
         }
     }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
+            self.preferredContentSize = CGSize(width: 320.0, height: 600.0)
+        }
+    }
+
 }
