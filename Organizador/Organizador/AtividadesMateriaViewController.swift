@@ -12,6 +12,12 @@ class AtividadesMateriaViewController: UIViewController {
     
     var disciplinaSelecionada: Disciplina!
     var atividadesDisciplinaSelecionada: [Atividade]!
+    var detailItem: AnyObject? {
+        didSet {
+            // Update the view.
+            self.configureView()
+        }
+    }
     
     @IBOutlet weak var tableView: UITableView!
     var atividadeSelecionada: Atividade!
@@ -25,6 +31,7 @@ class AtividadesMateriaViewController: UIViewController {
         // Registra o xib da Célula
         var nibT : UINib = UINib(nibName: "CellAtividade", bundle: nil);
         tableView.registerNib(nibT, forCellReuseIdentifier: "CellAtividade");
+        configureView()
     }
     
     override func didReceiveMemoryWarning() {
@@ -34,19 +41,24 @@ class AtividadesMateriaViewController: UIViewController {
     
     
     override func viewWillAppear(animated: Bool) {
-        self.navigationItem.title = disciplinaSelecionada.nome
-        atividades = AtividadeManager.sharedInstance.buscarAtividades()
-        
+        if (disciplinaSelecionada != nil){
+            self.navigationItem.title = disciplinaSelecionada.nome
+            atividades = AtividadeManager.sharedInstance.buscarAtividades()
+        }
+        else{
+            self.navigationItem.title = ""
+        }
         
         var atividadesOrdenadas = atividades
         atividadesOrdenadas.sort({$0.data.timeIntervalSinceNow < $1.data.timeIntervalSinceNow })
         
         atividadesDisciplinaSelecionada = []
-
-        if atividadesOrdenadas.count != 0 {
-            for i in 0...atividadesOrdenadas.count - 1 {
-                if atividadesOrdenadas[i].disciplina == disciplinaSelecionada {
-                    atividadesDisciplinaSelecionada.append(atividadesOrdenadas[i])
+        if disciplinaSelecionada != nil{
+            if atividadesOrdenadas.count != 0 {
+                for i in 0...atividadesOrdenadas.count - 1 {
+                    if atividadesOrdenadas[i].disciplina == disciplinaSelecionada {
+                        atividadesDisciplinaSelecionada.append(atividadesOrdenadas[i])
+                    }
                 }
             }
         }
@@ -132,5 +144,16 @@ class AtividadesMateriaViewController: UIViewController {
             vC.atividadeSelecionada = atividadeSelecionada
         }
     }
+    
+    func configureView() {
+        // Update the user interface for the detail item.
+        if let detail: AnyObject = self.detailItem {
+            if let tV = tableView{
+                disciplinaSelecionada = detailItem as! Disciplina
+                tableView.reloadData()
+            }
+        }
+    }
+
     
 }

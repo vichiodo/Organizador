@@ -11,7 +11,6 @@ import EventKit
 
 class DetalhesAtividadeViewController: UITableViewController, UITextFieldDelegate {
     
-//    let vC: ProvasViewController = ProvasViewController()
     @IBOutlet weak var nomeTxt: UITextField!
     @IBOutlet weak var materiaTxt: UITextField!
     @IBOutlet weak var notaTxt: UITextField!
@@ -21,6 +20,13 @@ class DetalhesAtividadeViewController: UITableViewController, UITextFieldDelegat
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var cellData: UITableViewCell!
     @IBOutlet weak var cellDateP: UITableViewCell!
+    
+    var detailItem: AnyObject? {
+        didSet {
+            // Update the view.
+            self.configureView()
+        }
+    }
     
     var atividadeSelecionada: Atividade!
     
@@ -41,7 +47,9 @@ class DetalhesAtividadeViewController: UITableViewController, UITextFieldDelegat
         cellDateP.hidden = true
         datePicker.userInteractionEnabled = false
         
-        self.navigationItem.title = atividadeSelecionada.nome
+        if atividadeSelecionada != nil{
+            self.navigationItem.title = atividadeSelecionada.nome
+        }
         editarBtn = UIBarButtonItem(title: "Editar", style: .Plain, target: self, action: "editar")
         navigationItem.rightBarButtonItem = editarBtn
         
@@ -50,38 +58,45 @@ class DetalhesAtividadeViewController: UITableViewController, UITextFieldDelegat
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
-        nomeTxt.text = atividadeSelecionada.nome
-        materiaTxt.text = atividadeSelecionada.disciplina.nome
-        notaTxt.text = "\(atividadeSelecionada.nota)"
-        pesoTxt.text = "\(atividadeSelecionada.peso)"
-        
-        obsTxt.text = atividadeSelecionada.obs
-        datePicker.date = atividadeSelecionada.data
-
-        
-        var dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy hh:mm"
-        var dateString = dateFormatter.stringFromDate(atividadeSelecionada.data)
-        dataTxt.text = dateString
-        
+        if atividadeSelecionada != nil{
+            nomeTxt.text = atividadeSelecionada.nome
+            materiaTxt.text = atividadeSelecionada.disciplina.nome
+            notaTxt.text = "\(atividadeSelecionada.nota)"
+            pesoTxt.text = "\(atividadeSelecionada.peso)"
+            
+            obsTxt.text = atividadeSelecionada.obs
+            datePicker.date = atividadeSelecionada.data
+            
+            
+            var dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "dd/MM/yyyy hh:mm"
+            var dateString = dateFormatter.stringFromDate(atividadeSelecionada.data)
+            dataTxt.text = dateString
+        }
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 3
+        if atividadeSelecionada != nil{
+            return 3
+        }
+        return 0
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0: return 2
-        case 1: return 2
-        case 2:
-            if atividadeSelecionada.concluido == 0 {
-                return 3
+        if atividadeSelecionada != nil{
+            switch section {
+            case 0: return 2
+            case 1: return 2
+            case 2:
+                if atividadeSelecionada.concluido == 0 {
+                    return 3
+                }
+                cellDateP.hidden = true
+                return 2
+            default: return 0
             }
-            cellDateP.hidden = true
-            return 2
-        default: return 0
         }
+        return 0
     }
 
     
@@ -138,7 +153,6 @@ class DetalhesAtividadeViewController: UITableViewController, UITextFieldDelegat
                     atividadeSelecionada.obs = obsTxt.text
 
                     var mediaAtividade = (atividadeSelecionada.peso.doubleValue/100) * atividadeSelecionada.nota.doubleValue
-//                    println("\(mediaAtividade)")
                     
                     atividadeSelecionada.disciplina.media = atividadeSelecionada.disciplina.media.doubleValue + mediaAtividade
                     AtividadeManager.sharedInstance.salvarAtividade()
@@ -161,7 +175,6 @@ class DetalhesAtividadeViewController: UITableViewController, UITextFieldDelegat
                 } else {
                     // Aviso de que a nota esta inválida
                     // Não pode deixar salvar
-//                    println("NOTA INVÁLIDA")
                     let alerta: UIAlertController = UIAlertController(title: "Nota inválida", message: "Digite uma nota entre 0 e 10", preferredStyle: .Alert)
                     let al1:UIAlertAction = UIAlertAction(title: "OK", style: .Default, handler: { (ACTION) -> Void in
                         self.notaTxt.becomeFirstResponder()
@@ -284,4 +297,13 @@ class DetalhesAtividadeViewController: UITableViewController, UITextFieldDelegat
         
         eventStore.removeEvent((eventos.last as! EKEvent), span: EKSpanThisEvent, error: NSErrorPointer())
     }
+    
+    func configureView() {
+        // Update the user interface for the detail item.
+        if let detail: AnyObject = self.detailItem {
+            atividadeSelecionada = detailItem as! Atividade
+            tableView.reloadData()
+        }
+    }
+
 }

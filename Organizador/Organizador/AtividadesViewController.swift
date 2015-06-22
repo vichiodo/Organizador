@@ -14,6 +14,8 @@ class AtividadesViewController: UITableViewController {
     var atividadesOrdenadas: Array<Atividade>!
     var provasOrdenadas: Array<Atividade>!
     var tarefasOrdenadas: Array<Atividade>!
+    var detalhesView: DetalhesAtividadeViewController? = nil
+
     
     var atividades7Dias: Array<Atividade> = []
     var atividades15Dias: Array<Atividade> = []
@@ -40,6 +42,12 @@ class AtividadesViewController: UITableViewController {
         // Registra o xib da Célula
         var nibT : UINib = UINib(nibName: "CellAtividade", bundle: nil);
         tableView.registerNib(nibT, forCellReuseIdentifier: "CellAtividade");
+        
+        if let split = self.splitViewController {
+            let controllers = split.viewControllers
+            self.detalhesView = controllers[controllers.count-1].topViewController as? DetalhesAtividadeViewController
+        }
+
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -316,11 +324,26 @@ class AtividadesViewController: UITableViewController {
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showDetail" {
+            if let indexPath = self.tableView.indexPathForSelectedRow() {
+                let atividade = atividadeSelecionada
+                let controller = (segue.destinationViewController as! UINavigationController).topViewController as! DetalhesAtividadeViewController
+                controller.detailItem = atividadeSelecionada
+                controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
+                controller.navigationItem.leftItemsSupplementBackButton = true
+            }
+        }
+
         if segue.identifier == "detalhesView" {
             let vC: DetalhesAtividadeViewController = segue.destinationViewController as! DetalhesAtividadeViewController
             vC.atividadeSelecionada = atividadeSelecionada
         }
     }
     
-    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
+            self.preferredContentSize = CGSize(width: 320.0, height: 600.0)
+        }
+    }
 }

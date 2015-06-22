@@ -115,6 +115,7 @@
 				B3581F091B262F69004BC32E /* Views */,
 				B3581EBE1B1E194B004BC32E /* AppDelegate.swift */,
 				B3581EC51B1E194C004BC32E /* Main.storyboard */,
+				44C5CB371B3770B6007B7A7A /* StoryboardiPad.storyboard */,
 				B3581EC81B1E194C004BC32E /* Images.xcassets */,
 				B3581ECA1B1E194C004BC32E /* LaunchScreen.xib */,
 				B3581EC01B1E194B004BC32E /* Organizador.xcdatamodeld */,
@@ -276,6 +277,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3581EC71B1E194C004BC32E /* Main.storyboard in Resources */,
+				44C5CB381B3770B6007B7A7A /* StoryboardiPad.storyboard in Resources */,
 				D5DA8B6A1B31ACA9001E0DE7 /* CellAtividade.xib in Resources */,
 				B3581ECC1B1E194C004BC32E /* LaunchScreen.xib in Resources */,
 				B3581EC91B1E194C004BC32E /* Images.xcassets in Resources */,
