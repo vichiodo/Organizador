@@ -9,12 +9,15 @@
 import UIKit
 import EventKit
 
-class MateriasViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class MateriasViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
     
-    @IBOutlet weak var tableView: UITableView!
+    //@IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var viewIntro: UIView!
     var editarBtn: UIBarButtonItem!
+    var atividadesMateria: AtividadesMateriaViewController? = nil
     var disciplinaSelecionada: Disciplina!
+    var objects = [AnyObject]()
+
     
     // carrega o vetor de usuarios cadastrados no CoreData
     lazy var disciplinas:Array<Disciplina> = {
@@ -29,6 +32,12 @@ class MateriasViewController: UIViewController, UITableViewDataSource, UITableVi
         super.viewDidLoad()
         editarBtn = UIBarButtonItem(title: "Editar", style: .Plain, target: self, action: "editar")
         navigationItem.leftBarButtonItem = editarBtn
+        
+        if let split = self.splitViewController {
+            let controllers = split.viewControllers
+            self.atividadesMateria = controllers[controllers.count-1].topViewController as? AtividadesMateriaViewController
+        }
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -39,11 +48,12 @@ class MateriasViewController: UIViewController, UITableViewDataSource, UITableVi
     override func viewWillAppear(animated: Bool) {
         disciplinaSelecionada == nil
         editarBtn.title = "Editar"
-        self.tableView.setEditing(false, animated: true)
+       // self.tableView.setEditing(false, animated: true)
         disciplinas = DisciplinaManager.sharedInstance.buscarDisciplinas()
         self.tableView.reloadData()
         if disciplinas.isEmpty {
             viewIntro.hidden = false
+            
         }
         else {
             viewIntro.hidden = true
@@ -52,15 +62,15 @@ class MateriasViewController: UIViewController, UITableViewDataSource, UITableVi
     
     // MARK: - Table View
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return disciplinas.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("disciplinasCell", forIndexPath: indexPath) as! UITableViewCell
         cell.textLabel?.text = disciplinas[indexPath.row].nome
         cell.textLabel?.textColor = self.stringParaCor(disciplinas[indexPath.row].cor)
@@ -70,7 +80,7 @@ class MateriasViewController: UIViewController, UITableViewDataSource, UITableVi
         return cell
     }
     
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
             DisciplinaManager.sharedInstance.removerDisciplina(indexPath.row)
             disciplinas = DisciplinaManager.sharedInstance.buscarDisciplinas()
@@ -108,7 +118,7 @@ class MateriasViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if editarBtn.title == "Concluido" {
             disciplinaSelecionada = disciplinas[indexPath.row]
             self.performSegueWithIdentifier("btnEditar", sender: nil)
@@ -116,6 +126,16 @@ class MateriasViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showDetail" {
+            if let indexPath = self.tableView.indexPathForSelectedRow() {
+                let disciplina = disciplinaSelecionada
+                let controller = (segue.destinationViewController as! UINavigationController).topViewController as! AtividadesMateriaViewController
+                controller.detailItem = disciplina
+                controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
+                controller.navigationItem.leftItemsSupplementBackButton = true
+//                controller.disciplinaSelecionada = disciplinas[cell.tag]
+            }
+        }
         if segue.identifier == "detalhesDisciplinaView" {
             var cell = sender as! UITableViewCell
             let vC: AtividadesMateriaViewController = segue.destinationViewController as! AtividadesMateriaViewController
@@ -131,4 +151,12 @@ class MateriasViewController: UIViewController, UITableViewDataSource, UITableVi
             }
         }
     }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
+            self.preferredContentSize = CGSize(width: 320.0, height: 600.0)
+        }
+    }
+
 }

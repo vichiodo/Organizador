@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		44B148571B2E0A250071A5D6 /* AddMateriaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B148561B2E0A250071A5D6 /* AddMateriaViewController.swift */; };
 		44C5CB341B33B264007B7A7A /* DetalhesAtividadeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C5CB331B33B264007B7A7A /* DetalhesAtividadeViewController.swift */; };
+		44C5CB381B3770B6007B7A7A /* StoryboardiPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44C5CB371B3770B6007B7A7A /* StoryboardiPad.storyboard */; };
 		8C6DFDC41B2B6D1500C09A4E /* Atividade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6DFDC31B2B6D1500C09A4E /* Atividade.swift */; };
 		8C6DFDC61B2B6D1500C09A4E /* Disciplina.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6DFDC51B2B6D1500C09A4E /* Disciplina.swift */; };
 		8C841B241B349D8A006EC3F3 /* AtividadesMateriaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C841B231B349D8A006EC3F3 /* AtividadesMateriaViewController.swift */; };
@@ -40,6 +41,7 @@
 /* Begin PBXFileReference section */
 		44B148561B2E0A250071A5D6 /* AddMateriaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMateriaViewController.swift; sourceTree = "<group>"; };
 		44C5CB331B33B264007B7A7A /* DetalhesAtividadeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetalhesAtividadeViewController.swift; sourceTree = "<group>"; };
+		44C5CB371B3770B6007B7A7A /* StoryboardiPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StoryboardiPad.storyboard; sourceTree = "<group>"; };
 		8C6DFDC31B2B6D1500C09A4E /* Atividade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Atividade.swift; path = ../Atividade.swift; sourceTree = "<group>"; };
 		8C6DFDC51B2B6D1500C09A4E /* Disciplina.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Disciplina.swift; path = ../Disciplina.swift; sourceTree = "<group>"; };
 		8C841B231B349D8A006EC3F3 /* AtividadesMateriaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtividadesMateriaViewController.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 				B3581F091B262F69004BC32E /* Views */,
 				B3581EBE1B1E194B004BC32E /* AppDelegate.swift */,
 				B3581EC51B1E194C004BC32E /* Main.storyboard */,
+				44C5CB371B3770B6007B7A7A /* StoryboardiPad.storyboard */,
 				B3581EC81B1E194C004BC32E /* Images.xcassets */,
 				B3581ECA1B1E194C004BC32E /* LaunchScreen.xib */,
 				B3581EC01B1E194B004BC32E /* Organizador.xcdatamodeld */,
@@ -262,6 +265,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3581EC71B1E194C004BC32E /* Main.storyboard in Resources */,
+				44C5CB381B3770B6007B7A7A /* StoryboardiPad.storyboard in Resources */,
 				D5DA8B6A1B31ACA9001E0DE7 /* CellAtividade.xib in Resources */,
 				B3581ECC1B1E194C004BC32E /* LaunchScreen.xib in Resources */,
 				B3581EC91B1E194C004BC32E /* Images.xcassets in Resources */,
