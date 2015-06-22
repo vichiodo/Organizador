@@ -69,7 +69,19 @@ class DisciplinaManager {
     }
     
     func salvarNovaDisciplina(nome: String, cor: String){
+        
+        var idAtual: Int!
+        var array = buscarDisciplinas()
+        if array.isEmpty {
+            idAtual = 0
+        } else {
+            var obj = array.last! as Disciplina
+            idAtual = Int(obj.id) + 1
+        }
+        
         let disciplina = novaDisciplina()
+        
+        disciplina.setValue(idAtual, forKey: "id")
         
         disciplina.setValue(nome, forKey: "nome")
         disciplina.setValue(0, forKey: "media")
@@ -77,5 +89,18 @@ class DisciplinaManager {
         
         salvarDisciplina()
     }
+    
+    func salvarDisciplinaCloud(nome: String, cor: String, media: Double, id: Int){
+        let disciplina = novaDisciplina()
+        
+        disciplina.setValue(id, forKey: "id")
+        
+        disciplina.setValue(nome, forKey: "nome")
+        disciplina.setValue(media, forKey: "media")
+        disciplina.setValue(cor, forKey: "cor")
+        
+        salvarDisciplina()
+    }
+
     
 }

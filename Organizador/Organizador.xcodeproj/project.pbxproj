@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		44B148571B2E0A250071A5D6 /* AddMateriaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B148561B2E0A250071A5D6 /* AddMateriaViewController.swift */; };
 		44C5CB341B33B264007B7A7A /* DetalhesAtividadeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C5CB331B33B264007B7A7A /* DetalhesAtividadeViewController.swift */; };
-		8C6DFDC41B2B6D1500C09A4E /* Atividade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6DFDC31B2B6D1500C09A4E /* Atividade.swift */; };
-		8C6DFDC61B2B6D1500C09A4E /* Disciplina.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6DFDC51B2B6D1500C09A4E /* Disciplina.swift */; };
 		8C841B241B349D8A006EC3F3 /* AtividadesMateriaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C841B231B349D8A006EC3F3 /* AtividadesMateriaViewController.swift */; };
 		B3581EBF1B1E194B004BC32E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3581EBE1B1E194B004BC32E /* AppDelegate.swift */; };
 		B3581EC21B1E194C004BC32E /* Organizador.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B3581EC01B1E194B004BC32E /* Organizador.xcdatamodeld */; };
@@ -23,6 +21,10 @@
 		B3581EFA1B23AEF0004BC32E /* AtividadesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3581EF91B23AEF0004BC32E /* AtividadesViewController.swift */; };
 		B3581F061B23C322004BC32E /* DisciplinaMananer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3581F051B23C322004BC32E /* DisciplinaMananer.swift */; };
 		B3581F081B262623004BC32E /* AddAtividadeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3581F071B262623004BC32E /* AddAtividadeViewController.swift */; };
+		D556655A1B375FF900DE6D9E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D55665591B375FF900DE6D9E /* CloudKit.framework */; };
+		D556655C1B37608B00DE6D9E /* Disciplina.swift in Sources */ = {isa = PBXBuildFile; fileRef = D556655B1B37608B00DE6D9E /* Disciplina.swift */; };
+		D556655E1B37608C00DE6D9E /* Atividade.swift in Sources */ = {isa = PBXBuildFile; fileRef = D556655D1B37608C00DE6D9E /* Atividade.swift */; };
+		D55665601B3762F300DE6D9E /* CloudKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D556655F1B3762F300DE6D9E /* CloudKitHelper.swift */; };
 		D5DA8B691B31ACA9001E0DE7 /* CellAtividade.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DA8B671B31ACA9001E0DE7 /* CellAtividade.swift */; };
 		D5DA8B6A1B31ACA9001E0DE7 /* CellAtividade.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5DA8B681B31ACA9001E0DE7 /* CellAtividade.xib */; };
 /* End PBXBuildFile section */
@@ -40,8 +42,6 @@
 /* Begin PBXFileReference section */
 		44B148561B2E0A250071A5D6 /* AddMateriaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMateriaViewController.swift; sourceTree = "<group>"; };
 		44C5CB331B33B264007B7A7A /* DetalhesAtividadeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetalhesAtividadeViewController.swift; sourceTree = "<group>"; };
-		8C6DFDC31B2B6D1500C09A4E /* Atividade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Atividade.swift; path = ../Atividade.swift; sourceTree = "<group>"; };
-		8C6DFDC51B2B6D1500C09A4E /* Disciplina.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Disciplina.swift; path = ../Disciplina.swift; sourceTree = "<group>"; };
 		8C841B231B349D8A006EC3F3 /* AtividadesMateriaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtividadesMateriaViewController.swift; sourceTree = "<group>"; };
 		B3581EB91B1E194B004BC32E /* Organizador.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Organizador.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3581EBD1B1E194B004BC32E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -57,7 +57,12 @@
 		B3581EF51B23AA31004BC32E /* MateriasViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MateriasViewController.swift; sourceTree = "<group>"; };
 		B3581EF91B23AEF0004BC32E /* AtividadesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtividadesViewController.swift; sourceTree = "<group>"; };
 		B3581F051B23C322004BC32E /* DisciplinaMananer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisciplinaMananer.swift; sourceTree = "<group>"; };
-		B3581F071B262623004BC32E /* AddAtividadeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddAtividadeViewController.swift; sourceTree = "<group>"; };
+		B3581F071B262623004BC32E /* AddAtividadeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddAtividadeViewController.swift; path = /Users/rgondek/Desktop/MackMobile/Apps/Swift/Organizador/Organizador/Organizador/AddAtividadeViewController.swift; sourceTree = "<absolute>"; };
+		D55665581B375FF500DE6D9E /* Organizador.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Organizador.entitlements; sourceTree = "<group>"; };
+		D55665591B375FF900DE6D9E /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		D556655B1B37608B00DE6D9E /* Disciplina.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Disciplina.swift; sourceTree = "<group>"; };
+		D556655D1B37608C00DE6D9E /* Atividade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Atividade.swift; sourceTree = "<group>"; };
+		D556655F1B3762F300DE6D9E /* CloudKitHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitHelper.swift; sourceTree = "<group>"; };
 		D5DA8B671B31ACA9001E0DE7 /* CellAtividade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellAtividade.swift; sourceTree = "<group>"; };
 		D5DA8B681B31ACA9001E0DE7 /* CellAtividade.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellAtividade.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -67,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D556655A1B375FF900DE6D9E /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +89,7 @@
 		B3581EB01B1E194B004BC32E = {
 			isa = PBXGroup;
 			children = (
+				D55665591B375FF900DE6D9E /* CloudKit.framework */,
 				B3581EBB1B1E194B004BC32E /* Organizador */,
 				B3581ED41B1E194C004BC32E /* OrganizadorTests */,
 				B3581EBA1B1E194B004BC32E /* Products */,
@@ -101,6 +108,7 @@
 		B3581EBB1B1E194B004BC32E /* Organizador */ = {
 			isa = PBXGroup;
 			children = (
+				D55665581B375FF500DE6D9E /* Organizador.entitlements */,
 				B3581F0A1B262F72004BC32E /* Cells */,
 				B3581EED1B1F420C004BC32E /* Modelo */,
 				B3581EEE1B1F4220004BC32E /* Managers */,
@@ -110,6 +118,7 @@
 				B3581EC81B1E194C004BC32E /* Images.xcassets */,
 				B3581ECA1B1E194C004BC32E /* LaunchScreen.xib */,
 				B3581EC01B1E194B004BC32E /* Organizador.xcdatamodeld */,
+				D556655F1B3762F300DE6D9E /* CloudKitHelper.swift */,
 				B3581EBC1B1E194B004BC32E /* Supporting Files */,
 			);
 			path = Organizador;
@@ -143,8 +152,8 @@
 		B3581EED1B1F420C004BC32E /* Modelo */ = {
 			isa = PBXGroup;
 			children = (
-				8C6DFDC51B2B6D1500C09A4E /* Disciplina.swift */,
-				8C6DFDC31B2B6D1500C09A4E /* Atividade.swift */,
+				D556655D1B37608C00DE6D9E /* Atividade.swift */,
+				D556655B1B37608B00DE6D9E /* Disciplina.swift */,
 			);
 			name = Modelo;
 			sourceTree = "<group>";
@@ -229,7 +238,12 @@
 				TargetAttributes = {
 					B3581EB81B1E194B004BC32E = {
 						CreatedOnToolsVersion = 6.3.2;
-						DevelopmentTeam = Y5568WY3X8;
+						DevelopmentTeam = 7YCYVAN8PU;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					B3581ED01B1E194C004BC32E = {
 						CreatedOnToolsVersion = 6.3.2;
@@ -288,13 +302,14 @@
 				B3581F081B262623004BC32E /* AddAtividadeViewController.swift in Sources */,
 				44B148571B2E0A250071A5D6 /* AddMateriaViewController.swift in Sources */,
 				B3581EFA1B23AEF0004BC32E /* AtividadesViewController.swift in Sources */,
+				D556655E1B37608C00DE6D9E /* Atividade.swift in Sources */,
 				B3581EC21B1E194C004BC32E /* Organizador.xcdatamodeld in Sources */,
 				D5DA8B691B31ACA9001E0DE7 /* CellAtividade.swift in Sources */,
 				8C841B241B349D8A006EC3F3 /* AtividadesMateriaViewController.swift in Sources */,
+				D55665601B3762F300DE6D9E /* CloudKitHelper.swift in Sources */,
 				B3581EBF1B1E194B004BC32E /* AppDelegate.swift in Sources */,
 				B3581EF41B1F4262004BC32E /* AtividadeManager.swift in Sources */,
-				8C6DFDC41B2B6D1500C09A4E /* Atividade.swift in Sources */,
-				8C6DFDC61B2B6D1500C09A4E /* Disciplina.swift in Sources */,
+				D556655C1B37608B00DE6D9E /* Disciplina.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,10 +436,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Organizador/Organizador.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Organizador/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -433,10 +451,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Organizador/Organizador.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Organizador/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

@@ -106,4 +106,22 @@ class AtividadeManager {
         salvarAtividade()
     }
     
+    func salvarAtividadeCloud(nome: String, id: Int, nota: Double, data: NSDate, materia: Disciplina, peso: Int, tipo: Int, valeNota: Bool, obs: String, concluido: Bool) {
+        
+        let atividade = novaAtividade()
+        
+        atividade.setValue(id, forKey: "id")
+        
+        atividade.setValue(nome, forKey: "nome")
+        atividade.setValue(data, forKey: "data")
+        atividade.setValue(nota, forKey: "nota")
+        atividade.setValue(peso, forKey: "peso")
+        atividade.setValue(tipo, forKey: "tipo")
+        atividade.setValue(valeNota, forKey: "valeNota")
+        atividade.setValue(obs, forKey: "obs")
+        atividade.setValue(materia, forKey: "disciplina")
+        atividade.setValue(concluido, forKey: "concluido")
+        
+        salvarAtividade()
+    }
 }

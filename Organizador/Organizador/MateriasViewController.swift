@@ -16,7 +16,7 @@ class MateriasViewController: UIViewController, UITableViewDataSource, UITableVi
     var editarBtn: UIBarButtonItem!
     var disciplinaSelecionada: Disciplina!
     
-    // carrega o vetor de usuarios cadastrados no CoreData
+    // carrega o vetor de disciplinas cadastradas no CoreData
     lazy var disciplinas:Array<Disciplina> = {
         return DisciplinaManager.sharedInstance.buscarDisciplinas()
         }()

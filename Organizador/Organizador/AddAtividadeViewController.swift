@@ -22,6 +22,7 @@ class AddAtividadeViewController: UITableViewController, UITextFieldDelegate, UI
     @IBOutlet weak var segmentedC: UISegmentedControl!
     @IBOutlet weak var txtObs: UITextView!
     
+    
     var materiaSelecionada = 0
     var peso: Int?
     var vale: Bool!
