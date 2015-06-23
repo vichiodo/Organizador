@@ -63,16 +63,25 @@ class CloudKitHelper {
     }
     
     @objc func AtualizaCloud() {
-        CloudDisciplinas()
-        CloudAtividades()
+        if Reachability.isConnectedToNetwork() {
+            CloudDisciplinas()
+            CloudAtividades()
+        }
+        else{
+            println("Sem internet!")
+        }
     }
     
     func AtualizaCoreData() {
-        CoreDataDisciplinas()
-        CoreDataAtividades()
-        CoreDataModificado()
+        if Reachability.isConnectedToNetwork() {
+            CoreDataDisciplinas()
+            CoreDataAtividades()
+        }
+        else{
+            println("Sem internet!")
+        }
     }
-    
+
     func CloudDisciplinas() {
         println("iCloud")
         
@@ -211,7 +220,7 @@ class CloudKitHelper {
         println("CoreData")
         
         let query = CKQuery(recordType: "Disciplina", predicate: NSPredicate(value: true))
-        var records: [CKRecord] = []
+        var recordsD: [CKRecord] = []
         
         privateDB.performQuery(query, inZoneWithID: nil, completionHandler: { (results, error) -> Void in
             if error != nil {
@@ -219,13 +228,13 @@ class CloudKitHelper {
             }
             else {
                 for result in results {
-                    records.append(result as! CKRecord)
+                    recordsD.append(result as! CKRecord)
                 }
             }
             var tem: Bool!
             var record: CKRecord!
             
-            for r in records {
+            for r in recordsD {
                 tem = false
                 for d in self.disciplinas() {
                     if r.valueForKey("id") as! NSNumber == d.id {
@@ -239,7 +248,7 @@ class CloudKitHelper {
                     }
                 }
                 
-                if !tem {
+                if !tem && recordsD.count > 0 {
                     DisciplinaManager.sharedInstance.salvarDisciplinaCloud(r.valueForKey("nome") as! String, cor: r.valueForKey("cor") as! String, media: r.valueForKey("media") as! Double, id: r.valueForKey("id") as! Int)
                     
                     var nome = r.valueForKey("nome") as! String
@@ -252,7 +261,7 @@ class CloudKitHelper {
             // Exclui registros não existentes
             for d in self.disciplinas() {
                 tem = false
-                for r in records {
+                for r in recordsD {
                     if r.valueForKey("id") as! NSNumber == d.id {
                         tem = true
                     }
@@ -310,7 +319,7 @@ class CloudKitHelper {
                     }
                 }
                 
-                if !tem {
+                if !tem && records.count > 0 {
                     AtividadeManager.sharedInstance.salvarAtividadeCloud(r.valueForKey("nome") as! String, id: r.valueForKey("id") as! Int, nota: r.valueForKey("nota") as! Double, data: r.valueForKey("data") as! NSDate, materia: disciplina, peso: r.valueForKey("peso") as! Int, tipo: r.valueForKey("tipo") as! Int, valeNota: r.valueForKey("valeNota") as! Bool, obs: r.valueForKey("obs") as! String, concluido: r.valueForKey("concluido") as! Bool)
                     
                     var nome = r.valueForKey("nome") as! String

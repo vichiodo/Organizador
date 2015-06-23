@@ -21,6 +21,16 @@ class EventHelper {
     
     // Notificação
     
+    func setAtividade(at: Atividade) {
+        criarNotificacao(at)
+        criarEventoCalendario(at)
+    }
+    
+    func cancelAtividade(at: Atividade) {
+        cancelarNotificacao(at)
+        excluirEventoCalendario(at)
+    }
+    
     func notif(at: Atividade, i: Int) -> UILocalNotification{
         var localNotification:UILocalNotification = UILocalNotification()
         localNotification.alertAction = "Ver a prova"

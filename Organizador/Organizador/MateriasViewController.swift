@@ -9,7 +9,7 @@
 import UIKit
 import EventKit
 
-class MateriasViewController: UITableViewController, UITableViewDataSource, UITableViewDelegate {
+class MateriasViewController: UITableViewController {
     
     @IBOutlet weak var viewIntro: UIView!
     var editarBtn: UIBarButtonItem!
@@ -57,6 +57,7 @@ class MateriasViewController: UITableViewController, UITableViewDataSource, UITa
         else {
             viewIntro.hidden = true
         }
+        UIApplication.sharedApplication().applicationIconBadgeNumber = 0
     }
     
     // MARK: - Table View
@@ -81,7 +82,12 @@ class MateriasViewController: UITableViewController, UITableViewDataSource, UITa
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
-            DisciplinaManager.sharedInstance.removerDisciplina(indexPath.row)
+            var ativs = disciplinas[indexPath.row].atividades.allObjects as! [Atividade]
+            for a in ativs {
+                EventHelper.shared.cancelAtividade(a)
+            }
+            DisciplinaManager.sharedInstance.removerDisciplina(disciplinas[indexPath.row].id as Int)
+            
             disciplinas = DisciplinaManager.sharedInstance.buscarDisciplinas()
         }
         self.tableView.reloadData()
@@ -124,15 +130,6 @@ class MateriasViewController: UITableViewController, UITableViewDataSource, UITa
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "showDetail" {
-            if let indexPath = self.tableView.indexPathForSelectedRow() {
-                let disciplina = disciplinaSelecionada
-                let controller = (segue.destinationViewController as! UINavigationController).topViewController as! AtividadesMateriaViewController
-                controller.detailItem = disciplina
-                controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
-                controller.navigationItem.leftItemsSupplementBackButton = true
-            }
-        }
         if segue.identifier == "detalhesDisciplinaView" {
             var cell = sender as! UITableViewCell
             let vC: AtividadesMateriaViewController = segue.destinationViewController as! AtividadesMateriaViewController
@@ -148,12 +145,4 @@ class MateriasViewController: UITableViewController, UITableViewDataSource, UITa
             }
         }
     }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
-            self.preferredContentSize = CGSize(width: 320.0, height: 600.0)
-        }
-    }
-
 }

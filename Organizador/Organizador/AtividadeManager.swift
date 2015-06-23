@@ -103,10 +103,9 @@ class AtividadeManager {
         atividade.setValue(materia, forKey: "disciplina")
         atividade.setValue(0, forKey: "concluido")
         
-        salvarAtividade()
+        EventHelper.shared.setAtividade(atividade)
         
-        EventHelper.shared.criarNotificacao(atividade)
-        EventHelper.shared.criarEventoCalendario(atividade)
+        salvarAtividade()
     }
     
     func salvarAtividadeCloud(nome: String, id: Int, nota: Double, data: NSDate, materia: Disciplina, peso: Int, tipo: Int, valeNota: Bool, obs: String, concluido: Bool) {
@@ -124,6 +123,8 @@ class AtividadeManager {
         atividade.setValue(obs, forKey: "obs")
         atividade.setValue(materia, forKey: "disciplina")
         atividade.setValue(concluido, forKey: "concluido")
+    
+        EventHelper.shared.setAtividade(atividade)
         
         salvarAtividade()
     }

@@ -21,11 +21,11 @@
 		B3581EFA1B23AEF0004BC32E /* AtividadesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3581EF91B23AEF0004BC32E /* AtividadesViewController.swift */; };
 		B3581F061B23C322004BC32E /* DisciplinaMananer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3581F051B23C322004BC32E /* DisciplinaMananer.swift */; };
 		B3581F081B262623004BC32E /* AddAtividadeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3581F071B262623004BC32E /* AddAtividadeViewController.swift */; };
+		D55581C01B3905A600877CD2 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55581BF1B3905A600877CD2 /* Network.swift */; };
 		D556655A1B375FF900DE6D9E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D55665591B375FF900DE6D9E /* CloudKit.framework */; };
 		D556655C1B37608B00DE6D9E /* Disciplina.swift in Sources */ = {isa = PBXBuildFile; fileRef = D556655B1B37608B00DE6D9E /* Disciplina.swift */; };
 		D556655E1B37608C00DE6D9E /* Atividade.swift in Sources */ = {isa = PBXBuildFile; fileRef = D556655D1B37608C00DE6D9E /* Atividade.swift */; };
 		D55665601B3762F300DE6D9E /* CloudKitHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D556655F1B3762F300DE6D9E /* CloudKitHelper.swift */; };
-		D564443A1B38856000560627 /* StoryboardiPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D56444391B38856000560627 /* StoryboardiPad.storyboard */; };
 		D564443C1B388DBA00560627 /* EventHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D564443B1B388DBA00560627 /* EventHelper.swift */; };
 		D5DA8B691B31ACA9001E0DE7 /* CellAtividade.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DA8B671B31ACA9001E0DE7 /* CellAtividade.swift */; };
 		D5DA8B6A1B31ACA9001E0DE7 /* CellAtividade.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5DA8B681B31ACA9001E0DE7 /* CellAtividade.xib */; };
@@ -60,12 +60,12 @@
 		B3581EF91B23AEF0004BC32E /* AtividadesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtividadesViewController.swift; sourceTree = "<group>"; };
 		B3581F051B23C322004BC32E /* DisciplinaMananer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisciplinaMananer.swift; sourceTree = "<group>"; };
 		B3581F071B262623004BC32E /* AddAtividadeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddAtividadeViewController.swift; path = /Users/rgondek/Desktop/MackMobile/Apps/Swift/Organizador/Organizador/Organizador/AddAtividadeViewController.swift; sourceTree = "<absolute>"; };
+		D55581BF1B3905A600877CD2 /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		D55665581B375FF500DE6D9E /* Organizador.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Organizador.entitlements; sourceTree = "<group>"; };
 		D55665591B375FF900DE6D9E /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		D556655B1B37608B00DE6D9E /* Disciplina.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Disciplina.swift; sourceTree = "<group>"; };
 		D556655D1B37608C00DE6D9E /* Atividade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Atividade.swift; sourceTree = "<group>"; };
 		D556655F1B3762F300DE6D9E /* CloudKitHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitHelper.swift; sourceTree = "<group>"; };
-		D56444391B38856000560627 /* StoryboardiPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = StoryboardiPad.storyboard; sourceTree = "<group>"; };
 		D564443B1B388DBA00560627 /* EventHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventHelper.swift; sourceTree = "<group>"; };
 		D5DA8B671B31ACA9001E0DE7 /* CellAtividade.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellAtividade.swift; sourceTree = "<group>"; };
 		D5DA8B681B31ACA9001E0DE7 /* CellAtividade.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellAtividade.xib; sourceTree = "<group>"; };
@@ -118,13 +118,13 @@
 				B3581EEE1B1F4220004BC32E /* Managers */,
 				B3581F091B262F69004BC32E /* Views */,
 				B3581EBE1B1E194B004BC32E /* AppDelegate.swift */,
-				D56444391B38856000560627 /* StoryboardiPad.storyboard */,
 				B3581EC51B1E194C004BC32E /* Main.storyboard */,
 				B3581EC81B1E194C004BC32E /* Images.xcassets */,
 				B3581ECA1B1E194C004BC32E /* LaunchScreen.xib */,
 				B3581EC01B1E194B004BC32E /* Organizador.xcdatamodeld */,
 				D556655F1B3762F300DE6D9E /* CloudKitHelper.swift */,
 				D564443B1B388DBA00560627 /* EventHelper.swift */,
+				D55581BF1B3905A600877CD2 /* Network.swift */,
 				B3581EBC1B1E194B004BC32E /* Supporting Files */,
 			);
 			path = Organizador;
@@ -282,7 +282,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3581EC71B1E194C004BC32E /* Main.storyboard in Resources */,
-				D564443A1B38856000560627 /* StoryboardiPad.storyboard in Resources */,
 				D5DA8B6A1B31ACA9001E0DE7 /* CellAtividade.xib in Resources */,
 				B3581ECC1B1E194C004BC32E /* LaunchScreen.xib in Resources */,
 				B3581EC91B1E194C004BC32E /* Images.xcassets in Resources */,
@@ -305,6 +304,7 @@
 			files = (
 				B3581EF61B23AA31004BC32E /* MateriasViewController.swift in Sources */,
 				44C5CB341B33B264007B7A7A /* DetalhesAtividadeViewController.swift in Sources */,
+				D55581C01B3905A600877CD2 /* Network.swift in Sources */,
 				B3581F061B23C322004BC32E /* DisciplinaMananer.swift in Sources */,
 				B3581F081B262623004BC32E /* AddAtividadeViewController.swift in Sources */,
 				44B148571B2E0A250071A5D6 /* AddMateriaViewController.swift in Sources */,

@@ -127,8 +127,7 @@ class DetalhesAtividadeViewController: UITableViewController, UITextFieldDelegat
             
         } else {
             if dataTxt != datePicker.date || nomeTxt.text != atividadeSelecionada.nome {
-                EventHelper.shared.excluirEventoCalendario(atividadeSelecionada)
-                EventHelper.shared.cancelarNotificacao(atividadeSelecionada)
+                EventHelper.shared.cancelAtividade(atividadeSelecionada)
                 atividadeSelecionada.data = datePicker.date
                 atividadeSelecionada.nome = nomeTxt.text
 
@@ -137,9 +136,7 @@ class DetalhesAtividadeViewController: UITableViewController, UITextFieldDelegat
                 var dateString = dateFormatter.stringFromDate(atividadeSelecionada.data)
                 dataTxt.text = dateString
                 
-                EventHelper.shared.criarNotificacao(atividadeSelecionada)
-                EventHelper.shared.criarEventoCalendario(atividadeSelecionada)
-            }
+                EventHelper.shared.setAtividade(atividadeSelecionada)            }
             
             if (pesoTxt.text.toInt() >= 0 && pesoTxt.text.toInt() <= 100){
                 if ((notaTxt.text as NSString).doubleValue >= 0 && (notaTxt.text as NSString).doubleValue <= 10) {
